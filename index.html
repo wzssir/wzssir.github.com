@@ -1,68 +1,30 @@
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <style>
-        *{margin: 0;padding: 0;list-style: none;}
-     
-        #box1{width: 100%;height: 100%;position: absolute;left: 0;top: 0}
-        #box1 img{width: 100%;height: 100%;}
-        #box{width: 330px;margin: 100px auto;position: relative;}
-        #box li{box-shadow: 2px 2px 100px;border-radius: 5px;width: 100px;height: 100px;margin: 0 10px 10px 0;float: left;background:blue;}
-        #box li.ac{box-shadow: 2px 2px 5px;z-index: 10;}
-    </style>
-    <script src="js/feng.js"></script>
-    <script>
-        function rnd(n,m){
-            return parseInt(Math.random()*(m-n))+n;
-        }
-        window.onload=function(){
-            var Box = document.getElementById('box');
-            var aLi = Box.children;
-            var arr=[];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{ 
+		background:#000; 
+		font-weight:bold; 
+		font-family:微软雅黑;
+	}
+	p{ 
+		text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e; 
+		font-family:Verdana, Geneva, sans-serif;
+		font-size:100px; 
+		font-weight:bold; 
+		color:white;
+	}
 
-            for(var i=0;i<aLi.length;i++){
-                arr.push({left:aLi[i].offsetLeft,top:aLi[i].offsetTop});
-            }
-            for(var i=0;i<aLi.length;i++){
-                aLi[i].style.position='absolute';
-                aLi[i].style.margin=0;
-                aLi[i].style.left=arr[i].left+'px';
-                aLi[i].style.top=arr[i].top+'px';
-                aLi[i].style.background='rgb('+rnd(0,256)+','+rnd(0,256)+','+rnd(0,256)+')';
-            }
-            Box.onmouseover=function(ev){
-                var oTarget=ev.target||window.event.srcElement;//事件委托
-
-                if(oTarget.tagName=='LI'){
-                    oTarget.className='ac';
-                    move(oTarget,{width:150,height:150,marginLeft:-25,marginTop:-25});
-                }
-            };
-            Box.onmouseout=function(ev){
-                var oTarget=ev.target||window.event.srcElement;
-
-                oTarget.className='';
-                move(oTarget,{width:100,height:100,margin:0});
-            };
-        };
-    </script>
+	</style>
+	<script>
+	
+	</script>
 </head>
 <body>
-<div id="box1">
-    <img src="img/2.jpg" alt="">
-</div>
-<ul id="box">
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-</ul>
-
+	<div>
+	<p>苦海泛起爱恨</p>
+	</div>
 </body>
 </html>
