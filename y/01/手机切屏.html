@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	body{
+		background: #333;
+	}
+	#back{
+		width: 900px;
+		height: 600px;
+		background: url(images/bg.jpg);
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+	}
+	#box{
+		width: 240px;
+		height: 360px;
+		position: absolute;
+		left: 326px;
+		top: 121px;
+		overflow: hidden;
+	}
+	#box ul li{
+		width: 240px;
+		height: 360px;
+		float: left;
+		overflow: hidden;
+	}
+	#box ul{
+		width: 960px;
+		height: 360px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		cursor: pointer;
+	}
+	</style>
+	<script src="js/feng.js"></script>
+	<script>
+	window.onload=function(){
+		var oUl=document.getElementsByTagName('ul')[0];
+		var aLi=document.getElementsByTagName('li');
+		var iNow=0;//每个li的下标
+		//1.先写ul的拖拽
+		oUl.onmousedown=function(ev){
+			clearInterval(oUl.timer);//**************************************
+			var oEv=ev||event;
+
+			var start=oEv.clientX;//鼠标点下记录坐标
+
+			var disX=oEv.clientX-oUl.offsetLeft;
+			document.onmousemove=function(ev){
+				var oEv=ev||event;
+				var l=oEv.clientX-disX;
+				oUl.style.left=l+'px';
+			}
+			document.onmouseup=function(ev){
+				var oEv=ev||event;
+
+				var end=oEv.clientX;//鼠标抬起记录坐标
+				var w=aLi[0].offsetWidth;
+				if(end-start>40){//往右拖动  出现上一张
+					iNow--;
+					if(iNow==-1){
+						iNow=0;
+					}
+					move(oUl,{left:-iNow*w})
+				}else if(end-start<-40){//往左拖动 出现下一张
+					iNow++;
+					if(iNow==aLi.length){
+						iNow=aLi.length-1
+					}
+					move(oUl,{left:-iNow*w})
+				}else{						//两边的界限都没要超出  返回原来的位置 所以iNow不加也不减
+					move(oUl,{left:-iNow*w})
+				}
+
+				document.onmousemove=null;
+				document.onmouseup=null;
+			}
+			return false
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="back">
+		<div id="box">
+			<ul>
+				<li style="background: url(images/pic1.png);"></li>
+				<li style="background: url(images/pic2.png);"></li>
+				<li style="background: url(images/pic3.png);"></li>
+				<li style="background: url(images/pic4.png);"></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

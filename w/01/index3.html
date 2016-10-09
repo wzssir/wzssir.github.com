@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#box{
+		width: 700px;
+		height: 400px;
+		/* background: url(img/0.jpg) no-repeat; */
+		background-size: 700px 400px;
+		margin: 50px auto;
+		position: relative;
+	}
+	#box span{
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		transform-style: preserve-3d;
+		/* transition: 1s all ease; */
+		transform:perspective(800px) rotateY(0deg);
+	}
+	#box span .face{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100px;
+		height: 100px;
+
+		background: url(img/0.jpg) no-repeat;
+		background-size: 700px 400px;
+
+		transform: translateZ(1px);
+	}
+	#box span .back{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100px;
+		height: 100px;
+
+		background: url(img/1.jpg) no-repeat;
+		background-size: 700px 400px;
+
+		transform: translateZ(-1px) scale(-1,1);
+	}
+	
+	</style>
+	<script>
+		window.onload=function(){
+			var Box=document.getElementById('box');
+			var R=7;
+			var C=4;
+			var iNow=0;
+			for(var c=0;c<C;c++){
+				for(var r=0;r<R;r++){
+					var oSpan=document.createElement('span');
+
+					oSpan.style.transition='1s all ease '+200*(c+r)+'+ms'
+					oSpan.style.width=100+'px';
+					oSpan.style.height=100+'px';
+					oSpan.style.left=100*r+'px';
+					oSpan.style.top=100*c+'px';
+					oSpan.r=r;
+					oSpan.c=c;
+					
+
+					oSpan.innerHTML='<i class="face"></i><i class="back"></i>';
+					oSpan.children[0].style.backgroundPosition=-r*100+'px -'+c*100+'px';
+					oSpan.children[1].style.backgroundPosition=-r*100+'px -'+c*100+'px';
+					Box.appendChild(oSpan)
+				}
+
+				var aSpan=Box.children;
+				document.onclick=function(){
+					for (var i = 0; i < aSpan.length; i++) {
+						aSpan[i].style.transition='1s all ease '+200*(aSpan[i].c+aSpan[i].r)+'ms';
+						aSpan[i].style.transform='perspective(800px) rotateY(180deg)';
+					}
+				}
+				aSpan[aSpan.length-1].addEventListener('transitionend',function(){
+					iNow++;
+					for (var i = 0; i < aSpan.length; i++) {
+						aSpan[i].style.transition='none';
+						aSpan[i].style.transform='perspective(800px) rotateY(0deg)';
+						aSpan[i].children[0].style.backgroundImage='url(img/'+iNow%4+'.jpg)';
+						aSpan[i].children[1].style.backgroundImage='url(img/'+((iNow+1)%4)+'.jpg)';
+					}
+
+				},false)
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<!-- <span>
+			<i class="face"></i>
+			<i class="back"></i>
+		</span> -->
+	</div>
+</body>
+</html>

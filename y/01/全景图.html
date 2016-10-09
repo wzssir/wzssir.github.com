@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#box{
+		width: 400px;
+		height: 200px;
+		border: 1px solid red;
+		margin: 100px auto;
+		position: relative;
+		overflow: hidden;
+	}
+	#div1 img{
+		float: left
+	}
+	#div1{
+		width: 3200px;
+		height: 800px;
+		position: absolute;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		var oDiv=document.getElementById('div1');
+		var Box=document.getElementById('box');
+		var aImg=document.getElementsByTagName('img')
+		oDiv.onmousedown=function(ev){
+			var oEv=ev||event;
+			var disX=oEv.clientX-oDiv.offsetLeft;
+			var disY=oEv.clientY-oDiv.offsetTop;
+			document.onmousemove=function(ev){
+				var oEv=ev||event;
+				var l=oEv.clientX-disX;
+				var t=oEv.clientY-disY;
+
+
+				if(t>0){
+					t=0
+				}
+				if(t<Box.offsetHeight-aImg[0].offsetHeight){
+					t=Box.offsetHeight-aImg[0].offsetHeight
+				}
+				if(l>0){
+					l=-oDiv.offsetWidth*(aImg.length-1)/aImg.length;
+				}
+				if(l<-oDiv.offsetWidth*(aImg.length-1)/aImg.length){
+					l=0
+				}
+
+
+				oDiv.style.left=l+'px';
+				oDiv.style.top=t+'px';
+			}
+			document.onmouseup=function(){
+				document.onmousemove=null;
+				document.onmouseup=null;
+			}
+			return false
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div id="div1">
+			<img src="img6/0.jpg" alt="">
+			<img src="img6/0.jpg" alt="">
+		</div>
+	</div>
+</body>
+</html>

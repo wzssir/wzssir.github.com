@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#box{
+		width: 800px;
+		height: 400px;
+		border: 1px solid red;
+		margin: 100px auto;
+		position: relative;
+	}
+	ul li img{
+		width: 100%;
+		position: relative;
+	}
+	ul li{
+		width: 280px;
+		height: 180px;
+		margin:10px;
+		float: left;
+	}
+	ul{
+		width: 2700px;
+		height: 200px;
+		position: absolute;
+		left: 0;
+		top: 100px;
+	}
+	</style>
+	<script>
+	//难点 1.img只给宽度100%  和  relative(没有的话没法提升层级)
+	//2.改变的并非是li的宽高  而是img的  因为li是浮动过去的  改变宽高会父级宽度不够 子级掉下来   所有  所有的改变都是对img
+	//3.改变宽高后  要改变margin值  均为负值  并且赋值是改变量的1/2*********
+	window.onload=function(){
+		var Box=document.getElementById('box');
+		var oUl=document.getElementsByTagName('ul')[0];
+		var aLi=oUl.children;
+		oUl.onmousedown=function(ev){
+			var oEv=ev||event;
+			var disX=oEv.clientX-oUl.offsetLeft;
+			document.onmousemove=function(ev){
+				var oEv=ev||event;
+				var l=oEv.clientX-disX;
+				//限制l范围  Box的宽度一半-aLi宽度一半-aLi.offsetLeft
+				//*******aLi[0].offsetLeft 因为li有margin值 相对于ul定位  还有个10px差距  对于aLi[0]来说  就是它的offsetLeft
+				if(l>Box.offsetWidth/2-(aLi[0].offsetLeft+aLi[0].offsetWidth/2)){
+					l=Box.offsetWidth/2-(aLi[0].offsetLeft+aLi[0].offsetWidth/2)
+				}
+				if(l<Box.offsetWidth/2-(aLi[8].offsetLeft+aLi[8].offsetWidth/2)){
+					l=Box.offsetWidth/2-(aLi[8].offsetLeft+aLi[8].offsetWidth/2)
+				}
+				oUl.style.left=l+'px';
+
+				for(var i=0;i<aLi.length;i++){
+					var dis1=Box.offsetWidth/2;
+					var dis2=oUl.offsetLeft+aLi[0].offsetWidth/2+aLi[i].offsetLeft;
+					//ul到box的left值+li自己宽度一半+第i个li的offsetLeft(到ul的)
+					var c=Math.abs(dis1-dis2)//盒子中点与aLi中点距离的绝对值
+					var scale=1-c/200;
+					if(scale<0.5){
+						scale=0.5;
+					}
+					aLi[i].children[0].style.width=scale*aLi[0].offsetWidth*2+'px';
+					aLi[i].children[0].style.marginLeft=-(scale*aLi[0].offsetWidth*2-aLi[0].offsetWidth)/2+'px';
+					aLi[i].children[0].style.marginTop=-(scale*aLi[0].offsetHeight*2-aLi[0].offsetHeight)/2+'px';
+					aLi[i].children[0].style.zIndex=scale*10000;
+					document.title=scale*10000
+				}
+			}
+			document.onmouseup=function(){
+				document.onmousemove=null;
+				document.onmouseup=null;
+				oUl.releaseCapture&&oUl.releaseCapture();
+			}
+			oUl.setCapture&&oUl.setCapture();
+			return false;
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+			<li><img src="img/5.jpg" alt=""></li>
+			<li><img src="img/6.jpg" alt=""></li>
+			<li><img src="img/7.jpg" alt=""></li>
+			<li><img src="img/8.jpg" alt=""></li>
+			<li><img src="img/9.jpg" alt=""></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/feng.js"></script>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#box{
+		width: 390px;
+		height:390px;
+		border: 1px solid #000;
+		position: relative;
+		margin: 100px auto;
+	}
+	#box li{
+		width: 120px;
+		height: 120px;
+		float: left;
+		margin:5px;
+	}
+	#box li img{
+		width: 100%;
+		height: 100%;
+	}
+	#btn{
+		width: 80px;
+		height: 30px;
+		background: blue;
+		color: #fff;
+		line-height: 30px;
+		text-align: center;
+		position: absolute;
+		left: 50%;
+		top: 10px;
+		margin-left: -40px;
+	}
+	</style>
+	<script>
+		window.onload=function(){
+			var Box=document.getElementById('box');
+			var aLi=Box.children;
+			var Btn=document.getElementById('btn');
+			var arr=[];
+			var timer1;
+			var timer2;
+			for(var i=0;i<aLi.length;i++){
+				arr[i]={
+					left:aLi[i].offsetLeft,
+					top:aLi[i].offsetTop
+				}
+			}
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].style.left=arr[i].left+'px';
+				aLi[i].style.top=arr[i].top+'px';
+				aLi[i].style.margin=0;
+				aLi[i].style.position='absolute';
+			}
+			/*Btn.onclick=function(){
+				var n=0;
+				clearInterval(timer1);
+				timer1=setInterval(function(){
+					(function(index){
+						move(aLi[n],{left:185,top:-60,width:0,height:0},{fn:function(){
+							if(index==aLi.length-1){
+								index==aLi.length-1
+							}
+							clearInterval(timer2);
+							timer2=setInterval(function(){
+								move(aLi[index],{width:120,height:120,left:arr[index].left,top:arr[index].top});
+								index--;
+								if(index==-1){
+									clearInterval(timer2)
+								}
+							},100)
+						}})
+					})(n);
+					
+
+
+					n++;
+					if(n==aLi.length){
+						clearInterval(timer1)
+					}
+				},100)
+			}*/
+			Btn.onclick=function(){
+				var n=0;
+				clearInterval(timer1);
+				timer1=setInterval(function(){
+					(function(index){
+						move(aLi[index],{left:0,top:0,width:0,height:0},{fn:function(){
+							if(index==aLi.length-1){
+								index=aLi.length-1
+							}
+							clearInterval(timer2)
+							timer2=setInterval(function(){
+								move(aLi[index],{left:arr[index].left,top:arr[index].top,width:120,height:120})
+								index--;
+								if(index==-1){
+									clearInterval(timer2)
+								}
+							},100)
+						}})
+					})(n)
+
+					n++;
+					if(n==aLi.length){
+						clearInterval(timer1)
+					}
+				},100)
+				
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="box">
+		<li><img src="img/1.jpg" alt=""></li>
+		<li><img src="img/2.jpg" alt=""></li>
+		<li><img src="img/3.jpg" alt=""></li>
+		<li><img src="img/4.jpg" alt=""></li>
+		<li><img src="img/5.jpg" alt=""></li>
+		<li><img src="img/6.jpg" alt=""></li>
+		<li><img src="img/7.jpg" alt=""></li>
+		<li><img src="img/8.jpg" alt=""></li>
+		<li><img src="img/9.jpg" alt=""></li>
+	</ul>
+	<input type="button" value="change" id="btn">
+</body>
+</html>

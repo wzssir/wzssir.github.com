@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	html,body{
+		height: 100%;
+		overflow: hidden;
+	}
+	#box{
+		width: 700px;
+		height: 400px;
+		background: url(img/0.jpg) no-repeat; 
+		background-size: 700px 400px;
+		margin: 50px auto;
+		position: relative;
+	}
+	#box span{
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background: url(img/0.jpg) no-repeat; 
+		background-size: 700px 400px;
+		transition: 1s all ease;
+	}
+	/* #box:hover span{
+		transform:translate(-300px,-150px);
+	} */
+	</style>
+	<script>
+		//动态创建28个span  
+		window.onload=function(){
+			var Box=document.getElementById('box');
+			var R=7;
+			var C=4;
+			for(var c=0;c<C;c++){
+				for(var r=0;r<R;r++){
+					var oSpan=document.createElement('span');
+					oSpan.style.left=r*100+'px';
+					oSpan.style.top=c*100+'px';
+					oSpan.style.backgroundPosition=-r*100+'px -'+c*100+'px';
+					Box.appendChild(oSpan)
+				}
+			}
+			function rnd(n,m){
+				return parseInt(Math.random()*(m-n)+n)
+			}
+			var iNow=0;
+			var bOK=true;//设置开关是为了解决点快了快速切换的bug
+			var aSpan=document.getElementsByTagName('span');
+			document.onclick=function(){
+				if(!bOK)return;
+				bOK=false;
+				iNow++;
+
+
+				Box.style.backgroundImage='url(img/'+iNow%4+'.jpg)'
+
+
+				for (var i = 0; i < aSpan.length; i++) {
+					//x y坐标离中心点有多远  就让span移动多少
+					var x=aSpan[i].offsetLeft+50-350;
+					var y=aSpan[i].offsetTop+50-200;
+					aSpan[i].style.transition='1s all ease';
+					aSpan[i].style.transform='perspective(800px) translate('+x+'px,'+y+'px) rotateX('+rnd(-180,180)+'deg) rotateY('+rnd(-90,90)+'deg) scale(1.5)' ;//注意写的顺序 后写的先执行
+					aSpan[i].style.opacity=0;
+
+				}
+			}
+			aSpan[0].addEventListener('transitionend',function(){
+				for (var i = 0; i < aSpan.length; i++) {
+
+					bOK=true;
+
+					aSpan[i].style.transition='none';//恢复初始状态的时候 不能有动画效果  
+					aSpan[i].style.transform='perspective(800px) translate(0px,0px) rotateX(0deg) rotateY(0deg) scale(1)' ;
+					aSpan[i].style.opacity=1;
+
+					aSpan[i].style.backgroundImage='url(img/'+iNow%4+'.jpg)'
+
+
+				}
+			},false)
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<!-- <span></span> -->
+	</div>
+</body>
+</html>

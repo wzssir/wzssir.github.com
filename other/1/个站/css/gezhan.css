@@ -1,0 +1,98 @@
+/*header.css*/
+body{overflow-x:hidden }
+.header{opacity:0.6;height: 65px;background: #000;position: fixed;left: 0;top: 0;width: 100%;z-index: 9999}
+#logo{width: 150px;height: 65px;background: url(../img/logo1.png) no-repeat;text-indent: -999em;margin: 0 70px;}
+#hdList{width: 550px;height: 35px;position: absolute;left: 50%;margin-left: -275px;top: 30px;}
+#hdList li{float: left;width: 100px;height: 35px;position: relative;margin-right: 10px;}
+#hdList li div{position: absolute;left: 0;top: 0;width: 110px;height: 35px;overflow: hidden;}
+#hdList li div img{width: 100px;height: 35px;position: absolute;left: 10px;top: 32px;}
+#hdList a{position: absolute;left: 10px;top: 0;width: 100px;height: 35px;color: #fff;line-height: 35px;text-align: center;font-size: 16px;font-family: '黑体'}
+#hdList .active img{left:0; top:0;}
+/*五块布局*/
+#content{width: 100%;position: absolute;left:0;top: 0;}
+#content .img{width: 100%;height: 100%;position: relative;}
+.index1{position: relative;left:0px;top: 0;overflow: hidden;}
+.index2{position: relative;left:0px;top: 0;}
+.index3{position: relative;left:0px;top: 0;}
+.index4{position: relative;left:0px;top: 0;}
+.index5{position: relative;left:0px;top: 0;}
+
+/*第一屏*/
+.index1 .txt1{width: 400px;position: absolute;left:58%;z-index: 20;top: 200px;overflow: hidden;}
+.txt1 .logo1{width: 400px;height: 51px;}
+.index1 .txtCon{width: 316px;padding-left: 15px;margin-left: 32px;border-left: 1px solid #fff;margin-top: 32px;position: relative;left: 0;top: 0}
+.index1 .txtCon p{color: #fff;line-height: 30px;text-indent: 2em;font-size: 16px;font-family: '黑体'}
+.index1 .icon{margin-top: 45px;padding-left: 55px;position: relative;left: 0;top: 0}
+.index1 .icon .icon1{width: 30px;height: 30px;position: relative;float: left}
+.index1 .icon .icon1 img{width: 30px;height: 30px;position: absolute;left: 0;top: 0;cursor: pointer;}
+.index1 .r_box{width: 630px;height: 100%;background: rgba(0,0,0,0.4);position: absolute;right: -630px;top: 0;z-index: 20;}
+.index1 .r_btn{width: 60px;height: 100px;cursor: pointer;position: absolute;left:-60px;top:50%;margin-top: -50px;}
+.index1 .r_btn img{width: 60px;height: 100px;position: absolute;left: 0;top: 0}
+.index1 .yu1{width: 120px;height:90px;position: absolute;z-index: 5;}
+#r_box_wave{width: 80%;height: 80%;position: absolute;left: 10%;top: 10%}
+#r_box_wave div{width: 0;height: 5%;background:red;position: absolute;left: 10%;margin-top: 10px;opacity: 0.5}
+#r_box_wave span{width: 80%;height: 5%;position: absolute;left: 12%;font-size: 14px;font-family: '黑体';color: #fff;line-height: 5%;}
+/*第三屏*/
+.index3{overflow: hidden;}
+#hoop{width: 130px;height: 200px;position: absolute;top: 50%;left: 50%;margin-left: -67px;margin-top: -160px;z-index: 20;transform-style: preserve-3d;transform:perspective(1500px) rotateX(-15deg);}
+#hoop li{position: absolute;left: 0;top: 0;width: 100%;height: 100%;border-radius: 10px;box-shadow: 0px 0px 10px 4px #fff;transform: perspective(1500px) rotateY(0deg) translateZ(0px);-webkit-box-reflect:below 20px linear-gradient(rgba(0,0,0,0) 40%, rgba(0,0,0,0.4));}
+#hoop li span{width: 40px;height: 40px;position: absolute;right: 0;bottom: 0;}
+#gather{width: 80%;height: 80%;position: absolute;left:-80%;top:10%;z-index: 999;opacity: 1;transform-style: preserve-3d;transition:1.5s all ease;}
+
+.tip1{line-height:20px;font-size: 16px;font-family: 黑体;color: #fff;position: absolute;left: -250px;top: 85%;text-shadow: 1px 2px #000;transition:1s all ease;}
+
+#close{width: 50px;height: 50px;background:url(../img3/7.jpg) no-repeat;background-size: 50px 50px;position: absolute;right: -100px;top: 100px;transition:1s all ease;}
+#gather .case{width: 100%;height: 100%;position: absolute;left: 0;top: 0;overflow: hidden;}
+/*右侧盒子*/
+.r_box3{width: 330px;height: 100%;background: rgba(0,0,0,0.4);position: absolute;right: -330px;top: 0;z-index: 20;}
+.r_btn3{width: 60px;height: 100px;cursor: pointer;position: absolute;left:-60px;top:50%;margin-top: -50px;z-index: 50;}
+.r_btn3 img{width: 60px;height: 100px;position: absolute;left: 0;top: 0}
+/* .yu1{width: 120px;height:90px;position: absolute;z-index: 5;} */
+#r_box_wave3{width: 80%;height: 80%;position: absolute;left: 10%;top: 10%}
+#r_box_wave3 div{width: 0;height: 5%;background:red;position: absolute;left: 10%;margin-top: 10px;opacity: 0.5}
+#r_box_wave3 span{width: 80%;height: 5%;position: absolute;left: 12%;font-size: 14px;font-family: '黑体';color: #fff;line-height: 5%;}
+/*case1 视觉差*/
+#case1{display: none}
+#bg1{width: 100%;height: 100%;position: absolute;left: 0;top: 0}
+#bg1 img{width: 100%;height: 100%;}
+#move1{width: 480px;height: 480px;position: absolute;left: 260px;top: -95px;}
+#border1{position: absolute;left:140px;top: 300px}
+#pic1{position: absolute;left: 5px;top: 90px;}
+#border1 img,#pic1 img{float: left}
+/*case2 照片墙*/
+#case2{display: none;width: 100%;height: 100%;}
+#btn2{width: 80px;height: 25px;line-height: 25px;text-align: center;background: blue;opacity:0.6;color: #fff;font-family: 黑体;font-size: 14px;position: absolute;margin-left: -40px;left: 50%;top:0px;box-shadow: 0 4px 2px #fff;transition: 0.4s top ease;border-radius: 5px;}
+#btn2:active{top: 3px;box-shadow: 0 1px 2px #000}
+#box2 img{width: 100%;height: 100%}
+#box2 li{width: 272px;height: 150px;float: left;}
+#box2{width: 822px;height: 456px;position: relative;margin: 40px auto;opacity: 0.9;filter: alpha(opacity=90)}
+/*case3 颗粒翻转*/
+#box3{width: 700px;height: 400px;position: absolute;left: 50%;margin-left: -350px;top: 50%;margin-top: -200px;background: url(../case/img/0.jpg);background-size: 700px 400px;}
+#box3 span{width: 100px;height: 100px;position: absolute;left: 0;top: 0;background: url(../case/img/0.jpg);background-size: 700px 400px;transition: 1s all ease;}
+#case3{display: block;}
+/*case4 苹果菜单*/
+#box4{width: 100%;position: absolute;left: 0;bottom: 0;text-align: center;}
+#box4 img{width: 64px;}
+#case4{background: url(../case/img6/0007.jpg) no-repeat;background-size:100% 100%;width: 100%;height: 100%;display: none;opacity: 0.8}
+/*case5 手风琴*/
+#box5{width: 80%;height: 80%;position: absolute;left:10%;top: 10%;overflow: hidden;}
+#box5 li{width: 100%;height: 100%;position: absolute;}
+#box5 li img{width: 100%;height: 100%;opacity: 0.7;filter: alpha(opacity=70)}
+#case5{display: none;}
+/*case6 翻页*/
+#case6{display: none;}
+#box6{width: 700px;height: 400px;position: absolute;left: 50%;margin-left: -350px;top: 50%;margin-top: -200px;background: url(../case/img/0.jpg);background-size: 700px 400px;}
+#box6>div{width: 350px;height: 400px;position: absolute;right: 0;top: 0}
+#box6a{z-index: 102;transform-style: preserve-3d;transform: perspective(800px) rotateY(0deg);transform-origin: left center;}
+#box6a div{position: absolute;left: 0;top: 0;width: 100%;height: 100%;}
+#box6a .face{background: url(../case/img/0.jpg) no-repeat right center;background-size: 700px 400px;transform: translateZ(1px);}
+#box6a .back{background: url(../case/img/1.jpg) no-repeat;background-size: 700px 400px;transform: translateZ(-1px) scale(-1,1);}
+#div2{background: url(../case/img/1.jpg) no-repeat right center;background-size: 700px 400px;z-index: 101;}
+/*第五屏*/
+#skill5{position: absolute;left: 80px;top: 80px;width: 750px;height: 300px;}
+.skillbar {position:relative;display:block;margin-bottom:15px;width:100%;background:#eee;height:35px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;-webkit-transition:0.4s linear;-moz-transition:0.4s linear;-ms-transition:0.4s linear;-o-transition:0.4s linear;transition:0.4s linear;-webkit-transition-property:width, background-color;-moz-transition-property:width, background-color;-ms-transition-property:width, background-color;-o-transition-property:width, background-color;transition-property:width, background-color;}
+.skillbar-title{position:absolute;top:0;left:0;width:110px;font-weight:bold;font-size:13px;color:#ffffff;background:#6adcfa;-webkit-border-top-left-radius:3px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-topleft:3px;-moz-border-radius-bottomleft:3px;border-top-left-radius:3px;border-bottom-left-radius:3px;}
+.skillbar-title span{display:block;background:rgba(0, 0, 0, 0.1);padding:0 20px;height:35px;line-height:35px;-webkit-border-top-left-radius:3px;-webkit-border-bottom-left-radius:3px;-moz-border-radius-topleft:3px;-moz-border-radius-bottomleft:3px;border-top-left-radius:3px;border-bottom-left-radius:3px;}
+.skillbar-bar{height:35px;width:0px;background:#6adcfa;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;}
+.skill-bar-percent{position:absolute;right:10px;top:0;font-size:11px;height:35px;line-height:35px;color:#ffffff;color:rgba(0, 0, 0, 0.4);}
+

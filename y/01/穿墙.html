@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#box li{
+		width: 200px;
+		height: 200px;
+		float: left;
+		margin: 10px;
+		position: relative;
+		overflow: hidden;
+	}
+	#box{
+		width: 880px;
+		margin: 80px auto;
+		border: 1px solid red;
+		height: 440px;
+	}
+	#box li img{
+		width: 100%;
+		height: 100%;
+	}
+	#box  li span{
+		width: 100%;
+		height: 100%;
+		background: red;
+		opacity: 0.5;
+		filter: alpha(opacity=50);
+		position: absolute;
+		left: -200px;
+		top: 0;
+		text-align: center;
+		line-height: 200px;
+		color: #fff;
+		font-size: 40px;
+		font-family: '黑体'
+	}
+	</style>
+	<script src="js/feng.js"></script>
+	<script>
+		function hoverDir(ev,obj){
+			var oEv=ev||event;
+			var x=oEv.clientX;//进入一个物体时的横纵坐标
+			var y=oEv.clientY;
+
+			var l=x-obj.offsetLeft;
+			var t=y-obj.offsetTop;
+			var r=obj.offsetLeft+obj.offsetWidth-x;
+			var b=obj.offsetTop+obj.offsetHeight-y;
+
+			switch(Math.min(l,t,r,b)){
+				case l:
+				return 'l';
+				break;
+				case t:
+				return 't';
+				break;
+				case r:
+				return 'r';
+				break;
+				case b:
+				return 'b';
+				break;
+			}
+
+		}
+		window.onload=function(){
+			var oSpan=document.getElementsByTagName('span');
+			var aLi=document.getElementsByTagName('li');
+
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].index=i;
+				aLi[i].onmouseenter=function(ev){//此处有onmouseover  bug  什么浏览器下都存在  只是明显不明显
+					var dir=hoverDir(ev,this);
+					switch(dir){
+						case 'l':
+						oSpan[this.index].style.left=-200+'px';
+						oSpan[this.index].style.top=0+'px';
+						move(oSpan[this.index],{left:0});
+						break;
+						case 't':
+						oSpan[this.index].style.left=0+'px';
+						oSpan[this.index].style.top=-200+'px';
+						move(oSpan[this.index],{top:0});
+						break;
+						case 'r':
+						oSpan[this.index].style.left=200+'px';
+						oSpan[this.index].style.top=0+'px';
+						move(oSpan[this.index],{left:0});
+						break;
+						case 'b':
+						oSpan[this.index].style.left=0+'px';
+						oSpan[this.index].style.top=200+'px';
+						move(oSpan[this.index],{top:0});
+						break;
+					}
+				}
+				aLi[i].onmouseleave=function(ev){
+					var dir=hoverDir(ev,this);
+					switch(dir){
+						case 'l':
+						move(oSpan[this.index],{left:-200});
+						break;
+						case 't':
+						move(oSpan[this.index],{top:-200});
+						break;
+						case 'r':
+						move(oSpan[this.index],{left:200});
+						break;
+						case 'b':
+						move(oSpan[this.index],{top:200});
+						break;
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="box">
+		<li><img src="img3/1.jpg" alt=""><span>虎一</span></li>
+		<li><img src="img3/2.jpg" alt=""><span>虎二</span></li>
+		<li><img src="img3/3.jpg" alt=""><span>虎三</span></li>
+		<li><img src="img3/4.jpg" alt=""><span>虎四</span></li>
+		<li><img src="img3/5.jpg" alt=""><span>虎五</span></li>
+		<li><img src="img3/6.jpg" alt=""><span>虎六</span></li>
+		<li><img src="img3/7.jpg" alt=""><span>虎七</span></li>
+		<li><img src="img3/8.jpg" alt=""><span>虎八</span></li>
+	</ul>
+</body>
+</html>

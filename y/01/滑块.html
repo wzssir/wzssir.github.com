@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/feng.js"></script>	
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		text-decoration: none;
+	}
+	#box{
+		min-width: 1000px;
+		height: 50px;
+		background: #000;
+		border-top: 1px solid red;
+		border-bottom: 1px solid red;
+	}
+	#head{
+		width: 1000px;
+		height: 50px;
+		background: red;
+		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
+		
+	}
+	#head a{
+		font-size: 16px;
+		font-family: '黑体';
+		color: #fff;
+		float: left;
+		width: 10%;
+		text-align: center;
+		line-height: 50px;
+	}
+	#btn{
+		width: 100px;
+		height: 50px;
+		background: blue;
+		position: absolute;
+		top: 0;
+		left: -100px;
+		opacity: 0.6;
+	}
+	
+	</style>
+	<script>
+		window.onload=function(){
+			var A=document.getElementsByTagName('a');
+			var Btn=document.getElementById('btn');
+			var Box=document.getElementById('box');
+			
+			var bOK;
+			for(var i=0;i<A.length;i++){
+				var a=Tween.Back.easeOut;
+				A[i].index=i;
+				A[i].onmouseenter=function(){
+					bOK=false;
+					moveT(Btn,{left:this.index*A[0].offsetWidth},{time:300,easeing:a})
+				}	
+			}
+			Box.onmouseleave=function(){
+				if(bOK){
+					moveT(Btn,{left:this.index*A[0].offsetWidth},{time:300,easeing:a})
+				}else{
+
+					moveT(Btn,{left:0},{time:300,easeing:a});	
+				}
+			}
+			Btn.onclick=function(){
+				bOK=true;
+				
+			}	
+				
+
+			
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div id="head">
+			<a href="#">清风徐来</a>
+			<a href="#">水波不兴</a>
+			<a href="#">顺流而上</a>
+			<a href="#">海阔天空</a>
+			<a href="#">人面桃花</a>
+			<a href="#">倾国倾城</a>
+			<a href="#">那些可遇</a>
+			<a href="#">而不可求</a>
+			<a href="#">哪个剧本</a>
+			<a href="#">没有分生</a>
+			<div id="btn"></div>
+			
+		</div>
+	</div>
+</body>
+</html>

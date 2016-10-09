@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		height: 100%;
+		background: #000;
+		text-align: center;
+	}
+	#div1{
+		margin-top: 10px;
+		height: 30px;
+	}
+	#div1 input{
+		width: 60px;
+		height: 20px;
+		line-height: 20px;
+		text-align: center;
+		background: -webkit-linear-gradient(top,#000 30%,blue 70%);
+		color: #fff;
+		font-family: 黑体;
+		border: none;
+		outline: none;
+		-webkit-box-shadow:0 4px 1px #fff;
+		position: relative;
+		-webkit-transition:0.4s all ease;
+	}
+	#div1 input:active{
+		top: 3px;
+		-webkit-box-shadow:0 1px 1px #fff;
+	}
+	#box{
+		width: 603px;
+		height: 3px;
+		background: #fff;
+		margin: 5px auto;
+	}
+	#bar{
+		width: 0px;
+		height: 3px;
+		background: red;
+	}
+	</style>
+	<script>
+		window.onload=function(){
+			var oV=document.getElementsByTagName('video')[0];
+			var Box=document.getElementById('box');
+			var Bar=document.getElementById('bar');
+			var Btn=document.querySelectorAll('input');
+			Btn[0].onclick=function(){
+				oV.play()
+			}
+			Btn[1].onclick=function(){
+				oV.pause()
+			}
+			Btn[2].onclick=function(){
+				oV.currentTime++
+			}
+			Btn[3].onclick=function(){
+				oV.currentTime--
+			}
+			Btn[4].onclick=function(){
+				oV.volume+=0.2
+			}
+			Btn[5].onclick=function(){
+				oV.volume-=0.2
+			}
+			Btn[6].onclick=function(){
+				oV.muted=true
+			}
+			Btn[7].onclick=function(){
+				oV.webkitRequestFullscreen()
+			}
+			oV.ontimeupdate=function(){
+				var scale=oV.currentTime/oV.duration;
+				Bar.style.width=Box.offsetWidth*scale+'px'
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<input type="button" value="开始">
+		<input type="button" value="暂停">
+		<input type="button" value="快进">
+		<input type="button" value="快退">
+		<input type="button" value="V++">
+		<input type="button" value="V--">
+		<input type="button" value="静音">
+		<input type="button" value="全屏">
+	</div>
+	<video src="2.mp4" style="margin-top: 15px;"></video>
+	<div id="box">
+		<div id="bar"></div>
+	</div>
+</body>
+</html>

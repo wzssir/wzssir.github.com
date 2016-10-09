@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#box{
+		width: 700px;
+		height: 400px;
+		background: url(img/0.jpg) no-repeat;
+		background-size: 700px 400px;
+		margin: 80px auto;
+		position: relative;
+	}
+	#box>div{
+		width: 350px;
+		height: 400px;
+		position: absolute;
+		right: 0;
+		top:0;
+	}
+	#div1{
+		z-index: 2;
+		transform-style: preserve-3d;
+		transform: perspective(800px) rotateY(0deg);/*谁要运动  就给谁加过渡  在这是为了个要翻转的div1加上初始状态 不要直接翻转会出现bug*/
+		transform-origin: left center;
+		/*如同翻书一样  围绕Y轴翻转*/
+	}
+	#div1 div{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+	#div1 .face{
+		background: url(img/0.jpg) no-repeat right center;
+		background-size: 700px 400px;
+
+		transform: translateZ(1px);/*有3D立体变换 父级必须要加transform-style: preserve-3d;
+		transform: perspective(800px) rotateY(0deg)*/
+
+	}
+	#div1 .back{
+		background: url(img/1.jpg) no-repeat;
+		background-size: 700px 400px;
+
+		transform: translateZ(-1px) scale(-1,1);/*为了让face在前面  back在下面  back翻转的时候  像照镜子 字体会反转 scale(-1,1)是为了解决字体的反转*/
+	}
+	#div2{
+		background: url(img/1.jpg) no-repeat right center;
+		background-size: 700px 400px;
+		z-index: 1;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		var Box=document.getElementById('box');
+		var oDiv1=document.getElementById('div1');
+		var oDiv2=document.getElementById('div2');
+		var oFace=document.querySelector('.face');
+		var oBack=document.querySelector('.back');
+
+		var iNow=0;
+
+		document.onclick=function(){
+			oDiv1.style.transition='1s all ease';
+			oDiv1.style.transform='perspective(800px) rotateY(-180deg)'
+		}
+		//transitionend事件必须用事件绑定  当过渡状态完成的时候 背景图的切换
+		oDiv1.addEventListener('transitionend',function(){
+			iNow++;
+			Box.style.backgroundImage='url(img/'+(iNow%5)+'.jpg)';
+			oFace.style.backgroundImage='url(img/'+(iNow%5)+'.jpg)';
+
+			oBack.style.backgroundImage='url(img/'+((iNow%5+1)%5)+'.jpg)';
+			oDiv2.style.backgroundImage='url(img/'+((iNow%5+1)%5)+'.jpg)';
+
+			oDiv1.style.transition='none';//过渡状态完成后  让执行翻转的div1回到初始位置  但是不能用动画的运动防止  所以把transition清除掉
+			oDiv1.style.transform='perspective(800px) rotateY(0deg)';//div1回到初始状态  即旋转角度为0的地方
+		},false)
+
+	}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div id="div1">
+			<div class="face"></div>
+			<div class="back"></div>
+		</div>
+		<div id="div2"></div>
+	</div>
+</body>
+</html>

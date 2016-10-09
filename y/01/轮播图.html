@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/feng.js"></script>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#tu li img{
+		width: 600px;
+		height: 300px;
+	}
+	#tu li{
+		width: 600px;
+		height: 300px;
+		float: left;
+	}
+	#tu{
+		width: 3000px;
+		height: 300px;
+		position: absolute;
+		left: 0;
+		top: :0;
+	}
+	#box{
+		width: 600px;
+		height: 300px;
+		position: relative;
+		margin:100px auto;
+		border: 1px solid red;
+		overflow: hidden;
+	}
+	#btn li{
+		width: 30px;
+		height: 30px;
+		background: blue;
+		float: left;
+		margin: 0 5px;
+		border-radius: 50%;
+
+	}
+	#btn{
+		width: 200px;
+		height: 30px;
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+	}
+	#btn .active{
+		background: red;
+	}
+	</style>
+	<script>
+		window.onload=function(){
+			var Tu=document.getElementById('tu');
+			var Btn=document.getElementById('btn');
+			var aLi=Btn.children;
+			for(var i=0;i<aLi.length;i++){
+				/*aLi[i].index=i;
+				aLi[i].onmouseover=function(){
+					for(var i=0;i<aLi.length;i++){aLi[i].className=''}
+						this.className='active'
+						move(Tu,{left:-600*this.index})
+				}*/
+				(function(index){
+					aLi[i].onmouseover=function(){
+						for(var i=0;i<aLi.length;i++){aLi[i].className=''}
+							this.className='active';
+						    move(Tu,{left:-600*index})
+					}
+				})(i);
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul id="tu">
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+			<li><img src="img/5.jpg" alt=""></li>
+		</ul>
+		<ol id="btn">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ol>
+	</div>
+</body>
+</html>

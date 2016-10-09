@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li a.active{
+			padding-right:20px;
+			background: url(play.gif) no-repeat right center;
+		}
+		#box{
+			width:500px;
+			height:20px;
+			background: #ccc;
+		}
+		#bar{
+			width:0px;
+			height:20px;
+			background: red;
+		}
+	</style>
+	<script>
+	function rnd(n,m){
+		return parseInt(Math.random()*(m-n))+n;
+	}
+	window.onload=function(){
+		var aLi=document.querySelectorAll('li');
+		var aBtn=document.querySelectorAll('input');
+		var oBar=document.getElementById('bar');
+		var oBox=document.getElementById('box');
+		var oA=new Audio();
+		var inow=0;
+		for(var i=0; i<aLi.length; i++){
+			aLi[i].dataset.index=i;
+			aLi[i].onclick=function(){
+				inow=this.dataset.index;
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].children[0].classList.remove('active');
+				}
+				oA.src='mp3/'+this.children[0].innerHTML+'.mp3';
+				oA.play();
+				this.children[0].classList.add('active');
+			};
+		}
+		//进度条
+		oA.ontimeupdate=function(){
+			var scale=oA.currentTime/oA.duration;
+			oBar.style.width=scale*500+'px';
+			oBox.children[1].innerHTML=oA.currentTime;
+		};
+		oBox.onclick=function(ev){
+			var disX=ev.clientX-oBox.offsetLeft;
+
+			oBar.style.width=disX+'px';
+			var scale=disX/500;
+			oA.currentTime=scale*oA.duration;
+		};
+
+		//播放顺序
+		var playState=0;
+		aBtn[0].onclick=function(){
+			playState=0;
+		};
+		aBtn[1].onclick=function(){
+			playState=1;
+		};
+		aBtn[2].onclick=function(){
+			playState=2;
+		};
+		aBtn[3].onclick=function(){
+			playState=3;
+		};
+
+		oA.onended=function(){
+			if(playState == 0){
+				oA.src='mp3/'+aLi[inow].children[0].innerHTML+'.mp3';
+				oA.play();
+			}else if(playState == 1){
+				for(var i=0; i<aLi.length;i++){
+					aLi[i].children[0].className='';
+				}
+				var num=rnd(0,5);
+				inow=num;
+				aLi[num].children[0].className='active';
+				oA.src='mp3/'+aLi[num].children[0].innerHTML+'.mp3';
+				oA.play();
+			}else if(playState == 2){
+				for(var i=0; i<aLi.length;i++){
+					aLi[i].children[0].className='';
+				}
+				inow++;
+				if(inow==aLi.length){
+					inow=0;
+				}
+				aLi[inow].children[0].className='active';
+				oA.src='mp3/'+aLi[inow].children[0].innerHTML+'.mp3';
+				oA.play();
+			}else if(playState == 3){
+				for(var i=0; i<aLi.length;i++){
+					aLi[i].children[0].className='';
+				}
+				inow++;
+				if(inow==aLi.length){
+					return;
+				}
+			}
+		};
+	};
+	</script>
+</head>
+<body>
+<ul>
+	<li><a href="javascript:;">千千阙歌</a></li>
+	<li><a href="javascript:;">时间都去哪儿了</a></li>
+	<li><a href="javascript:;">小苹果</a></li>
+	<li><a href="javascript:;">夜的钢琴曲</a></li>
+	<li><a href="javascript:;">雨的印记</a></li>
+</ul>
+<div id="box">
+	<div id="bar"></div>
+	<span>12:123</span>
+</div>
+<br>
+<br>
+<input type="button" value="单曲循环">
+<input type="button" value="随机播放">
+<input type="button" value="循环播放">
+<input type="button" value="顺序播放">
+</body>
+</html>

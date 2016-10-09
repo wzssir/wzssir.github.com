@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/feng.js"></script>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		#box li img{
+			width: 600px;
+			height: 350px;
+
+		}
+		#box li {
+			width:600px;
+			height: 350px;
+			
+			position: absolute;
+			top: 0;
+		}
+		#box{
+			width: 600px;
+			height: 350px;
+			border: 1px solid #000;
+			position: relative;
+			margin: 50px auto;
+			overflow: hidden;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var Box=document.getElementById('box');
+			var aLi=Box.children;
+			var w=30;
+			for(var i=1;i<aLi.length;i++){
+				aLi[i].style.left=Box.offsetWidth-(aLi.length-i)*w+'px';
+			}
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].index=i;
+				aLi[i].onmouseover=function(){
+					for(var i=0;i<aLi.length;i++){
+						if(i<=this.index){
+							move(aLi[i],{left:i*w},{easing:'ease-out'})
+						}else{
+							move(aLi[i],{left:Box.offsetWidth-(aLi.length-i)*w},{easing:'ease-out'})
+						}
+					}
+				}
+			}
+		};
+	</script>
+</head>
+<body>
+	<ul id="box">
+		<li><img src="img/1.jpg" alt=""></li>
+		<li><img src="img/2.jpg" alt=""></li>
+		<li><img src="img/3.jpg" alt=""></li>
+		<li><img src="img/4.jpg" alt=""></li>
+		<li><img src="img/5.jpg" alt=""></li>
+		<li><img src="img/6.jpg" alt=""></li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		overflow: hidden;
+	}
+	#bg{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	#bg img{
+		width: 100%;
+		height: 100%;
+	}
+	#move{
+		width: 600px;
+		height: 600px;
+		position: absolute;
+		left: 380px;
+		top: -100px;
+	}
+	#border{
+		position: absolute;
+		left: 157px;
+		top: 334.5px;
+	}
+	#img{
+		position: absolute;
+		left: 10px;
+		top: 100px;
+	}
+	#img img,#border img{
+		float: left;
+	}
+	</style>
+	<script>
+		
+	/*window.onload = function(){
+
+		//各种初始化
+		var oBox = document.getElementById("move");
+		var oBorder = document.getElementById("border");
+		var oImg = document.getElementById("img");
+		var middlePointX = 0;
+		var middlePointY = 0;
+		var oBorderV = 0;
+		var oImgV = 0;
+		function getStyle(){
+			middlePointX = document.documentElement.clientWidth/2;
+			middlePointY = document.documentElement.clientHeight/2;
+
+			oBox.width = oBorder.offsetWidth > oImg.clientWidth ? oBorder.clientWidth : oImg.clientWidth ;
+		
+			oBox.height = oBorder.clientHeight > oImg.clientHeight ? oBorder.clientHeight : oImg.clientHeight ;	
+
+			oBox.style.width = oBox.width + "px";
+
+			oBox.style.height = oBox.height + "px";
+
+			oBox.style.left = middlePointX - oBox.width/2 + "px";
+
+			oBox.style.top = middlePointY - oBox.height/2 + "px";
+
+			oBorder.style.left = oBox.width/2 - oBorder.clientWidth/2 + "px";
+
+			oBorder.style.top = oBox.height/2 - oBorder.clientHeight/2 + "px";
+
+			oImg.style.left = oBox.width/2 - oImg.clientWidth/2 + "px";
+
+			oImg.style.top = oBox.height/2 - oImg.clientHeight/2 + "px";
+		}
+
+		getStyle();
+		window.onresize = getStyle;
+		document.onmousemove = function(ev){
+			var ev = ev || event;
+			var disX = ev.clientX;
+			var disY = ev.clientY;
+			oBorderV = 20;//文字速率比例
+			oImgV = 50;//图片速率比例
+
+			//(X坐标-中点)/V + 本身的left值
+			oBorder.style.left = (disX - middlePointX)/oBorderV + oBox.width/2 - oBorder.clientWidth/2 + "px";
+
+			oBorder.style.top = (disY - middlePointY)/oBorderV + oBox.height/2 - oBorder.clientHeight/2 + "px";
+
+			oImg.style.left = (disX - middlePointX)/oImgV + oBox.width/2 - oImg.clientWidth/2 + "px";
+
+			oImg.style.top = (disY - middlePointY)/oImgV + oBox.height/2 - oImg.clientHeight/2 + "px";
+		}
+
+	}*/
+		window.onload=function(){
+			var Move=document.getElementById('move');
+			var aLi=Move.children;
+			var x=0;
+			var y=0;
+			document.onmousedown=function(ev){
+				var oEv=ev||event;
+				var disX=oEv.clientX-x;
+				var disY=oEv.clientY-y;
+				document.onmousemove=function(ev){
+					var oEv=ev||event;
+					x=oEv.clientX-disX;
+					y=oEv.clientY-disY;
+					for(var i=0;i<aLi.length;i++){
+						aLi[i].style.marginLeft=x*aLi[i].style.zIndex/20+'px';
+						aLi[i].style.marginTop=y*aLi[i].style.zIndex/20+'px';
+					}
+				}
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+				}
+				return false
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="bg">
+		<img src="img4/bg.jpeg" alt="">
+	</div>
+	<div id="move">
+		<div id="border" style="z-index: 7">
+			<img src="img4/1.png" alt="">
+		</div>
+		<div id="img" style="z-index: 3">
+			<img src="img4/2.png" alt="">
+		</div>
+	</div>
+</body>
+</html>

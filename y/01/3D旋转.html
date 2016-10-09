@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	body{
+		background: #444;
+	}
+	#box{
+		width: 900px;
+		height: 380px;
+		margin: 80px auto;
+		position: relative;
+		background: #000 url(images1/bg.jpg);
+		overflow: hidden;
+	}
+	#box li{
+		width: 250px;
+		height: 350px;
+		position: absolute;
+		text-align: center;
+	}
+	#box li span{
+		width: 200px;
+		height: 90px;
+		position: absolute;
+		left:25px;
+		bottom: 0;
+		background: url(images1/shade.png) !important;
+		overflow: hidden;
+		background: none ;
+		filter:none!important;
+		filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/shade.png',sizingMethod='images');
+		color: #fff;
+	}
+	#box img{
+		position: relative;
+	}
+	#box .pic1{
+		top: 20px;
+		left: 77px;
+	}
+	#box .pic1 img{
+		top: 20px;
+	}
+	#box .pic2{
+		top: 55px;
+		left: 336px;
+	}
+
+	#box .pic3{
+		top: 20px;
+		left: 595px;
+	}
+	#box .pic3 img{
+		top: 20px;
+	}
+	#box .on{
+		opacity: 0.3;
+		filter: alpha(opacity=30)
+	}
+	</style>
+	<script src="js/feng.js"></script>
+	<script>
+	function getStyle(obj,name){
+		return (obj.currentStyle||getComputedStyle(obj,false))[name]
+	}
+	window.onload=function(){
+		var aLi=document.getElementsByTagName('li');
+		var aImg=document.getElementsByTagName('img');
+		var oPrev=document.getElementById('prev');
+		var oNext=document.getElementById('next');
+		//当前img和其他img的区别:宽度不同 透明度不同 位置不同  
+		//当前li和其他li的区别:横纵坐标不同  
+		//要点是用一个数组存每个的初始值  当变化时  通过变化数组的排序   再一一赋值 从而实现变化
+		var pos=[];
+		//存属性
+		for(var i=0;i<aLi.length;i++){
+			pos[i]={
+				left:aLi[i].offsetLeft,
+				top:aLi[i].offsetTop,
+				imgTop:aImg[i].offsetTop,
+				width:aImg[i].offsetWidth,
+				opacity:getStyle(aImg[i],'opacity')
+			}
+		}
+		//顺时针定义为下一张  一开始123排序  
+		oPrev.onclick=function(){//1到2  2到3  3到1 要得到231
+			pos.push(pos[0])//1231
+			pos.shift()//231
+			for(var i=0;i<aLi.length;i++){
+				move(aLi[i],{left:pos[i].left,top:pos[i].top})
+				move(aImg[i],{top:pos[i].imgTop,width:pos[i].width,opacity:pos[i].opacity})
+			}
+		}
+		oNext.onclick=function(){//1到3 2到1 3到2   =>312
+			pos.unshift(pos[2])//3123
+			pos.pop()//321
+			for(var i=0;i<aLi.length;i++){
+				move(aLi[i],{left:pos[i].left,top:pos[i].top})
+				move(aImg[i],{top:pos[i].imgTop,width:pos[i].width,opacity:pos[i].opacity})
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<!--img相对于li定位  span相对于li定位  li相对于ul定位  ul相对于body定位-->
+	<input type="button" value="上一个"  id="prev" />
+	<input type="button" value="下一个"  id="next" />
+	<ul id="box">
+		<li class="pic1">
+			<img src="images1/pic1.gif" alt="" class="on" width="180">
+			<span>1</span>
+		</li>
+		<li class="pic2">
+			<img src="images1/pic2.gif" alt="" width="200">
+			<span>2</span>
+		</li>
+		<li class="pic3">
+			<img src="images1/pic3.gif" alt="" class="on" width="180">
+			<span>3</span>
+		</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#box li img{
+		width: 300px;
+		height: 200px;
+	}
+	#box li{
+		width: 300px;
+		height: 200px;
+		float: left;
+		box-shadow: 0 0 5px #999; 
+		margin: 10px;
+		position: relative;
+		overflow: hidden;
+	}
+	#box li div{
+		width: 100%;
+		height: 80px;
+		position: absolute;
+		left: 0;
+		bottom: -80px;
+		opacity: 0
+	}
+	#box{
+		width: 960px;
+		margin: 10px auto;
+	}
+	#box li div .bg{
+		width: 100%;
+		height: 80px;
+		border-top: 1px solid #fff;
+		background: #000;
+		position: absolute;
+		left: 0;
+		top: 0;
+		opacity: 0.6;
+		z-index: 1
+	}
+	#box li div em {
+		position:absolute; 
+		left:0; top:0; 
+		color:white; 
+		z-index:2;
+	}
+	#box li h2 {
+		padding:4px; 
+		font-family:'黑体';
+		font-style: normal; 
+		font-weight:bold;
+	}
+	#box li p {
+		font-family:'黑体';
+		font-style: normal; 
+		padding:4px; 
+		line-height:22px;
+	}
+	</style>
+	<script src="js/feng.js"></script>
+	<script>
+	window.onload=function(){
+		var Box=document.getElementById('box');
+		var aLi=Box.children;
+		for(var i=0;i<aLi.length;i++){
+				
+				aLi[i].onmouseover=function(){
+					var oDiv=this.children[1];
+					move(oDiv,{bottom:0,opacity:1})
+				}
+				
+				aLi[i].onmouseout=function(){
+					var oDiv=this.children[1];
+					move(oDiv,{bottom:-80,opacity:0})
+				}
+		}
+	}
+	</script>
+</head>
+<body>
+	<ul id="box">
+		<li>
+			<img src="img/1.jpg" alt="">
+			<div>
+				<em>
+					<h2>遇见</h2>
+					<p>我遇见谁会有怎样的对白</p>
+				</em>
+				 <span class="bg"></span>
+			</div>
+		</li>
+		<li>
+			<img src="img/2.jpg" alt="">
+			<div>
+				<em>
+					<h2>遇见</h2>
+					<p>我遇见谁会有怎样的对白</p>
+				</em>
+				 <span class="bg"></span>
+			</div>
+		</li>	
+		<li>
+			<img src="img/3.jpg" alt="">
+			<div>
+				<em>
+					<h2>遇见</h2>
+					<p>我遇见谁会有怎样的对白</p>
+				</em>
+				 <span class="bg"></span>
+			</div>
+		</li>	
+		<li>
+			<img src="img/4.jpg" alt="">
+			<div>
+				<em>
+					<h2>遇见</h2>
+					<p>我遇见谁会有怎样的对白</p>
+				</em>
+				 <span class="bg"></span>
+			</div>
+		</li>	
+		<li>
+			<img src="img/5.jpg" alt="">
+			<div>
+				<em>
+					<h2>遇见</h2>
+					<p>我遇见谁会有怎样的对白</p>
+				</em>
+				 <span class="bg"></span>
+			</div>
+		</li>	
+		<li>
+			<img src="img/6.jpg" alt="">
+			<div>
+				<em>
+					<h2>遇见</h2>
+					<p>我遇见谁会有怎样的对白</p>
+				</em>
+				 <span class="bg"></span>
+			</div>
+		</li>	
+		<li>
+			<img src="img/7.jpg" alt="">
+			<div>
+				<em>
+					<h2>遇见</h2>
+					<p>我遇见谁会有怎样的对白</p>
+				</em>
+				 <span class="bg"></span>
+			</div>
+		</li>	
+		<li>
+			<img src="img/8.jpg" alt="">
+			<div>
+				<em>
+					<h2>遇见</h2>
+					<p>我遇见谁会有怎样的对白</p>
+				</em>
+				 <span class="bg"></span>
+			</div>
+		</li>
+		<li>
+			<img src="img/9.jpg" alt="">
+			<div>
+				<em>
+					<h2>遇见</h2>
+					<p>我遇见谁会有怎样的对白</p>
+				</em>
+				 <span class="bg"></span>
+			</div>
+		</li>			
+	</ul>
+</body>
+</html>

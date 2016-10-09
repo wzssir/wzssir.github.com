@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/feng.js"></script>
+
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#box{
+		width: 600px;
+		height: 300px;
+		border: 1px solid #000;
+		position: relative;
+		margin: 120px auto;
+		overflow: hidden;
+	}
+	#tu{
+		height: 300px;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	#tu li{
+		width: 600px;
+		height: 300px;
+		float: left;
+
+	}
+	#tu li img{
+		width: 600px;
+		height: 300px
+	}
+	#btn{
+		width: 350px;
+		height: 15px;
+		position: absolute;
+		right: 10px;
+		bottom:10px;
+	}
+	#btn li{
+		width: 60px;
+		height: 15px;
+		background: blue;
+		margin:0 5px;
+		float: left;
+		position: relative;
+	}
+	#btn li span{
+		
+		height: 15px;
+		background: red;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	</style>
+	<script>
+		window.onload=function(){
+			var Box=document.getElementById('box');
+			var Tu=Box.children[0];
+			var Btn=Box.children[1];
+			var aLi=Tu.children;
+			var Span=Btn.getElementsByTagName('span');
+
+			for(var i=0;i<aLi.length;i++){
+				Tu.style.width=aLi.length*aLi[0].offsetWidth+'px';
+			}
+			var n=0;
+			function next(){
+				move(Span[n],{width:60},{time:500,fn:function(){
+					n++;
+					for(var i=0;i<Span.length;i++){
+						Span[i].style.width=0
+					}
+					if(n==Span.length)n=0;
+					move(Tu,{left:-600*n},{fn:next})
+				}})	
+			}
+			next();
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul id="tu">
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+			<li><img src="img/5.jpg" alt=""></li>
+		</ul>
+		<ol id="btn">
+			<li><span></span></li>
+			<li><span></span></li>
+			<li><span></span></li>
+			<li><span></span></li>
+			<li><span></span></li>
+		</ol>
+	</div>
+</body>
+</html>

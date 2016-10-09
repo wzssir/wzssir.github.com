@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0
+	}
+	#box{
+		width: 500px;
+		height: 500px;
+		border: 1px solid red;
+		border-radius: 50%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+	}
+	#box span{
+		width: 50px;
+		height: 50px;
+		background: red;
+		position: absolute;
+		left:225px;
+		top: -25px;
+		border-radius: 50%;
+	}
+	</style>
+	<script>
+	function round(obj,start,iTatget){
+		var R=250;
+		var deg=start;
+		obj.timer=setInterval(function(){
+			deg++;
+			if(deg%360==iTatget){
+				clearInterval(obj.timer)
+			}
+			var a=R*Math.sin(Math.PI*deg/180);
+			var b=R*Math.cos(Math.PI*deg/180);
+			obj.style.left=R+a-25+'px';
+			obj.style.top=R-b-25+'px';
+		},15)
+	}
+	window.onload=function(){
+		var Big=document.getElementById('box');
+		var N=12;
+		for(var i=0;i<N;i++){
+			var oSpan=document.createElement('span');
+			Big.appendChild(oSpan)
+		}
+		var aSpan=document.getElementsByTagName('span');
+		document.onclick=function(){
+			for(var i=0;i<aSpan.length;i++){
+				round(aSpan[i],0,360*i/N)
+			}
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

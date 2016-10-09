@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{
+		overflow: hidden;
+	}
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;		
+	}
+	#box li img{
+		width: 100%;
+		height: 100%;
+	}
+	#box li{
+		width: 150px;
+		height: 150px;
+		float: left;
+		margin: 10px;
+	}
+	#box{
+		width: 510px;
+		height: 510px;
+		border:1px solid red;
+		position: relative;
+		margin: 80px auto;
+	}
+	#btn{
+		width: 70px;
+		height: 30px;
+		background: blue;
+		color: #fff;
+		line-height: 30px;
+		text-align: center;
+		font-family: '黑体';
+		position: absolute;
+		left: 50%;
+		margin-left: -35px;
+		top: 20px;
+	}
+	</style>
+	<script src="js/feng.js"></script>
+	<script>
+		function getDis(obj1,obj2){
+			var l1=obj1.offsetLeft+obj1.offsetWidth/2;
+			var t1=obj1.offsetTop+obj1.offsetHeight/2;
+
+			var l2=obj2.offsetLeft+obj2.offsetWidth/2;
+			var t2=obj2.offsetTop+obj2.offsetHeight/2;
+
+			var a=l2-l1;
+			var b=t2-t1;
+			return Math.sqrt(a*a+b*b)
+		}
+		window.onload=function(){
+			var oBtn=document.getElementById('btn');
+			var oBox=document.getElementById('box');
+			var aLi=oBox.children;
+			var arr=[];
+			var zIndex=0;
+			for(var i=0;i<aLi.length;i++){
+				arr[i]={
+					left:aLi[i].offsetLeft,
+					top:aLi[i].offsetTop
+				}
+			}
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].style.position='absolute';
+				aLi[i].style.left=arr[i].left+'px';
+				aLi[i].style.top=arr[i].top+'px';
+				aLi[i].style.margin=0;
+			}
+			oBtn.onclick=function(){
+				arr.sort(function(){
+					return Math.random()-0.5
+				})
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].index=i;
+					move(aLi[i],arr[aLi[i].index])
+				}
+			}
+			for (var i = 0; i < aLi.length; i++) {
+                
+                aLi[i].index = i;
+                drag(aLi[i]);
+            }
+            function drag(obj){
+				obj.onmousedown=function(ev){
+
+					var oEv=ev||event;
+					
+					var disX=oEv.clientX-obj.offsetLeft;
+					var disY=oEv.clientY-obj.offsetTop;
+
+					zIndex++;
+					obj.style.zIndex=zIndex;
+
+					document.onmousemove=function(ev){
+						var oEv=ev||event;
+						var l=oEv.clientX-disX;
+						var t=oEv.clientY-disY;
+						obj.style.left=l+'px';
+						obj.style.top=t+'px';
+					
+						var near=findNear(obj);
+						
+						if(near){
+							
+							near.style.border='3px solid #fff'
+						}
+
+					}
+					document.onmouseup=function(){
+						document.onmousemove=null;
+						document.onmouseup=null;
+						var near=findNear(obj);
+						
+						if(near){
+							move(obj,arr[near.index])
+							move(near,arr[obj.index])
+							near.style.border=null;
+						}else{
+							move(obj,arr[obj.index])
+						}
+						
+						var tmp;
+						tmp=near.index;
+						near.index=obj.index;
+						obj.index=tmp
+								
+					}
+					return false
+				}
+			}
+			function findNear(obj){
+				var iMin=99999999999999;
+				var iMinIndex=-1;
+				for(var i=0;i<aLi.length;i++){
+					if(obj==aLi[i])continue;
+					if(collTest(obj,aLi[i])){
+						var dis=getDis(obj,aLi[i]);
+						if(dis<iMin){
+							iMin=dis;
+							iMinIndex=i;
+						}
+					}
+				}
+				if(iMinIndex==-1){
+					return null
+				}else{
+					return aLi[iMinIndex]
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="Change" id="btn">
+	<ul id="box">
+		<li><img src="img3/1.jpg" alt=""></li>
+		<li><img src="img3/2.jpg" alt=""></li>
+		<li><img src="img3/3.jpg" alt=""></li>
+		<li><img src="img3/4.jpg" alt=""></li>
+		<li><img src="img3/5.jpg" alt=""></li>
+		<li><img src="img3/6.jpg" alt=""></li>
+		<li><img src="img3/7.jpg" alt=""></li>
+		<li><img src="img3/8.jpg" alt=""></li>
+		<li><img src="img3/9.jpg" alt=""></li>
+	</ul>
+</body>
+</html>

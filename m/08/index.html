@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#box{
+		width: 300px;
+		height: 200px;
+		border:1px solid red;
+		margin: 200px auto;
+		line-height: 200px;
+		text-align: center;
+		font-size: 18px;
+		font-family: 黑体;
+		display: none;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		var Box=document.getElementById('box');
+		/*document.ondragenter=function(){//当拖拽进入事件
+			Box.style.display='block';
+		}
+		document.ondragleave=function(){//当拖拽离开事件 会出现mouseover out的bug  用over解决
+			Box.style.display='none'; 
+		}*/
+		var timer=null;
+		document.ondragover=function(){//当拖拽悬停在上面事件  over进去后  over一直在进行  所以执行次关一次   当最后离开的时候   timeout执行了   也就消失了
+			clearTimeout(timer)
+			Box.style.display='block';
+			timer=setTimeout(function(){
+				Box.style.display='none';
+			},200)
+		}
+		Box.ondragenter=function(){
+			this.innerHTML='释放鼠标'
+		}
+		Box.ondragleave=function(){
+			this.innerHTML='将文件拖拽至此区域'
+		}
+
+
+
+
+		Box.ondragover=function(){
+			return false;
+		}
+		Box.ondrop=function(ev){//当释放鼠标的时候  生效必须干掉 ondragover(上一步)
+			/*var aFiles=ev.dataTransfer.files;
+			alert(aFiles.length)//弹1  只有一个文件*/
+
+			var aFiles=ev.dataTransfer.files[0];//**********************
+			console.log(aFiles)
+			alert(parseInt(aFiles.size/1024)+'kb')
+			//alert(parseInt(aFiles.size/1000)+'kb')
+			return false//干掉自动读取文件的默认事件
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="box">将文件拖拽至此区域</div>
+</body>
+</html>

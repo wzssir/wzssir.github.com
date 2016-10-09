@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#box{
+		width: 120px;
+		height: 120px;
+		background: red;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	</style>
+	<script>
+	var timer=null;//********************************全局 只开唯一 一个定时器 如果放在里面， 每一次 onscroll，都会从新  定义一次 timer  清掉的都是当前的  之前的没有清掉  其实定义一个全局变量 timer，  和性能也有关系，  只会站一份内存
+
+	window.onload=window.onscroll=function(){
+		
+		clearInterval(timer)
+
+		
+		var vX=5;
+		var vY=5;
+
+		var sT=document.documentElement.scrollTop || document.body.scrollTop;
+		var sL=document.documentElement.scrollLeft || document.body.scrollLeft;
+	
+		var cW=document.documentElement.clientWidth;
+		var cH=document.documentElement.clientHeight;
+		var Box=document.getElementById('box');
+		
+			timer=setInterval(function(){
+
+				if(Box.offsetTop+Box.offsetHeight>cH+sT){
+					Box.style.top=sT+cH-Box.offsetHeight+'px';
+					
+					vY*=-1;
+				}
+				if(Box.offsetTop<sT){
+					Box.style.top=sT+'px';
+					vY*=-1;
+				}
+
+				if(Box.offsetLeft+Box.offsetWidth>cW||Box.offsetLeft<0){
+					vX*=-1
+				}
+				Box.style.left=Box.offsetLeft+vX+'px';
+				Box.style.top=Box.offsetTop+vY+'px';
+			},15)
+		
+	}
+	</script>
+</head>
+<body style="height: 3000px;">
+	<div id="box"></div>
+</body>
+</html>

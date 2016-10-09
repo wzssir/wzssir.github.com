@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#box{
+		width: 100%;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		text-align: center;
+	}
+	#box img{
+		width: 64px;
+	}
+	</style>
+	<script>
+	window.onload=function(){
+		var Box=document.getElementById('box');
+		var aImg=Box.children;
+		document.onmousemove=function(ev){
+			var oEv=ev||event;
+			for(var i=0;i<aImg.length;i++){
+				var a=oEv.clientX-aImg[i].offsetLeft-aImg[i].offsetWidth/2-Box.offsetLeft;
+				var b=oEv.clientY-aImg[i].offsetTop-aImg[i].offsetHeight/2-Box.offsetTop;
+				//难点是要减去盒子的offsetleft/top  因为图片的offsetleft只是到盒子的距离  而不是绝对距离 ******************
+				var c=Math.sqrt(a*a+b*b);
+				var scale=1-c/500;
+				if(scale<0.5){
+					scale=0.5
+				}
+				aImg[i].style.width=128*scale+'px';//图片具有自适应属性  只改变宽度  高度也会变  前提是只设置了宽度
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<img src="img6/1.png" alt="">
+		<img src="img6/2.png" alt="">
+		<img src="img6/3.png" alt="">
+		<img src="img6/4.png" alt="">
+		<img src="img6/5.png" alt="">
+	</div>
+</body>
+</html>
