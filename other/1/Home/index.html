@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes"/>		
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="apple-touch-fullscreen" content="yes"/>	
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="telephone=no,email=no" name="format-detection">
+<script src="js/html5shiv.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/phone.js" type="text/javascript" charset="utf-8"></script>
+<title>index</title>
+<link rel="stylesheet" type="text/css" href="css/base.css"/>
+<link rel="stylesheet" type="text/css" href="css/pc.css"/>
+<link rel="stylesheet" type="text/css" href="fonts/font.css"/>
+<link rel="stylesheet" type="text/css" href="css/pad.css" media="(max-width:960px)"/>
+<link rel="stylesheet" type="text/css" href="css/phone.css" media="(max-width:560px)"/>
+<script src="js/script.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/fx.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/fx_method.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/move-end.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<section class="bg" id="bg">
+		<div></div>
+		<div></div>
+		<div></div>
+	</section>
+	<div id="homeBg">
+	</div>
+	<div style="max-width: 1280px; height: 100%; margin-left: auto; margin-right: auto;position: relative;">
+		<div id="sli" style="z-index: 10;">
+			<p class="font_light" id="sli_s">
+				<!--Simplicity is the<br />Ultimate Sophistication-->
+			</p>
+		</div>
+		<header class="home">
+			<h1>
+				<a href="#">
+					KevinWooDesigns
+				</a>
+			</h1>
+			<!--pc,pad-->
+			<section class="nav">
+				<a class="font_bold" href="info.html">info
+					<span class="info_span"></span>
+				</a>
+				<a class="font_bold" href="work.html">work
+					<span class="work_span"></span>
+				</a>
+				
+			</section>
+			<!--phone-->
+			<section class="nav_phone" id="nav_phone">
+				<span></span>
+				<span></span>
+				<span></span>
+			</section>
+			<div class="shade">
+				<span id="close"></span>
+				<div>
+					<a><h4 class="font_bold">home</h4></a>
+					<a href="info.html"><h4 class="font_bold">info</h4></a>
+					<a href="work.html"><h4 class="font_bold">work</h4></a>
+					
+				</div>
+			</div>
+			<!--主页面-->
+			<section class="content" id="content">
+				<div class="page_1">
+					
+				</div>
+				<div class="page_2">
+					
+				</div>
+				<div class="page_3">
+					
+				</div>
+			</section>
+			<!--主页面切换-->
+			<section class="nav_footer clearfix" id="nav_footer">
+				<div>
+					<p class="font_bold">Van Thiel & Co.</p>
+					<p class="font_book">Sensual and Magic</p>
+				</div>
+				<div>
+					<p class="font_bold">Van Thiel & Co.</p>
+					<p class="font_book">Sensual and Magic</p>
+				</div>
+				<div>
+					<p class="font_bold">Van Thiel & Co.</p>
+					<p class="font_book">Sensual and Magic</p>
+				</div>
+			</section>
+			<!--pad端出现-->
+			<section class="pad">
+				<div class="pad_info">
+					<p class="font_bold">info</p>
+					<p class="font_book">learn about us</p>
+				</div>
+				<div class="pad_work">
+					<p class="font_bold">work</p>
+					<p class="font_book">see our portfolio</p>
+				</div>
+			</section>
+		</header>
+		<section class="info clearfix">
+			<div class="contact">
+				<div class="fl">
+					<h3 class="font_bold">Contact</h3>
+					<p class="font_book">info@kevinwoo.com<br /> +86 10 6415 7977</p>
+				</div>
+				<div class="fl">
+					<h3 class="font_bold">Beijing</h3>
+					<p class="font_book">8136, 55 Xingfu Yicun <br />Chaoyang District<br />Beijing, China</p>
+				</div>
+				<div class="Icon fr">
+					<ul class="clearfix">
+						<li class="iconfont icon-facebook fl"></li>
+						<li class="iconfont icon-linkedin fl"></li>
+						<li class="iconfont icon-cion30 fl"></li>
+					</ul>
+					<p class="font_book">
+						© 2008-2016
+					</p>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+<script type="text/javascript">
+	$(function(){
+		$('#nav_phone').on('touchstart',function(){
+			$('.shade').animate({opacity:1,zIndex:10000});
+			$('#close').animate({opacity:1,rotateZ:'360deg'},600);
+			$('.shade h4').css('opacity','1');
+			$('body').css('overflow','hidden')
+		});
+		$('#close').on('touchstart',function(){
+			$('.shade').animate({opacity:0,zIndex:-1});
+			$('#close').animate({opacity:0,rotateZ:'0deg'},600);
+			$('.shade h4').css('opacity','0');
+			$('body').css('overflow','auto');
+		});
+	});
+</script>
+</html>
