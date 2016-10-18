@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+			margin:0px;
+			padding:0px;
+			
+		}
+		html,body{
+			height:100%;
+			overflow:hidden;
+			background: #000;
+		}
+			#box{
+				width:700px;
+				height:400px;
+				background: url(img/0.jpg) no-repeat;
+				background-size:700px 400px;
+				margin:100px auto;
+				position: relative;
+				transform-style:preserve-3d;  /*转为3D视图,便于观察效果*/
+				
+			}
+			#box span{
+				width:100px;
+				height:100px;
+				position: absolute;
+				top:0px;
+				left:0px;
+				background: url(img/0.jpg) no-repeat;
+				background-size:700px 400px ;
+			}
+		</style>
+		<script>
+		function rand(n,m){
+			return parseInt(Math.random()*(m-n)+n);
+		}
+			window.onload=function(){
+				var oBox=document.getElementById("box");
+				var R=4;   //4行
+				var C=7;    //7列
+				var iNow=0;   //图片切换
+				var ready=true;   //开关控制点击事件
+				
+				for(var c=0;c<C;c++){
+					for(var r=0;r<R;r++){
+						var oSpan=document.createElement('span');
+						oSpan.style.transition='1s all ease';    //过渡完成之后取消了过渡,在此要重新定义过渡,不然切换异常
+						oSpan.style.left=c*100+'px';      //跟列有关
+						oSpan.style.top=r*100+'px';      //跟行有关
+						oSpan.style.backgroundPosition=-c*100+'px -'+r*100+'px';   //背景位置
+						oBox.appendChild(oSpan);
+					}
+				}
+				
+				
+				var aSpan=oBox.children;
+				document.onclick=function(){
+					if(!ready)return;   //判断是否可以点击
+					ready=false;
+					iNow++;              //用于图片切换
+					oBox.style.backgroundImage='url(img/'+iNow%3+'.jpg)';
+					
+					for(var i=0;i<aSpan.length;i++){
+						aSpan[i].style.transition='1s all ease'; 
+						//每个span运动到它到oBox的中心点的距离
+						var x=aSpan[i].offsetLeft+aSpan[i].offsetWidth/2-oBox.offsetWidth/2;
+						var y=aSpan[i].offsetTop+aSpan[i].offsetHeight/2-oBox.offsetHeight/2;
+						//-180到180随机翻转,运动到不同的距离,同时放大1.5倍
+						aSpan[i].style.transform='perspective(800px) translate('+x+'px,'+y+'px) rotateY('+rand(-180,180)+'deg) rotateX('+rand(-180,180)+'deg) scale(1.5)';
+						aSpan[i].style.opacity=0;
+					}
+				};
+				
+				
+				//过渡完成,开关打开,取消过渡,迅速回到初始状态,更换图片
+				aSpan[0].addEventListener('transitionend',function(){
+					
+					for(var i=0;i<aSpan.length;i++){
+						ready=true;     //打开开关
+						aSpan[i].style.transition='none';//取消过渡,迅速回到初始状态
+						aSpan[i].style.transform='perspective(800px) translate(0px,0px) rotateY(0deg) rotateX(0deg) scale(1)';
+						aSpan[i].style.opacity=1;
+						aSpan[i].style.backgroundImage='url(img/'+iNow%3+'.jpg)';//更换下一张图片
+					}
+				},false);
+				
+			};
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>

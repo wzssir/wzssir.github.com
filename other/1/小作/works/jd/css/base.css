@@ -1,0 +1,16 @@
+@charset "utf-8";
+body,p,h1,h2,h3,h4,h5,h6,ol,ul,input,textarea,dl,dd{margin:0px;padding:0px;}
+a{text-decoration:none;color:#555;}
+li{list-style:none;}
+img{vertical-align:top;border:none;}
+input{border:none;outline:none;background:none;}
+textarea{resize:none;}
+
+.fl{float:left;}
+.fr{float:right;}
+.clearfix:after{content:'';display:block;clear:both;}
+body{font-size:12px;color:#999;font-family:'microsoft yahei';}
+.w{width:1210px;margin:0 auto;}
+.marl_10{margin-left:10px;}
+.marb_10{margin-bottom:10px;}
+.mart_10{margin-top:10px;}

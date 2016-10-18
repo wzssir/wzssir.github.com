@@ -1,0 +1,1467 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/base.css" />
+<style>
+/*titletop*/
+.titletop{ min-width:1210px;height:30px;background:#f7f7f7;border-bottom:1px solid #eee;}
+.titletop_cl li{ margin-right:12px;}
+.titletop_cl li a{font-size:12px;color:#000; line-height:30px;}
+.titletop_cl li span{width:12px;height:16px; background:url(img/titletop1.png);margin-right:8px; margin-top:7px;}
+.titletop_cl .list2 span{background-image:url(img/titletop2.png);}
+.titletop_cl .list3 span{background-image:url(img/titletop3.png);}
+.titletop_cr{margin-top:9px;}
+.titletop_cr *{ float:left;}
+.titletop_cr li{ border-right:1px solid #ddd;padding:0 12px 0 9px;line-height:12px;}
+.titletop_cr .list5,.titletop_cr .list6,.titletop_cr .list7{padding-right:0px;}
+.titletop_cr .list7{border-right:none;}
+.titletop_cr .list3 span{width:24px;height:11px;background:url(img/titletopr2.png);margin-right:4px;}
+.titletop_cr .list4 span{width:21px;height:11px;background:url(img/titletopr3.png);margin-right:7px;}
+.titletop_cr .list5 span{width:13px;height:22px;background:url(img/titletopr4.png);margin-right:11px;margin-top:-5px;}
+.titletop_cr li a{font-size:12px;color:#000; }
+.titletop_cr li i{width:24px;height:16px;background:url(img/titletopr1.png);}
+.titletop li:hover a{color:red;}
+/*title*/
+.title_l h1 a{ display:block;width:300px;height:91px;font-size:20px;color:#000;background:url(img/title1.png);text-indent:-999em;}
+.title_c{margin-top:19px;margin-right:20px;}
+.title_c .txt{width:411px;height:30px;border:3px solid #e4393c;border-right:none; padding-left:5px;}
+.title_c .txt:hover{border:3px solid blue;border-right:none;}
+.title_c .btn{width:81px;height:36px;background:#e4393c;color:#fff;font-size:14px;}
+.title_c ul{margin-top:6px;}
+.title_c ul li a{ float:left;margin-right:10px;color:#999;}
+.title_c ul li .cur,.title_c ul li a:hover{color:red;}
+.title_c ul li{ margin-right:8px;}
+.title_r .title_rl{width:104px;height:30px;background:#f7f7f7;border:1px solid #efefef;margin-top:24px;margin-right:10px;}
+.title_r .title_rl span{width:31px;height:30px;background:url(img/title_r1.png);}
+.title_r .title_rl a{margin-top:8px;margin-right:8px;}
+.title_r .title_rl i,.title_r .title_rc i{border:4px solid transparent;border-top:4px solid #ccc;margin-top:12px;}
+.title_r .title_rc{width:124px;height:30px;background:#f7f7f7;border:1px solid #efefef;position:relative;margin-top:24px;margin-right:10px;}
+.title_r .title_rc  .car{width:20px;height:16px;background:url(img/title_r2.png);margin:7px 5px 0 6px;}
+.title_r .title_rc a{margin-top:8px;margin-right:8px;}
+.title_r .title_rc .num{ position:absolute;top:-13px;left:20px;background:#c50000;border-radius:7px 7px 7px 0;padding:0 5px;color:#fff;}
+.title_rr{width:136px;height:66px;border:1px solid #ccc; position:relative; margin-top:10px;}
+.title_rr .con a{margin:3px 0 0 3px;margin-right:}
+.title_rr .con .para{width:62px;text-align:center;line-height:16px;margin-top:10px;}
+.title_rr .con .para .para1{color:#dd8b8e;font-weight:bold;}
+.title_rr .con p{color:#333;}
+.title_rr .con span{ width:12px; height:12px; position:absolute;top:0;right:0px;background:url(img/title_r4.png);}
+/*nav*/
+.nav{ margin-top:10px;}
+.nav .navl{width:210px; height:450px;}
+.nav .navl h2{ line-height:40px;color:#fff;font-size:12px;background:#e4393c; padding-left:20px;}
+.navl_con{width:206px;  border:2px solid #e4393c;border-top:none;}
+.navl_con li{margin-left:14px;line-height:30px;}
+.navl_con li a{ font-size:14px;color:#333;line-height:28px;}
+.navl_con li span{ width:39px;height:19px;background:url(img/nav1.png);margin-top:10px;}
+.navl_con li:hover a{color:red;}
+.navr{width:1000px;}
+.navr .hd{height:40px;background:#e23739;}
+.navr .hd .hd_l a{color:#fff;font-size:14px; line-height:40px;float:left;padding:0 18px;}
+.navr .hd .hd_l a:hover,.navr .hd .hd_l .cur,.navr .hd .hd_r a:hover{ background:#a40000;}
+.navr .hd .hd_r{margin-right:22px;}
+.navr .hd .hd_r a{ font-size:18px;line-height:40px;color:#fff;float:left;padding:0 18px;}
+.navr .conl_up{margin:10px 0 0 10px; position:relative;}
+.navr .conl_up .dingwei{ position:absolute;right:6px;bottom:6px;}
+.navr .conl_up span{float:left; width:22px;line-height:22px;text-align:center;border-radius:50%;background:#999;color:#fff;margin-right:5px;}
+.navr .conl_up .dingwei .cur,.navr .conl_up span:hover{ background:#e4393c;}
+.conl_dw{border-left:1px solid #ccc;border-bottom:1px solid #ccc;position:relative;}
+.conl_dw .dingwei2,.conl_dw .dingwei3{ position:relative;}
+.conl_dw .dingwei2 img{border-right:1px solid #ccc;width:232px;height:157px;}
+.conl_dw .dingwei3 img{border-right:1px solid #ccc;width:202px;height:157px;}
+.conl_dw .dingwei2 .para,.conl_dw .dingwei3 .para{ position:absolute;top:20px;left:60px;}
+.conl_dw .dingwei2 .subpara,.conl_dw .dingwei3 .subpara{color:#e03c3d;}
+.conl_dw .arrow span{display:block; width:30px;line-height:30px;text-align:center; color:#ccc;font-size:40px; position:absolute;top:50%;margin-top:-15px;}
+.conl_dw .arrow .l{left:0;}
+.conl_dw .arrow .r{right:0;}
+.conr{margin:10px 0 0 10px;}
+.navr .conr .con{margin-top:10px;}
+.navr .conr .conhd{line-height:30px;border-bottom:2px solid #ccc;}
+.navr .conr .conhd h3{font-weight:normal;}
+.navr .conr .conhd a{color:#005ea7;}
+.navr .conr .conc{border:1px solid #f1f1f1;border-top:none;padding-top:4px;height:104px;}
+.navr .conr .conc ul{width:143px;padding-left:10px;border-right:1px solid #ccc;}
+.navr .conr .conc .r{border-right:none;}
+.navr .conr .conc li{line-height:25px;}
+.navr .conr .conf{border-left:1px solid #ccc;border-top:1px solid #ccc;margin-top:10px;width:309px;}
+.navr .conr .conf li{border-right:1px solid #ccc;border-bottom:1px solid #ccc;width:76px;height:82px;text-align:center;}
+.navr .conr .conf li:hover a{color:red;}
+.navr .conr .conf li:hover span{background:url(img/conf2.png);}
+.navr .conr .conf .list{width:77px;}
+.navr .conr .conf span{display:block;width:38px;height:24px;background:url(img/conf1.png);margin:10px auto;}
+.navr .conr .conf i{border:3px solid transparent;border-top:3px solid #aaa;margin:6px 0 0 34px;}
+/*life*/
+.life_hd{}
+.life_hd h2{line-height:44px;font-family:'microsoft yahei';}
+.life_hd h2 span{font-size:12px;margin-left:10px;}
+.life .con .image{ width:295px;height:190px;margin-right:10px;}
+.life .con .last{margin-right:0px;}
+.life .con .bg{background:rgba(232,222,215,0.5);width:295px;height:190px;}
+.life .con .conl{width:80px;padding-left:20px;}
+.life .con .conl .up{margin-top:25px;margin-bottom:22px;}
+.life .con .conl .up h3{font-size:18px;color:#000;line-height:30px;}
+.life .con .conl .up p{line-height:20px;}
+.life .con .conl .up .pa{color:#ea778c;} 
+.life .con .conl .dw a{background:url(img/life1.png) no-repeat left;display:block;padding-left:7px;}
+.life .cash .cash_c{width:396px;height:70px;margin-right:11px;background:#f7faff;}
+.life .cash .cash_c .l{width:172px;margin-left:71px;margin-top:16px;font-weight:bold;}
+.life .cash .cash_c .l .para{color:#dc696c;}
+.life .cash .last{margin-right:0px;}
+/*ele*/
+.ele{margin-top:18px;}
+.ele_hd{height:30px;line-height:30px;border-bottom:2px solid #aaa;}
+.ele_hd .floor{width:26px; height:39px;background:url(img/ele1.png);margin-right:35px;margin-top:-9px;}
+.ele_hd .floor2{width:26px; height:39px;background:url(img/ele3.png);margin-right:35px;margin-top:-9px;}
+.ele_hd .floor3{width:26px; height:39px;background:url(img/ele4.png);margin-right:35px;margin-top:-9px;}
+.ele_hd .floor4{width:26px; height:39px;background:url(img/meiyu1.png);margin-right:35px;margin-top:-9px;}
+.ele_hd .floor5{width:26px; height:39px;background:url(img/meiyu2.png);margin-right:35px;margin-top:-9px;}
+.ele_hd h3{ font-size:22px;line-height:22px;}
+.ele_hd .ele_hdml a{width:158px;text-align:center;float:left;}
+.ele_hdr a{width:76px;text-align:center;float:left;color:#005ea7;margin-right:18px;}
+.ele_hdr a span{color:#ccc;}
+.ele_hdr .link{margin-right:0px;}
+.ele_hd .ele_hdml a:hover,.ele_hd .ele_hdml .cur,.ele_hdr a:hover{border-bottom:2px solid red;background:url(img/elebg.png) no-repeat bottom;}
+.ele_conl{border-right:1px solid #ccc;border-bottom:1px solid #ccc;height:361px;}
+.ele_conl_up{width:210px;}
+.ele_conl .ele_conl_up a{float:left;width:105px;line-height:25px;}
+.ele_conl .ele_conl_up .phone{padding-left:6px;width:99px;}
+.ele_conl_dw{text-align:center;}
+.ele_conl_dw img{margin-top:7px;margin-bottom:6px;}
+.ele_conc{width:792px;}
+.ele_conc .ele_conc_upl{height:180px;border-right:1px solid #ccc;border-bottom:1px solid #ccc;}
+.ele_conc .ele_conc_upl p{line-height:18px;margin-left:10px;}
+.ele_conc .ele_conc_upl .pa{color:#e4393c;}
+.ele_conc .ele_conc_upc{ position:relative;}
+.ele_conc .ele_conc_upc .dingwei{ position:absolute;left:161px;bottom:6px;}
+.ele_conc .ele_conc_upc .dingwei span{width:36px;height:5px;background:#999;float:left;margin-right:3px;}
+.ele_conc .ele_conc_upc .dingwei .cur,.ele_conc .ele_conc_upc .dingwei span:hover{ background:#7abd54;}
+.ele_conc_upc img{border-right:1px solid #ccc;border-bottom:1px solid #ccc;}
+.ele_conr .ele_conrdw{ position:relative;}
+.ele_conr .ele_conrdw .dingwei{position:absolute;right:68px;bottom:7px;}
+.ele_conr .ele_conrdw span{float:left;width:36px;height:5px;background:#999;margin-right:3px; }
+.ele_conr .ele_conrdw .dingwei .cur,.ele_conr .ele_conrdw span:hover{background:#7abd54;}
+/*3louxiugai*/
+.ele_conll{width:210px;border-right:1px solid #ccc;border-bottom:1px solid #ccc;height:361px;}
+.ele_conl_upleft{width:58px;padding-left:6px;}
+.ele_conl_upleft a{float:left;line-height:25px;}
+.hot{margin-top:20px;}
+.hotleft{width:444px;border:1px solid #ddd;border-top:2px solid #aaa;}
+.hotleft .last{border-bottom:none; }
+.hotleft_up{margin:0 8px;border-bottom:1px dotted #ccc;height:110px;}
+.hotleft_up h3{font-size:12px;margin-top:9px;margin-bottom:22px;}
+.hotleft_up_left{ position:relative;margin-right:22px;margin-left:}
+.hotleft_up_left span{width:18px;height:18px;background:#be62eb;color:#fff; position:absolute;right:-21px;top:-8px;text-align:center;border-radius:7px 7px 7px 0;padding:3px;}
+.hotleft_up_right a{ color:#005ea7;}
+.hotleft_up_right .para{line-height:18px;}
+.hot .next{border-left:none;margin-right:8px;}
+.hotright{width:308px;}
+.hotright .box{border:1px solid #ddd;border-top:2px solid #aaa;height:150px;}
+.hotright .hd{padding:0 8px;line-height:30px;}
+.hotright .hd a{color:#005ea7;}
+.hotright .con{margin-bottom:4px;}
+.hotright .con img{margin:0 10px;}
+.hotright .con a{background:url(img/hot3.png) no-repeat left;display:block;padding-left:7px;line-height:26px;}
+.hotright .ft{margin-top:4px;}
+.hotright .ft .ft_hd{color:#666;line-height:40px;font-size:20px;}
+.hotright .ft .in{margin-top:6px;}
+.hotright .ft .in .txt{ width:180px; height:36px;padding:0 5px;border:1px solid #bbb;margin-right:5px;background:url(img/ft1.png) no-repeat 10px;padding-left:46px;}
+.hotright .ft .in .txt:focus{border:1px solid blue;}
+.hotright .ft .in .btn{width:63px;height:36px;background:#e4393c;color:#fff;border-radius:3px;}
+/*footer*/
+.footer{margin-top:12px;padding-bottom:12px;border-top:1px solid #ccc;border-bottom:1px solid #ccc;}
+.footer_together,.footer .right{width:193px;}
+.footer dl,.footer .right{margin-top:11px;}
+.footer .footer_logol1{width:33px;height:33px;margin:20px 7px 0 25px;background:url(img/footer1.png);}
+.footer .footer_logol2{width:33px;height:33px;margin:20px 7px 0 25px;background:url(img/footer2.png);}
+.footer .footer_logol3{width:33px;height:33px;margin:20px 7px 0 25px;background:url(img/footer3.png);}
+.footer dt,.footer .right h3{color:#000;font-weight:bold;line-height:30px;font-size:14px;}
+.footer dd,.footer .right p{line-height:20px;}
+.footer .right{background:rgba(239,239,239,0.5);}
+.footer .right div{margin-top:24px;}
+.footer .right a{color:#005ea7;}
+.footer dd:hover{color:red;}
+/*copy*/
+.copy{margin-top:22px;margin-left:212px;margin-bottom:20px;}
+.copy a{float:left;padding:0 12px;border-right:1px solid #ccc;}
+.copy a:hover{color:red;}
+.copy .last{border-right:none;}
+</style>
+</head>
+<body>
+    <!--titletop -->
+	<div class="titletop">
+    	<div class="titletop_c clearfix w">
+        	<ul class="titletop_cl fl">
+            	<li class="clearfix list1 fl">
+                	<span class="fl"></span>
+                    <a href="#" class="fl">收藏京东</a>
+                </li>
+                <li class="clearfix list2 fl">
+                	<span class="fl"></span>
+                    <a href="#" class="fl">关注京东</a>
+                </li>
+                <li class="clearfix list3 fl">
+                	<span class="fl"></span>
+                    <a href="#" class="fl">北京[切换]</a>
+                </li>
+            </ul>
+            <div class="titletop_cr fr clearfix">
+                <ul class="clearfix">
+                    <li class="clearfix">
+                        <a href="#">你好，请登录 免费注册</a>
+                    </li>
+                    <li class="clearfix">
+                        <a href="#">我的订单</a>
+                    </li>
+                    <li class="clearfix list3">
+                    	<span></span>
+                        <a href="#">会员俱乐部</a>
+                    </li>
+                    <li class="clearfix list4">
+                    	<span></span>
+                        <a href="#">企业频道</a>
+                    </li>
+                    <li class="clearfix list5">
+                    	<span></span>
+                        <a href="#">手机京东</a>
+                        <i></i>
+                    </li>
+                    <li class="clearfix list6">
+                        <a href="#">客户服务</a>
+                        <i></i>
+                    </li>
+                    <li class="clearfix list7">
+                        <a href="#">网站导航</a>
+                        <i></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--title -->
+    <div class="clearfix w">
+    	<div class="title_l fl">
+        	<h1>
+            	<a href="#">京东</a>
+            </h1>
+        </div>
+        <div class="title_c fl">
+        	<div class="clearfix">
+                <input type="text" placeholder="流量充值" class="fl txt" />
+                <input type="button" value="搜索" class="fl btn" />
+            </div>
+            <ul class="clearfix">
+            	<li class="fl">
+                	热门搜索:
+                </li>
+                <li class="clearfix fl">
+                	<a href="#" class="cur">上新满减</a>
+                    <a href="#">实施的深</a>
+                    <a href="#">时代深V</a>
+                    <a href="#">飞得更高</a>
+                    <a href="#">审时度势</a>
+                    <a href="#">是滴是滴</a>
+                </li>
+            </ul>
+        </div>
+        <div class="title_r fl clearfix">
+        	<div class="title_rl fl clearfix">
+            	<span class="fl"></span>
+                <a href="#" class="fl">我的京东</a>
+                <i class="fl"></i>
+            </div>
+            <div class="title_rc fl clearfix">
+            	<span class="fl car"></span>
+                <a href="#" class="fl">去购物车结算</a>
+                <i class="fl"></i>
+                <span class="num">12</span>
+            </div>
+            <div class="title_rr fl">
+            	<div class="con clearfix">
+                	<a href="#" class="fl"><img src="img/title_r3.png" /></a>
+                    <div class="para fl"> 
+                    	<p>客户端</p>
+                        <p>首次下单</p>
+                        <p class="para1">满59送59</p>
+                    </div>
+                    <span class="quit"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--nav -->
+    <div class="nav w clearfix">
+    	<div class="navl fl">
+        	<h2>全部商品分类</h2>
+            <ul class="navl_con">
+            	<li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+                <li class=" clearfix">
+                	<a href="#" class="fl">图书、影像、数字商品</a>
+                    <span class="fr"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="navr fl">
+        	<div class="hd clearfix">
+            	<div class="hd_l fl clearfix">
+                	<a href="#" class="cur">首页</a>
+                    <a href="#">服装节</a>
+                    <a href="#">食品</a>
+                    <a href="#">首页</a>
+                    <a href="#">服装节</a>
+                    <a href="#">食品</a>
+                    <a href="#">首页</a>
+                    <a href="#">服装节</a>
+                    <a href="#">食品</a>
+                </div>
+                <div class="hd_r fr">
+                    <a href="#" class="cur">玩逼格</a>
+                </div>
+            </div>
+            <div class="con clearfix">
+            	<div class="conl fl" >
+                	<div class="conl_up">
+                    	<a href="#"><img src="img/conl_up1.png" /></a>
+                        <div class="dingwei clearfix">
+                        	<span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span class="cur">5</span>
+                            <span>6</span>
+                        </div>
+                    </div>
+                    <div class="conl_dw marl_10 clearfix">
+                    	<div class="dingwei2 fl">
+                    		<img src="img/conl_up2.png"/>
+                            <div class="para">
+                                <p>闪购 女人的盛宴</p>
+                                <p class="subpara">大牌聚会</p>
+                            </div>
+                        </div>
+                        <div class="dingwei3 fl">
+                    		<img src="img/conl_up2.png"/>
+                            <div class="para">
+                                <p>闪购 女人的盛宴</p>
+                                <p class="subpara">大牌聚会</p>
+                            </div>
+                        </div>
+                        <div class="dingwei2 fl">
+                    		<img src="img/conl_up2.png"/>
+                            <div class="para">
+                                <p>闪购 女人的盛宴</p>
+                                <p class="subpara">大牌聚会</p>
+                            </div>
+                        </div>
+                        <div class="arrow">
+                        	<span class="l">&lt;</span>
+                            <span class="r">&gt;</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="conr fr" >
+                	<a href="#"><img src="img/conr1.png"/></a>
+                    <div class="con">
+                    	<div class="conhd clearfix">
+                        	<h3 class="l fl">京东快报</h3>
+                            <a href="#" class="r fr">更多快报 &gt;</a>
+                        </div>
+                        <div class="conc clearfix">
+                        	<ul class="l fl">
+                             	<li>事故发生过覆盖掉</li>
+                                <li>事故发生过覆盖掉</li>
+                                <li>事故发生过覆盖掉</li>
+                                <li>事故发生过覆盖掉</li>
+                            </ul>
+                            <ul class="r fl">
+                             	<li>事故发生过覆盖掉</li>
+                                <li>事故发生过覆盖掉</li>
+                                <li>事故发生过覆盖掉</li>
+                                <li>事故发生过覆盖掉</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="conf">
+                    	<ul class="clearfix">
+                        	<li class="fl">
+                            	<span></span>
+                                <a href="#">话费</a>
+                                <div class="clearfix">
+                                	<i class="fl"></i>
+                                </div>
+                            </li>
+                            <li class="fl">
+                            	<span></span>
+                                <a href="#">话费</a>
+                                <div class="clearfix">
+                                	<i class="fl"></i>
+                                </div>
+                            </li>
+                            <li class="fl">
+                            	<span></span>
+                                <a href="#">话费</a>
+                                <div class="clearfix">
+                                	<i class="fl"></i>
+                                </div>
+                            </li>
+                            <li class="fl list">
+                            	<span></span>
+                                <a href="#">话费</a>
+                                <div class="clearfix">
+                                	<i class="fl"></i>
+                                </div>
+                            </li>
+                            <li class="fl">
+                            	<span></span>
+                                <a href="#">话费</a>
+                                <div class="clearfix">
+                                	<i class="fl"></i>
+                                </div>
+                            </li>
+                            <li class="fl">
+                            	<span></span>
+                                <a href="#">话费</a>
+                                <div class="clearfix">
+                                	<i class="fl"></i>
+                                </div>
+                            </li>
+                            <li class="fl">
+                            	<span></span>
+                                <a href="#">话费</a>
+                                <div class="clearfix">
+                                	<i class="fl"></i>
+                                </div>
+                            </li>
+                            <li class="fl list">
+                            	<span></span>
+                                <a href="#">话费</a>
+                                <div class="clearfix">
+                                	<i class="fl"></i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--life -->
+    <div class="life w">
+    	<div class="life_hd">
+        	<h2>生活的橱窗<span>每一天展示精彩</span></h2>
+        </div>
+        <ul class="con clearfix">
+        	<li class="fl image marb_10">
+            	<div class="bg clearfix">
+                	<div class="conl fl">
+                    	<div class="up">
+                        	<h3>品牌街</h3>
+                            <p>费是的发生</p>
+                            <p class="pa">无人机</p>
+                        </div>
+                        <ul class="dw">
+                        	<li class=" clearfix">
+                                <a href="#" class="fl">更多品牌</a>
+                            </li>
+                            <li class=" clearfix">
+                                <a href="#" class="fl">进入品牌街</a>
+                            </li>
+                        </ul>
+                    	
+                    </div>
+                    <div class="conl_conr fr">
+                    	<img src="img/life2.png" />
+                    </div>
+                </div>
+                
+            </li>
+            <li class="fl image marb_10">
+            	<div class="bg clearfix">
+                	<div class="conl fl">
+                    	<div class="up">
+                        	<h3>品牌街</h3>
+                            <p>费是的发生</p>
+                            <p class="pa">无人机</p>
+                        </div>
+                        <ul class="dw">
+                        	<li class=" clearfix">
+                                <a href="#" class="fl">更多品牌</a>
+                            </li>
+                            <li class=" clearfix">
+                                <a href="#" class="fl">进入品牌街</a>
+                            </li>
+                        </ul>
+                    	
+                    </div>
+                    <div class="conl_conr fr">
+                    	<img src="img/life3.png" />
+                    </div>
+                </div>
+                
+            </li>
+            <li class="fl image marb_10">
+            	<div class="bg clearfix">
+                	<div class="conl fl">
+                    	<div class="up">
+                        	<h3>品牌街</h3>
+                            <p>费是的发生</p>
+                            <p class="pa">无人机</p>
+                        </div>
+                        <ul class="dw">
+                        	<li class=" clearfix">
+                                <a href="#" class="fl">更多品牌</a>
+                            </li>
+                            <li class=" clearfix">
+                                <a href="#" class="fl">进入品牌街</a>
+                            </li>
+                        </ul>
+                    	
+                    </div>
+                    <div class="conl_conr fr">
+                    	<img src="img/life2.png" />
+                    </div>
+                </div>
+                
+            </li>
+            <li class="fl image last marb_10">
+            	<div class="bg clearfix">
+                	<div class="conl fl">
+                    	<div class="up">
+                        	<h3>品牌街</h3>
+                            <p>费是的发生</p>
+                            <p class="pa">无人机</p>
+                        </div>
+                        <ul class="dw">
+                        	<li class=" clearfix">
+                                <a href="#" class="fl">更多品牌</a>
+                            </li>
+                            <li class=" clearfix">
+                                <a href="#" class="fl">进入品牌街</a>
+                            </li>
+                        </ul>
+                    	
+                    </div>
+                    <div class="conl_conr fr">
+                    	<img src="img/life3.png" />
+                    </div>
+                </div>
+                
+            </li>
+            <li class="fl image">
+            	<div class="bg clearfix">
+                	<div class="conl fl">
+                    	<div class="up">
+                        	<h3>品牌街</h3>
+                            <p>费是的发生</p>
+                            <p class="pa">无人机</p>
+                        </div>
+                        <ul class="dw">
+                        	<li class=" clearfix">
+                                <a href="#" class="fl">更多品牌</a>
+                            </li>
+                            <li class=" clearfix">
+                                <a href="#" class="fl">进入品牌街</a>
+                            </li>
+                        </ul>
+                    	
+                    </div>
+                    <div class="conl_conr fr">
+                    	<img src="img/life2.png" />
+                    </div>
+                </div>
+                
+            </li>
+            <li class="fl image">
+            	<div class="bg clearfix">
+                	<div class="conl fl">
+                    	<div class="up">
+                        	<h3>品牌街</h3>
+                            <p>费是的发生</p>
+                            <p class="pa">无人机</p>
+                        </div>
+                        <ul class="dw">
+                        	<li class=" clearfix">
+                                <a href="#" class="fl">更多品牌</a>
+                            </li>
+                            <li class=" clearfix">
+                                <a href="#" class="fl">进入品牌街</a>
+                            </li>
+                        </ul>
+                    	
+                    </div>
+                    <div class="conl_conr fr">
+                    	<img src="img/life3.png" />
+                    </div>
+                </div>
+                
+            </li>
+            <li class="fl image">
+            	<div class="bg clearfix">
+                	<div class="conl fl">
+                    	<div class="up">
+                        	<h3>品牌街</h3>
+                            <p>费是的发生</p>
+                            <p class="pa">无人机</p>
+                        </div>
+                        <ul class="dw">
+                        	<li class=" clearfix">
+                                <a href="#" class="fl">更多品牌</a>
+                            </li>
+                            <li class=" clearfix">
+                                <a href="#" class="fl">进入品牌街</a>
+                            </li>
+                        </ul>
+                    	
+                    </div>
+                    <div class="conl_conr fr">
+                    	<img src="img/life2.png" />
+                    </div>
+                </div>
+                
+            </li>
+            <li class="fl image last">
+            	<div class="bg clearfix">
+                	<div class="conl fl">
+                    	<div class="up">
+                        	<h3>品牌街</h3>
+                            <p>费是的发生</p>
+                            <p class="pa">无人机</p>
+                        </div>
+                        <ul class="dw">
+                        	<li class=" clearfix">
+                                <a href="#" class="fl">更多品牌</a>
+                            </li>
+                            <li class=" clearfix">
+                                <a href="#" class="fl">进入品牌街</a>
+                            </li>
+                        </ul>
+                    	
+                    </div>
+                    <div class="conl_conr fr">
+                    	<img src="img/life3.png" />
+                    </div>
+                </div>
+                
+            </li>
+        </ul>	
+        <div class="cash mart_10 clearfix">
+        	<div class="clearfix cash_c fl">
+            	<div class="l fl">
+                	<p>清洁洗护新选择</p>
+                    <p class="para">全场满99减50</p>
+                </div>	
+                <div class="r fl">
+                	<img src="img/cash1.png" />
+                </div>
+            </div>
+            <div class="clearfix cash_c fl">
+            	<div class="l fl">
+                	<p>清洁洗护新选择</p>
+                    <p class="para">全场满99减50</p>
+                </div>	
+                <div class="r fl">
+                	<img src="img/cash1.png" />
+                </div>
+            </div>
+            <div class="clearfix cash_c last fl">
+            	<div class="l fl">
+                	<p>清洁洗护新选择</p>
+                    <p class="para">全场满99减50</p>
+                </div>	
+                <div class="r fl">
+                	<img src="img/cash1.png" />
+                </div>
+            </div>
+        </di >
+    </div>
+    </div>
+    <!--ele -->
+    <div class="ele w mart_10">
+    	<div class="ele_hd">
+        	<span class="fl floor"></span>
+        	<h3 class="fl">家电通讯</h3>
+            <div class="ele_hdml fl">
+            	<a href="#" class="cur">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+            </div>
+            <div class="fr ele_hdr clearfix">
+                <a href="#">大家电配送 <span>&gt;</span></a>
+                <a href="#" class="link">大家电配送 <span>&gt;</span></a>	
+            </div>
+            <div class="ele_hdr fl"></div>
+        </div>	
+        <div class="ele_con clearfix">
+        	<div class="ele_conl fl">
+            	<div class="ele_conl_up clearfix">
+                	<a href="#" class="phone">手机</a>
+                    <a href="#">空调</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">手机深度</a>
+                    <a href="#">空调阿达</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                </div>
+                <div class="ele_conl_dw">
+                	<img src="img/ele2.png" />
+                </div>
+            </div>
+            <div class="ele_conc fl">
+            	<div class="ele_conc_up clearfix">
+                         <!-- 复制的地方-->
+                	<div class="ele_conc_upl fl">
+                    	<img src="img/elec1.png" />	
+                        <p>阿尔法的地方的实打实</p>
+                        <p>啊发发阿达发福</p>
+                        <p class="pa">￥4569.00</p>
+                    </div>
+                    <div class="ele_conc_upc fl">
+                    	<img src="img/elec2.png" />
+                        <div class="dingwei clearfix">
+                        	<span class="cur"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>	
+                    </div>
+                    <div class="ele_conc_upr fl">
+                    	<div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>	
+                    </div>
+                </div>
+                <div class="ele_conc_dw">
+                	    <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>	
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec4.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec5.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                </div>
+            </div>
+            <div class="ele_conr fl">
+            	<div class="ele_conrup">
+            		<img src="img/ele_conr.png" />
+                </div>	
+                <div class="ele_conrdw">
+            		<img src="img/ele_conr2.png" />
+                    <div class="dingwei clearfix">
+                    	<span class="cur"></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--cam -->
+    <div class="ele w mart_10">
+    	<div class="ele_hd">
+        	<span class="fl floor2"></span>
+        	<h3 class="fl">电脑数码</h3>
+            <div class="ele_hdml fl">
+            	<a href="#" class="cur">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+            </div>
+            <div class="fr ele_hdr clearfix">
+                <a href="#">大家电配送 <span>&gt;</span></a>
+                <a href="#" class="link">大家电配送 <span>&gt;</span></a>	
+            </div>
+            <div class="ele_hdr fl"></div>
+        </div>	
+        <div class="ele_con clearfix">
+        	<div class="ele_conl fl">
+            	<div class="ele_conl_up clearfix">
+                	<a href="#" class="phone">手机</a>
+                    <a href="#">空调</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">手机深度</a>
+                    <a href="#">空调阿达</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                </div>
+                <div class="ele_conl_dw">
+                	<img src="img/ele2.png" />
+                </div>
+            </div>
+            <div class="ele_conc fl">
+            	<div class="ele_conc_up clearfix">
+                         <!-- 复制的地方-->
+                	<div class="ele_conc_upl fl">
+                    	<img src="img/elec1.png" />	
+                        <p>阿尔法的地方的实打实</p>
+                        <p>啊发发阿达发福</p>
+                        <p class="pa">￥4569.00</p>
+                    </div>
+                    <div class="ele_conc_upc fl">
+                    	<img src="img/elec2.png" />
+                        <div class="dingwei clearfix">
+                        	<span class="cur"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>	
+                    </div>
+                    <div class="ele_conc_upr fl">
+                    	<div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>	
+                    </div>
+                </div>
+                <div class="ele_conc_dw">
+                	    <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>	
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec4.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec5.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                </div>
+            </div>
+            <div class="ele_conr fl">
+            	<div class="ele_conrup">
+            		<img src="img/ele_conr.png" />
+                </div>	
+                <div class="ele_conrdw">
+            		<img src="img/ele_conr2.png" />
+                    <div class="dingwei clearfix">
+                    	<span class="cur"></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--shoe -->
+    <div class="ele w mart_10">
+    	<div class="ele_hd">
+        	<span class="fl floor3"></span>
+        	<h3 class="fl">服装鞋包</h3>
+            <div class="ele_hdml fl">
+            	<a href="#" class="cur">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+            </div>
+            <div class="fr ele_hdr clearfix">
+                <a href="#">大家电配送 <span>&gt;</span></a>
+                <a href="#" class="link">大家电配送 <span>&gt;</span></a>	
+            </div>
+            <div class="ele_hdr fl"></div>
+        </div>	
+        <div class="ele_con clearfix">
+        	<div class="ele_conll fl clearfix">
+            	<div class="ele_conl_upleft clearfix fl">
+                	<a href="#">手机</a>
+                    <a href="#">空调</a>
+                    <a href="#">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#">手机深度</a>
+                    <a href="#">空调阿达</a>
+                    <a href="#">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#">空调配件</a>
+                </div>
+                <div class="ele_conl_dwr fl">
+                	<img src="img/ele_conl_dwr1.png" />
+                </div>
+            </div>
+            <div class="ele_conc fl">
+            	<div class="ele_conc_up clearfix">
+                         <!-- 复制的地方-->
+                	<div class="ele_conc_upl fl">
+                    	<img src="img/elec1.png" />	
+                        <p>阿尔法的地方的实打实</p>
+                        <p>啊发发阿达发福</p>
+                        <p class="pa">￥4569.00</p>
+                    </div>
+                    <div class="ele_conc_upc fl">
+                    	<img src="img/elec2.png" />
+                        <div class="dingwei clearfix">
+                        	<span class="cur"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>	
+                    </div>
+                    <div class="ele_conc_upr fl">
+                    	<div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>	
+                    </div>
+                </div>
+                <div class="ele_conc_dw">
+                	    <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>	
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec4.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec5.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                </div>
+            </div>
+            <div class="ele_conr fl">
+            	<div class="ele_conrup">
+            		<img src="img/ele_conr.png" />
+                </div>	
+                <div class="ele_conrdw">
+            		<img src="img/ele_conr2.png" />
+                    <div class="dingwei clearfix">
+                    	<span class="cur"></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--meiyu -->
+    <div class="ele w mart_10">
+    	<div class="ele_hd">
+        	<span class="fl floor4"></span>
+        	<h3 class="fl">美玉珠宝</h3>
+            <div class="ele_hdml fl">
+            	<a href="#" class="cur">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+            </div>
+            <div class="fr ele_hdr clearfix">
+                <a href="#">大家电配送 <span>&gt;</span></a>
+                <a href="#" class="link">大家电配送 <span>&gt;</span></a>	
+            </div>
+            <div class="ele_hdr fl"></div>
+        </div>	
+        <div class="ele_con clearfix">
+        	<div class="ele_conl fl">
+            	<div class="ele_conl_up clearfix">
+                	<a href="#" class="phone">手机</a>
+                    <a href="#">空调</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">手机深度</a>
+                    <a href="#">空调阿达</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                </div>
+                <div class="ele_conl_dw">
+                	<img src="img/ele2.png" />
+                </div>
+            </div>
+            <div class="ele_conc fl">
+            	<div class="ele_conc_up clearfix">
+                         <!-- 复制的地方-->
+                	<div class="ele_conc_upl fl">
+                    	<img src="img/elec1.png" />	
+                        <p>阿尔法的地方的实打实</p>
+                        <p>啊发发阿达发福</p>
+                        <p class="pa">￥4569.00</p>
+                    </div>
+                    <div class="ele_conc_upc fl">
+                    	<img src="img/elec2.png" />
+                        <div class="dingwei clearfix">
+                        	<span class="cur"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>	
+                    </div>
+                    <div class="ele_conc_upr fl">
+                    	<div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>	
+                    </div>
+                </div>
+                <div class="ele_conc_dw">
+                	    <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>	
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec4.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec5.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                </div>
+            </div>
+            <div class="ele_conr fl">
+            	<div class="ele_conrup">
+            		<img src="img/ele_conr.png" />
+                </div>	
+                <div class="ele_conrdw">
+            		<img src="img/ele_conr2.png" />
+                    <div class="dingwei clearfix">
+                    	<span class="cur"></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--jujia -->
+    <div class="ele w mart_10">
+    	<div class="ele_hd">
+        	<span class="fl floor5"></span>
+        	<h3 class="fl">居家生活</h3>
+            <div class="ele_hdml fl">
+            	<a href="#" class="cur">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+                <a href="#">特价商品</a>
+            </div>
+            <div class="fr ele_hdr clearfix">
+                <a href="#">大家电配送 <span>&gt;</span></a>
+                <a href="#" class="link">大家电配送 <span>&gt;</span></a>	
+            </div>
+            <div class="ele_hdr fl"></div>
+        </div>	
+        <div class="ele_con clearfix">
+        	<div class="ele_conl fl">
+            	<div class="ele_conl_up clearfix">
+                	<a href="#" class="phone">手机</a>
+                    <a href="#">空调</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">手机深度</a>
+                    <a href="#">空调阿达</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                    <a href="#" class="phone">空调配件</a>
+                    <a href="#">世界配件</a>
+                </div>
+                <div class="ele_conl_dw">
+                	<img src="img/ele2.png" />
+                </div>
+            </div>
+            <div class="ele_conc fl">
+            	<div class="ele_conc_up clearfix">
+                         <!-- 复制的地方-->
+                	<div class="ele_conc_upl fl">
+                    	<img src="img/elec1.png" />	
+                        <p>阿尔法的地方的实打实</p>
+                        <p>啊发发阿达发福</p>
+                        <p class="pa">￥4569.00</p>
+                    </div>
+                    <div class="ele_conc_upc fl">
+                    	<img src="img/elec2.png" />
+                        <div class="dingwei clearfix">
+                        	<span class="cur"></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>	
+                    </div>
+                    <div class="ele_conc_upr fl">
+                    	<div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>	
+                    </div>
+                </div>
+                <div class="ele_conc_dw">
+                	    <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>	
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec4.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec3.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                        <div class="ele_conc_upl fl">
+                            <img src="img/elec5.png" />	
+                            <p>说法士大夫打实</p>
+                            <p>的冯绍峰福</p>
+                            <p class="pa">3999</p>
+                        </div>
+                </div>
+            </div>
+            <div class="ele_conr fl">
+            	<div class="ele_conrup">
+            		<img src="img/ele_conr.png" />
+                </div>	
+                <div class="ele_conrdw">
+            		<img src="img/ele_conr2.png" />
+                    <div class="dingwei clearfix">
+                    	<span class="cur"></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--hot -->
+    <div class="hot clearfix w">
+    	   <div class="hotleft fl">
+        	<div class="hotleft_up">
+                <h3>热门晒单</h3>
+                <div class="hotleft_up_left fl">
+                	<img src="img/hot1.png" />
+                    <span>晒</span>
+                </div>
+                <div class="hotleft_up_right fl">
+                	<a href="#">防辐射服师傅的说法分身乏术人反倒是凡事都</a>
+                    <p class="para">德国的股份郭德纲特共同热管郭德纲德是</p>
+                </div>
+             </div>
+            <div class="hotleft_up last">
+                <h3>热门晒单</h3>
+                <div class="hotleft_up_left fl">
+                	<img src="img/hot1.png" />
+                    <span>晒</span>
+                </div>
+                <div class="hotleft_up_right fl">
+                	<a href="#">防辐射服师傅的说法分身乏术人反倒是凡事都</a>
+                    <p class="para">德国的股份郭德纲特共同热管郭德纲德是</p>
+                </div>
+             </div>     
+        </div>
+           <div class="hotleft fl next">
+        	<div class="hotleft_up">
+                <h3>热门晒单</h3>
+                <div class="hotleft_up_left fl">
+                	<img src="img/hot1.png" />
+                    <span>晒</span>
+                </div>
+                <div class="hotleft_up_right fl">
+                	<a href="#">防辐射服师傅的说法分身乏术人反倒是凡事都</a>
+                    <p class="para">德国的股份郭德纲特共同热管郭德纲德是</p>
+                </div>
+             </div>
+            <div class="hotleft_up last">
+                <h3>热门晒单</h3>
+                <div class="hotleft_up_left fl">
+                	<img src="img/hot1.png" />
+                    <span>晒</span>
+                </div>
+                <div class="hotleft_up_right fl">
+                	<a href="#">防辐射服师傅的说法分身乏术人反倒是凡事都</a>
+                    <p class="para">德国的股份郭德纲特共同热管郭德纲德是</p>
+                </div>
+             </div>     
+        </div>
+           <div class="hotright fl">
+           		<div class="box">
+                    <div class="hd clearfix">
+                        <h3 class="fl">在线读书</h3>
+                        <a href="#" class="fr">更多在线读书&gt;</a>	
+                    </div>
+                    <div class="con clearfix">
+                        <img src="img/hot2.png" class="fl" />
+                        <div class="fl">
+                            <a href="#">的方式的观点斗的地方的付款</a>
+                            <a href="#">的方式的观点斗狗赌博</a>
+                            <a href="#">的方式的观点斗狗赌博</a>
+                            <a href="#">的方式的观点斗狗赌博</a>	
+                        </div>
+                    </div>
+                  </div>
+                <div class="ft">
+                	<div class="ft_hd">订阅出席甩单</div>
+                    <div class="clearfix in">
+                        <input type="text" placeholder="请输入您的邮箱" class="fl txt" />
+                        <input type="button" value="订阅" class="fl btn"  />
+                    </div>
+                    
+                </div>
+           </div>
+    </div>
+    <!--footer-->
+    <div class="footer w clearfix">
+    	<div class="footer_together clearfix fl">
+        	<span class="footer_logol1 fl"></span>
+        	<dl class="fl">
+            	<dt>购物指南</dt>
+                <dd>购物流程</dd>
+                <dd>购物指南</dd>
+                <dd>购物流程</dd>
+                <dd>购物指南</dd>
+                <dd>购物流程</dd>
+            </dl> 
+        </div>
+        <div class="footer_together clearfix fl">
+        	<span class="footer_logol2 fl"></span>
+        	<dl class="fl">
+            	<dt>配送方式</dt>
+                <dd>上门服务</dd>
+                <dd>上门服务</dd>
+                <dd>上门服务</dd>
+                <dd>上门服务</dd>
+                <dd>上门服务</dd>
+                <dd>上门服务</dd>
+            </dl> 
+        </div>
+        <div class="footer_together clearfix fl">
+        	<span class="footer_logol3 fl"></span>
+        	<dl class="fl">
+            	<dt>支付方式</dt>
+                <dd>货到付款</dd>
+                <dd>货到付款</dd>
+                <dd>货到付款</dd>
+            </dl> 
+        </div>
+        <div class="footer_together clearfix fl">
+        	<span class="footer_logol1 fl"></span>
+        	<dl class="fl">
+            	<dt>购物指南</dt>
+                <dd>购物流程</dd>
+                <dd>购物指南</dd>
+                <dd>购物流程</dd>
+                <dd>购物指南</dd>
+                <dd>购物流程</dd>
+            </dl> 
+        </div>
+        <div class="footer_together clearfix fl">
+        	<span class="footer_logol2 fl"></span>
+        	<dl class="fl">
+            	<dt>配送方式</dt>
+                <dd>上门服务</dd>
+                <dd>上门服务</dd>
+                <dd>上门服务</dd>
+                <dd>上门服务</dd>
+                <dd>上门服务</dd>
+                <dd>上门服务</dd>
+            </dl> 
+        </div>
+        <div class="right fr">
+        	<span></span>
+        	<h3>京东自营覆盖区县</h3>
+            <p>法萨芬施工方士大夫所发生的俄方认为人工费方式的发生浮动啊丰富的是发的是打发打发打发士大夫</p>
+            <div class="clearfix"><a href="#" class="fr">查看详情 &gt;</a></div>
+        </div>
+    </div>
+    <!--copy-->
+    <div class="copy w">
+    	<div class="clearfix">
+        	<a href="#">关于我们</a>
+            <a href="#">联系我们</a>
+            <a href="#">关于我们</a>
+            <a href="#">联系我们</a>
+            <a href="#">关于我们</a>
+            <a href="#">联系我们</a>
+            <a href="#">关于我们</a>
+            <a href="#">联系我们</a>
+            <a href="#">about us</a>
+            <a href="#" class="last">contact us</a>
+        </div>
+    </div>
+    <marquee style="direction:right;" class="w">伺服阀是大法官甩单什邡市</marquee>
+</body>
+</html>

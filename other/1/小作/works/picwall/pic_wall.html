@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin:0px;
+				padding:0px;
+				outline: none;
+			}
+			#wrap{
+				width:100%;
+				height:650px;
+				position: relative;
+			}	
+			#wrap #img{
+				width:100%;
+				height:650px;
+			}
+			#box{
+				width:488px;
+				height:488px;
+				border:2px solid red;
+				position: absolute;
+				top:20px;
+				left:400px;
+			}	
+			#box li{
+				width:140px;
+				height:140px;
+				margin:10px;
+				float:left;
+				list-style:none;
+				border:1px solid #666;
+			}
+			#box img{
+				width:140px;
+				height:140px;
+			}
+			#btn{
+				width:100px;
+				height:60px;
+				line-height:60px;
+				font-size:24px;
+				color:#fff;
+				text-align: center;
+				position: absolute;
+				bottom:40px;
+				left:600px;
+				background: blue;
+				border-radius:40px;
+			}
+		</style>
+		<script src="move.js"></script>
+		<script>
+		
+				//获取两个物体之间的距离
+			function getDis(obj1,obj2){
+				var l1=obj1.offsetLeft+obj1.offsetWidth/2;
+				var l2=obj2.offsetLeft+obj2.offsetWidth/2;
+				var t1=obj1.offsetTop+obj1.offsetHeight/2;
+				var t2=obj2.offsetTop+obj2.offsetHeight/2;
+				var a=l2-l1;
+				var b=t2-t1;
+				return Math.sqrt(a*a+b*b);
+			}
+			
+			function collTest(obj1,obj2){
+				var l1=obj1.offsetLeft;
+				var r1=obj1.offsetLeft+obj1.offsetWidth;
+				var t1=obj1.offsetTop;
+				var b1=obj1.offsetTop+obj1.offsetHeight;
+				
+				var l2=obj2.offsetLeft;
+				var r2=obj2.offsetLeft+obj2.offsetWidth;
+				var t2=obj2.offsetTop;
+				var b2=obj2.offsetTop+obj2.offsetHeight;
+				
+				if (r1 < l2 || b1 < t2 || l1 > r2 || t1 > b2) {
+                // 没有碰
+                return false;
+            } else {
+                return true;
+            }
+			}
+			
+			window.onload=function(){
+				var oBox=document.getElementById("box");
+				var aLi=oBox.getElementsByTagName('li');
+				var oBtn=document.getElementById("btn");
+				var arr=[];
+				var num=1;//用于提升层级
+				
+				//获取每个li的坐标
+					for(var i=0;i<aLi.length;i++){
+						arr[i]={
+							left:aLi[i].offsetLeft,
+							top:aLi[i].offsetTop
+						}
+					}
+				
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].style.position='absolute';
+					aLi[i].style.left=arr[i].left+'px';
+					aLi[i].style.top=arr[i].top+'px';
+					aLi[i].style.margin=0;
+				}
+				
+				
+				//每个li都执行拖拽
+			for(var i=0;i<aLi.length;i++){
+					aLi[i].index = i;
+                drag(aLi[i]); 
+            }
+			function drag(obj){
+				obj.onmousedown=function(ev){
+					var e=ev||event;
+					var disX=e.clientX-obj.offsetLeft;
+					var disY=e.clientY-obj.offsetTop;
+					obj.style.zIndex=num++;
+					document.onmousemove=function(ev){
+						var e=ev||event;
+						var l=e.clientX-disX;
+						var t=e.clientY-disY;
+						
+						if(l<0){
+							l=0;
+						}else if(l>=obj.parentNode.offsetWidth-obj.offsetWidth){l=obj.parentNode.offsetWidth-obj.offsetWidth;}
+						if(t<0){
+							t=0;
+						}else if(t>=obj.parentNode.offsetHeight-obj.offsetHeight){t=obj.parentNode.offsetHeight-obj.offsetHeight;}
+						obj.style.left=l+'px';
+						obj.style.top=t+'px';
+						for (var i = 0; i < aLi.length; i++) {
+                            aLi[i].style.border = '1px solid #666';
+                        }
+						var oNext = findNext(obj);
+                        if (oNext) {
+                            oNext.style.border = '3px dashed green';
+                        }
+					};
+					document.onmouseup=function(){
+						document.onmousemove=null;
+						document.onmouseup=null;
+						var oNext=findNext(obj);
+						if(oNext){
+							move(oNext,arr[obj.index],{time:500});
+							move(obj,arr[oNext.index],{time:500});
+							oNext.style.border = '1px solid #666';
+						}else{
+							move(obj,arr[obj.index]);
+						}
+						// 交换索引位置
+                        var temp;
+                        temp = oNext.index;
+                        oNext.index = obj.index;
+                        obj.index = temp;
+						obj.releaseCapture&&obj.releaseCapture();
+					};
+					obj.setCapture&&obj.setCapture();
+					return false;
+				}
+			}
+				
+				//找最近的物体
+				function findNext(obj){
+					var iMin=9999;
+					var iMinIndex=-1;
+					for(var i=0;i<aLi.length;i++){
+						//自己，没有碰撞
+						if(obj==aLi[i])continue;
+						if(collTest(obj,aLi[i])){
+							var dis=getDis(obj,aLi[i]);
+							if(dis<iMin){
+								iMin=dis;
+								iMinIndex=i;
+							}
+						}
+					}
+					if(iMinIndex==-1){
+						return null;
+					}else{
+						return aLi[iMinIndex];
+					}
+					
+				}
+				
+				function change(){
+					arr.sort(function(){
+						return Math.random()-0.5;
+					});
+					for(var i=0;i<aLi.length;i++){
+						move(aLi[i],arr[aLi[i].index],{time:500,fn:function(){
+							oBtn.style.background='blue';
+						}});
+					}
+				};
+				
+				//oBtn点击事件
+				oBtn.onclick=change;
+				document.onkeydown=function(ev){
+					var e=ev||event;
+					if(e.keyCode==13){
+						oBtn.style.background='purple';
+						change();
+					}
+				}
+				
+				oBtn.onmouseenter=function(){
+					this.style.background='purple';
+				};
+				oBtn.onmouseout=function(){
+					this.style.background='blue';
+				};
+				
+			};
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<img src="img/bg.jpg" id="img"/>
+			<ul id="box">
+						<li><img src="img/1.jpg" /></li>
+						<li><img src="img/2.jpg" /></li>
+						<li><img src="img/3.jpg" /></li>
+						<li><img src="img/4.jpg" /></li>
+						<li><img src="img/5.jpg" /></li>
+						<li><img src="img/6.jpg" /></li>
+						<li><img src="img/7.jpg" /></li>
+						<li><img src="img/8.jpg" /></li>
+						<li><img src="img/9.jpg" /></li>
+			</ul>
+			<input type="button"  id="btn" value="换一换"/>	
+		</div>
+	</body>
+</html>

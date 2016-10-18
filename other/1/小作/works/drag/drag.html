@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+				outline:none;
+			}
+			#wrap{
+				width:100%;
+				height:650px;
+				position: relative;
+			}
+			#wrap #img{
+				width:100%;
+				height:650px;
+			}
+			#box{
+				width:1200px;
+				height:600px;
+				position: absolute;
+				top:0px;
+				bottom:0px;
+				right:0px;
+				left:0px;
+				margin:auto;
+			}
+			#box li{
+				list-style:none;
+				width:300px;
+				height:200px;
+				border-radius:50%;
+				position: absolute;
+			}
+			#box  img{
+				width:300px;
+				height:200px;
+				border-radius:50%;
+				border:2px solid #000;
+			}
+			#box .on{
+				width:300px;
+				height:200px;
+				border:2px solid #080;
+				border-radius:50%;
+				position: relative;
+				z-index:999;}
+			#btn {
+				width:100px;
+				height:50px;
+				line-height:50px;
+				font-size:25px;
+				border:2px solid #ccc;
+				position: absolute;
+				bottom:10px;
+				left:50%;
+				border-radius:10px;
+				background: #00A9E0;
+				margin-left:-25px;
+				color:#fff;
+			}
+		</style>
+		<script>
+				function rand(n,m){
+					return parseInt(Math.random()*(m-n)+n);
+				}
+			window.onload=function(){
+				var oBtn=document.getElementById("btn");
+				var oBox=document.getElementById("box");
+				var aLi=oBox.getElementsByTagName('li');
+				
+				oBtn.onclick=function(){
+					for(var i=0;i<aLi.length;i++){
+						aLi[i].style.left=rand(0,800)+'px';
+						aLi[i].style.top=rand(0,400)+'px';
+					}
+				};
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].style.left=rand(0,800)+'px';
+					aLi[i].style.top=rand(0,400)+'px';
+					aLi[i].onmousedown=function(ev){
+						var that=this;
+						var e=ev||event;
+						var disX=e.clientX-that.offsetLeft;
+						var disY=e.clientY-that.offsetTop;
+						var oLi=document.createElement('li');
+						oLi.className='on';
+						oLi.style.width=that.offsetWidth+'px';
+						oLi.style.height=that.offsetHeight+'px';
+						oLi.style.left=that.offsetLeft+'px';
+						oLi.style.top=that.offsetTop+'px';
+						oBox.appendChild(oLi);
+						that.style.zIndex=i++;
+						document.onmousemove=function(ev){
+							var e=ev||event;
+							var l=e.clientX-disX;
+							var t=e.clientY-disY;
+							oLi.style.left=l+'px';
+							oLi.style.top=t+'px';
+						}
+						document.onmouseup=function(){
+							that.style.left=oLi.offsetLeft+'px';
+							that.style.top=oLi.offsetTop+'px';
+							oBox.removeChild(oLi);
+							document.onmousemove=null;
+							document.onmouseup=null;
+							that.releaseCapture&&that.releaseCapture();
+						}
+						that.setCapture&&that.setCapture();
+						return false;
+					}
+				}
+				
+			};
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<img src="img/bg.jpg" id="img"/>
+			<ul id="box">
+				<li ><img src="img/1.jpg"  class="img1"/></li>
+				<li ><img src="img/2.jpg" class="img2"/></li>
+				<li ><img src="img/3.jpg" class="img3"/></li>
+				<li ><img src="img/4.jpg" class="img4"/></li>
+				<li ><img src="img/5.jpg" class="img5"/></li>
+				<li ><img src="img/6.jpg" class="img6"/></li>
+			</ul>
+			<input type="button" value="随机" id="btn"/>
+		</div>
+	</body>
+</html>

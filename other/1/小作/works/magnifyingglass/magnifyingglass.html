@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+				outline: none;
+			}
+			#wrap{
+				width:100%;
+				height:650px;
+				position: relative;
+			}
+			#wrap #img{
+				width:100%;
+				height:650px;
+			}
+			#small{
+				width:300px;
+				height:300px;
+				position: absolute;
+				top:200px;
+				left:350px;
+				border:2px solid #ccc;
+				overflow: hidden;
+			}
+			#small span{
+				width:80px;
+				height:80px;
+				position: absolute;
+				top:0px;
+				left:0px;
+				background: green;
+				opacity:0;
+				filter:alpha(opacity:0);
+			}
+			#big{
+				width:400px;
+				height:400px;
+				position: absolute;
+				top:140px;
+				left:700px;
+				border:2px solid #ccc;
+				overflow: hidden;
+				opacity:0;
+				filter:alpha(opacity:0);
+			}
+			#big img{
+				position: absolute;
+				top:0px;
+				left:0px;
+			}
+		</style>
+		<script src="move.js"></script>
+		<script>
+			window.onload=function(){
+				var oSmall=document.getElementById("small");
+				var oMask=document.getElementById("mask");
+				var oBig=document.getElementById('big');
+				var oImg=oBig.getElementsByTagName('img')[0];
+				oSmall.onmouseenter=function(){
+					move(oMask,{opacity:0.5},{time:1000,easing:'ease-out'});
+					move(oBig,{opacity:1},{time:1000,easing:'ease-out'});
+					
+				};
+				oSmall.onmouseleave=function(){
+					move(oMask,{opacity:0},{time:1000,easing:'ease-out'});
+					move(oBig,{opacity:0},{time:1000,easing:'ease-out'});
+					
+				};
+				document.onmousemove=function(ev){
+					var e=ev||event;
+					var l=e.clientX-oMask.offsetWidth/2-oSmall.offsetLeft;
+					var t=e.clientY-oMask.offsetHeight/2-oSmall.offsetTop;
+					if(l<0){l=0;} 
+					if(l>=oSmall.offsetWidth-oMask.offsetWidth){l=oSmall.offsetWidth-oMask.offsetWidth}
+					if(t<0){t=0;} 
+					if(t>=oSmall.offsetHeight-oMask.offsetHeight){t=oSmall.offsetHeight-oMask.offsetHeight}
+					
+					oMask.style.left=l+'px';
+					oMask.style.top=t+'px';
+					oImg.style.left=l*(oBig.offsetWidth-oImg.offsetWidth)/(oSmall.offsetWidth-oMask.offsetWidth)+'px';
+					oImg.style.top=t*(oBig.offsetHeight-oImg.offsetHeight)/(oSmall.offsetHeight-oMask.offsetHeight)+'px';
+				};
+				
+			};
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+					<img src="img/bg.jpg" id="img"/>
+					<div id="small">
+							<img src="img/s.png" />
+							<span id="mask"></span>
+					</div>
+					<div id="big">
+							<img src="img/b.png" />
+					</div>
+		</div>
+	</body>
+</html>

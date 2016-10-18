@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<style>
+			#wrap{
+				width:100%;
+				height:650px;
+				position: relative;
+				
+			}
+			#wrap #img{
+				width:100%;
+				height:650px;
+			}
+			#box{
+				width:800px;
+				height:400px;
+				position: absolute;
+				left:0px;
+				right:0px;
+				top:0px;
+				bottom:0px;
+				margin:auto;
+				overflow: hidden;
+			}
+			#box li{
+				position: absolute;
+				top:0px;
+				left:0px;
+				opacity:0.6;
+				filter:alpha(opacity:60);
+			}
+			#box img{
+				width:800px;
+				height:400px;
+			}
+		</style>
+		<script src="js/move.js"></script>
+		<script>
+			window.onload=function(){
+				var oBox=document.getElementById("box");
+				var aLi=oBox.getElementsByTagName('li');
+				var w=30;
+				for(var i=1;i<aLi.length;i++){
+					aLi[i].style.left=aLi[0].offsetWidth-(aLi.length-i)*w+'px';
+				}
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].index=i;
+					aLi[i].onmouseover=function(){
+						for(var i=0;i<aLi.length;i++){
+							if(i<=this.index){
+								move(aLi[i],{left:i*w,opacity:1},{time:500,easing:'ease-out'});
+							}else{
+								move(aLi[i],{left:aLi[0].offsetWidth-(aLi.length-i)*w,opacity:0.6},{time:500,easing:'ease-out'});
+							}
+						}
+					};
+					aLi[i].onmouseout=function(){
+						for(var i=1;i<aLi.length;i++){
+							move(aLi[i],{left:aLi[0].offsetWidth-(aLi.length-i)*w,opacity:0.6},{time:500,easing:'ease-out'});
+						}
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+			<div id="wrap">
+				<img src="img/bg.jpg" id="img"/>
+					<ul id="box">
+						<li><img src="img/1.jpg" /></li>
+						<li><img src="img/2.jpg" /></li>
+						<li><img src="img/3.jpg" /></li>
+						<li><img src="img/4.jpg" /></li>
+						<li><img src="img/5.jpg" /></li>
+						<li><img src="img/8.jpg" /></li>
+						<li><img src="img/7.jpg" /></li>
+						<li><img src="img/6.jpg" /></li>
+					</ul>
+			</div>
+	</body>
+</html>

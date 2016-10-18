@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+				*{
+					margin:0px;
+					padding:0px;
+					list-style:none;
+					outline: none;
+				}
+				#wrap{
+					width:100%;
+					height:650px;
+					position: relative;
+				}
+				#wrap #img{
+					width:100%;
+					height:650px;
+				}
+				#box{
+					width:488px;
+					height:488px;
+					position: absolute;
+					left:350px;
+					top:120px;;
+					border:2px solid green;
+				}
+				#box li{
+					width:140px;
+					height:140px;
+					border:1px solid green;
+					float:left;
+					margin:10px;
+					opacity:0.5;
+					filter:alpha(opacity:50);
+				}
+				#btn{
+					width:100px;
+					height:50px;
+					line-height:40px;
+					text-align: center;
+					background: blue;
+					font-size:24px;
+					color:#fff;
+					position: absolute;
+					top:40px;
+					left:540px;
+					border-radius: 40px;
+				}
+		</style>
+		<script src="move.js"></script>
+		<script>
+				function rand(n,m){
+						return parseInt(Math.random()*(m-n)+n);
+				}
+			window.onload=function(){
+				var oBox=document.getElementById("box");
+				var oBtn=document.getElementById("btn");
+				var aLi=oBox.getElementsByTagName('li');
+				var arr=[];
+				var timer=null;
+				var timer1=null;
+				for(var i=0;i<aLi.length;i++){
+					arr[i]={
+						left:aLi[i].offsetLeft,
+						top:aLi[i].offsetTop
+					}
+				}
+				//float--position
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].style.position='absolute';
+					aLi[i].style.left=arr[i].left+'px';
+					aLi[i].style.top=arr[i].top+'px';
+					aLi[i].style.margin=0;
+					aLi[i].style.background='rgb('+rand(0,256)+','+rand(0,256)+','+rand(0,256)+')';
+					
+				}
+				//鼠标移入移出事件
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].onmouseenter=function(){
+						move(this,{opacity:1},{time:500,easing:'ease-out'});
+					};
+					aLi[i].onmouseleave=function(){
+						move(this,{opacity:0.5},{time:500,easing:'ease-out'});
+					};
+				}
+				//按钮移入移出事件
+				oBtn.onmouseover=function(){
+					this.style.background='purple';
+				};
+				oBtn.onmouseout=function(){
+					this.style.background='blue';
+				};
+				//按钮点击aLi消失显示事件
+				oBtn.onclick=showHide;
+				function showHide(){
+					var count=0;
+					var num=0;
+					clearInterval(timer);
+					timer=setInterval(function(){
+						(function(index){
+							move(aLi[index],{width:0,height:0,left:220,top:-50},{time:500,easing:'ease-out',fn:function(){
+								if(index==aLi.length-1){
+									index=aLi.length-1;
+									clearInterval(timer1);
+									timer1=setInterval(function(){
+										move(aLi[index],{width:140,height:140,left:arr[index].left,top:arr[index].top}); 
+										aLi[index].style.background='rgb('+rand(0,256)+','+rand(0,256)+','+rand(0,256)+')';
+										aLi[index].style.zIndex=num++;
+										oBtn.style.background='blue';
+										index--;
+										if(index==-1){
+											clearInterval(timer1);
+										}
+									},100);
+								}
+							}});
+						})(count);
+						count++;
+						if(count==aLi.length){
+							clearInterval(timer);
+						}
+					},100);
+				}
+				document.onkeydown=function(ev){
+					var e=ev||event;
+					if(e.keyCode==13){
+						showHide();
+						oBtn.style.background='red';
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+				<img src="img/bg.jpg"  id="img"/>
+				<ul id="box">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<input type="button" id="btn" value="GO"/>
+		</div>
+	</body>
+</html>

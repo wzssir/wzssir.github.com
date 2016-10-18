@@ -1,0 +1,1297 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="css/base.css" />
+<style>
+/*header*/
+.header{min-width:1200px;background:#f5f5f5;height:40px;}
+.header_con ul{margin:14px 0;}
+.header_con li{border-right:1px solid #ccc;padding-right:16px;padding-left:15px;}
+.header_con span{float:left;margin-right:3px;}
+.header_con a{float:left;}
+.header_con .weibo{background:url(img/weibo1.png);width:16px;height:16px;}
+.header_con .qq{background:url(img/qq.png);width:15px;height:16px;}
+.header_con .jifen{background:url(img/jifen1.png);width:13px;height:15px;}
+.header_con .xiazai{background:url(img/xiazai1.png);width:10px;height:15px;}
+.header_con .header_conlast{border-right:none;padding-right:0px;}
+.header_con li:hover a{color:red;}
+/*logo*/
+.logo{padding:19px 0 14px 0;}
+.logo .tu{width:107px;height:37px;background:url(img/logo1.png);text-indent:-999px;}
+.logo img{margin-left:254px;}
+.logo .shopcar{width:98px;height:30px;line-height:30px;border:1px solid #e6e6e6;background:#f5f5f5;} 
+.logo .shopcar .ck{background:url(img/logo3.png);width:17px;height:13px;margin:7px 5px 0 8px;}
+.logo .dingdan{width:84px;height:30px;line-height:30px;border:1px solid #e6e6e6;background:#f5f5f5;margin-left:10px;}
+.logo .dingdan .dd{background:url(img/logo4.png);width:13px;height:15px;margin:7px 5px 0 8px;}
+.logo p:hover a{color:green;}
+/*title*/
+.title{min-width:1200px;background:#ff6599;height:40px;}
+.title ul{margin-left:126px;}
+.title li{float:left;padding:0 15px 0 14px;line-height:40px;height:40px;}
+.title a{color:#fff;font-size:14px;}
+.title .sanjiao span{border:3px solid transparent;border-top:3px solid #fff;margin:19px 0 0 7px;}
+.title .xin span{background:url(img/logoxin.png);width:18px;height:15px;margin:12px 0 0 4px;}
+.title  .first,.title li:hover{background:#ed3577;}
+/*con*/
+.con{min-width:1200px;background:#fd5d89;height:420px;}
+.con_left{width:238px;background:#fff;border:1px solid #ccc;border-top:none;}
+.con_left1{width:174px;margin-left:21px;padding-bottom:8px;margin-top:10px;border-bottom:1px solid #ccc;}
+.con_left h3{background:url(img/con1.png) no-repeat left;font-size:16px;color:#ff92b7;padding-left:21px;line-height:24px;}
+.con_left a{float:left; margin-right:15px;line-height:24px;}
+.con_left .hot{color:#f69;}
+.con_left .modify{border-bottom:none;}
+.con_right1{margin-top:44px;margin-right:17px;}
+.con_centerup{position:relative;}
+.con_centerup ul{position:absolute;bottom:10px;right:10px;}
+.con_centerup li{float:left;width:30px;height:30px;color:#fff;background:red;text-align:center;line-height:30px;margin-right:10px;border-radius:50%;}
+.con_centerup .list,.con_centerup li:hover{background:#F0F;}
+.con_centerup span{width:30px;height:60px;font-size:30px;text-align:center;color:#fff;line-height:60px;position:absolute;top:50%;margin-top:-30px;background:#000;opacity:0.5;}
+.con_centerup .left{left:0px;}
+.con_centerup .right{right:0px;}
+.con_centerdown img{margin-top:13px;margin-right:10px;}
+.con_centerdown .first{margin-left:10px;}
+.con_right{width:200px;}
+.con_right img{border-bottom:1px solid #ccc;}
+.con_right .last{margin-top:13px;border-bottom:none;}
+/*renqi*/
+.renqi{margin-top:170px;}
+.renqi h2{font-size:20px;line-height:36px;font-weight:normal;background:url(img/renqi2.png) no-repeat left;padding-left:38px;margin-bottom:15px;border-bottom:1px solid #ccc;}
+.renqi h2 span{color:#ff83ac;} 
+.renqi_con{width:180px;margin-right:24px;margin-bottom:16px;}
+.renqi_con img{margin-bottom:10px;}
+.renqi_con p{line-height:18px;}
+.renqi_con span{line-height:30px;}
+.renqi_con .newprice{font-size:14px;color:#f69;}
+.renqi_con .oldprice{text-decoration:line-through;}
+.renqi_con .price{padding-bottom:3px;border-bottom:1px dotted #ccc;}
+.renqi_con .shoped{line-height:32px;}
+.shaonv{margin-right:0px;}
+/*tuangou*/
+.tuangou h2{font-size:20px;line-height:36px;font-weight:normal;background:url(img/tuangou1.png) no-repeat left;padding-left:38px;margin-bottom:15px;border-bottom:1px solid #ccc;}
+.tuangou h2 span{color:#ff83ac;}
+.tuangou_con{width:180px;margin-right:24px;margin-bottom:16px;}
+.tuangou_con img{margin-bottom:10px;}
+.tuangou_con p{line-height:18px;}
+.tuangou_con span{line-height:30px;}
+.tuangou_con .newprice{font-size:14px;color:#f69;}
+.tuangou_con .oldprice{text-decoration:line-through;}
+.tuangou_con .price{padding-bottom:3px;border-bottom:1px dotted #ccc;}
+.tuangou_con .shoped{line-height:32px;}
+.huaduo{margin-right:0px;}
+/*yifu*/
+	/*yifu hd*/
+.yifu{border-bottom:1px solid #ccc;}
+.yifu_hd{margin-top:12px;border-bottom:1px solid #ccc;}
+.yifu_hd h3{ font-size:20px;color:#ff8cb3;background:url(img/yifu1.png) no-repeat left;padding-left:38px;line-height:40px;margin-right:12px;}
+.yifu_hd p{font-size:14px;padding-left:9px;margin-top:12px;border-left:1px solid #ccc;}
+.yifu_hd p span{font-weight:bold;color:#000;}
+.yifu_hd a{line-height:40px;color:#666;}
+    /*yifu left*/
+.yifu_left{width:940px;}
+.yifu_left ul{margin-top:16px;}
+.yifu_left li{float:left;position:relative;margin-top:4px;margin-right:5px;}
+.yifu_left li span{width:180px;height:28px;line-height:28px;text-align:center;background:#000;color:#fff;font-size:14px;position:absolute;bottom:0px;right:0px;opacity:0.4;border-radius:5px;}
+.yifu_leftdw{margin-top:18px;padding-bottom:11px;}
+.yifu_leftdw h3{line-height:46px;font-size:16px;font-weight:normal;width:62px;text-align:center;color:#f69;}
+.yifu_leftdw .yifu_leftdwsy{width:312px;border-right:1px dotted #ccc;}
+.yifu_leftdw .last{border-right:none;}
+.yifu_leftdw .yifu_leftdwsy a{padding-right:11px;color:#666;line-height:22px;font-size:12px;}
+.yifu_leftdw .yifu_leftdwsy .link{width:250px;}
+     /*yifu right*/
+.yifu_right{width:259px;border-left:1px solid #ccc;}	 
+.yifu_right_hd{margin-left:20px;}
+.yifu_right_hd h2{font-size:16px;color:#666;font-weight:normal;margin-top:20px;}
+.yifu_right_hd a{color:#666;font-size:14px;margin-top:22px;}
+.yifu_right_con{margin-left:20px;}
+.yifu_right_con2{padding:15px 0;border-bottom:1px dotted #ccc;}
+.yifu_right_con .last{border-bottom:none;}
+.yifu_right_con_left{border:1px solid #ccc;margin-right:13px;}
+/*xiezi*/
+.xiezi{border-bottom:1px solid #ccc;}
+.xiezi_hd{margin-top:12px;border-bottom:1px solid #ccc;}
+.xiezi_hd h3{ font-size:20px;color:#ff8cb3;background:url(img/xiezi1.png) no-repeat left;padding-left:38px;line-height:40px;margin-right:12px;}
+.xiezi_hd p{font-size:14px;padding-left:9px;margin-top:12px;border-left:1px solid #ccc;}
+.xiezi_hd p span{font-weight:bold;color:#000;}
+.xiezi_hd a{line-height:40px;color:#666;}
+/*baobao*/
+.baobao{border-bottom:1px solid #ccc;}
+.baobao_hd{margin-top:12px;border-bottom:1px solid #ccc;}
+.baobao_hd h3{ font-size:20px;color:#ff8cb3;background:url(img/baobao1.png) no-repeat left;padding-left:38px;line-height:40px;margin-right:12px;}
+.baobao_hd p{font-size:14px;padding-left:9px;margin-top:12px;border-left:1px solid #ccc;}
+.baobao_hd p span{font-weight:bold;color:#000;}
+.baobao_hd a{line-height:40px;color:#666;}
+/*zazhi*/
+.zazhi_title{padding:20px 0 16px;}
+.zazhi_title h2{line-height:20px;font-size:20px;background:url(img/zazhi1.png) no-repeat left;padding-left:36px;}
+.zazhi_title span{color:#f69;}
+.zazhi_title li{float:left;padding:0 14px 0 17px;border-right:1px solid #ccc;}
+.zazhi_title li a{color:#666;}
+.zazhi_title .last1{border-right:none;}
+.zazhi .lianwu li{float:left;width:226px;height:283px;border:1px solid #ccc;margin-right:14px;}
+.zazhi .lianwu .last{margin-right:0px;}
+.zazhi .lianwu li p{font-size:14px;padding:12px 0 0 13px;}
+.zazhi .lianwu li .left{padding-left:12px;color:#666;}
+.zazhi .lianwu li .right{width:64px;line-height:20px;text-align:center;border-radius:5px;color:#fff;background:#f69;margin-right:14px;}
+/*datu2*/
+.datu2 img{margin:22px 0;}
+/*footer*/
+.footer{min-width:1200px;background:#f5f5f5;border-top:1px solid #ccc;}
+.footer_hd{padding-top:30px;padding-bottom:30px;border-bottom:1px solid #ccc;}
+.footer_hd li{float:left;margin-right:56px;}
+.footer_hd li h2{font-size:16px;line-height:16px;padding-bottom:14px;}
+.footer_hd li p{font-size:12px;line-height:26px;}
+.footer_hd li p a{color:#666;}
+.footer_hd li p:hover a{color:red;}
+.footer_hd .first span{background:url(img/footer1.png) no-repeat left;width:35px;height:34px;padding-right:12px;}
+.footer_hd .first h2{font-size:16px;line-height:16px;padding-bottom:0px;}
+.footer_hd .first .p1{line-height:36px;font-size:14px;}
+.footer_hd .first .p2{line-height:18px;font-size:12px;}
+.footer_hd .look .look1{background:url(img/look1.png) no-repeat left;padding-left:19px;font-size:12px;line-height:26px;}
+.footer_hd .look .look2{background:url(img/look2.png) no-repeat left;padding-left:19px;}
+.footer_hd .look .look3{background:url(img/look3.png) no-repeat left;padding-left:19px;}
+.footer_hd .user h2{font-size:16px;line-height:16px;padding-bottom:14px;}
+.friendlink{line-height:26px;border-bottom:1px solid #ccc;padding-top:6px;}
+.friendlink a{float:left;font-size:12px;color:#666;}
+.friendlink_l a{margin-right:12px;}
+.footer .copy{padding-top:30px;}
+</style>
+</head>
+<body>
+	<!--header -->
+	<div class="header">
+    	<div class="header_con w ">
+        	<ul class="fr clearfix">
+            	<li class="fl clearfix">
+                    <span class="weibo" ></span>
+                    <a href="#">微博登陆</a>
+                </li>
+                <li class="fl clearfix">
+                    <span class="qq" ></span>
+                    <a href="#">QQ登陆</a>
+                </li>
+                <li class="fl clearfix">
+                    <a href="#">登陆</a>
+                </li>
+                <li class="fl clearfix">
+                    <a href="#">注册</a>
+                </li>
+                <li class="fl clearfix">
+                    <span class="jifen" ></span>
+                    <a href="#">积分兑换</a>
+                </li>
+                <li class="fl clearfix">
+                    <span class="xiazai" ></span>
+                    <a href="#">下载APP</a>
+                </li>
+                <li class="fl clearfix header_conlast">
+                    <a href="#">客户服务</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--logo -->
+    <div class="logo w clearfix">
+    	<span class="fl tu">美丽说</span>
+        <img src="img/logo2.png" class="fl"/>
+        <div class="fr clearfix">
+        	<p class="fl shopcar clearfix">
+                <a class="fl ck"></a>
+                <a class="fl">查看购物车</a>
+            </p>
+            
+            <p class="fl dingdan clearfix">
+                <a class="fl dd"></a>
+                <a class="fl">我的订单</a>
+            </p>
+        </div>
+    </div>
+    <!--title -->
+    <div class="title">
+    	<div class="w">
+            <ul class="clearfix">
+                <li class="first">
+                    <a href="#">首页</a>
+                </li>
+                <li>
+                    <a href="#">今日最热</a>
+                </li>
+                <li class="sanjiao clearfix">
+                    <a href="#" class="fl">衣服</a>
+                    <span class="fl"></span>
+                </li>
+                <li>
+                    <a href="#">鞋子</a>
+                </li>
+                <li>
+                    <a href="#">包包</a>
+                </li>
+                <li>
+                    <a href="#">配饰</a>
+                </li>
+                <li>
+                    <a href="#">美妆</a>
+                </li>
+                <li>
+                    <a href="#">特卖</a>
+                </li>
+                 <li class="xin clearfix">
+                    <a href="#" class="fl">团购</a>
+                    <span class="fl"></span>
+                </li>
+                <li>
+                    <a href="#">好店</a>
+                </li>
+                <li>
+                    <a href="#">杂志</a>
+                </li>
+                <li class="sanjiao clearfix">
+                    <a href="#" class="fl">爱美丽club</a>
+                    <span class="fl"></span>
+                </li>
+            </ul>
+         </div>
+    </div>
+    <!--con -->
+    <div class="con">
+    	<div class="con_n w clearfix">
+        	<div class="con_left fl clearfix">
+            	<div class="con_left1 fl">
+                	    <h3>最热</h3>
+                    	<div class="clearfix">
+                        	<a href="#" class="hot">超人器套装</a>
+                            <a href="#" >夏季新款</a>
+                            <a href="#" class="hot">T恤</a>
+                            <a href="#">韩式style</a>
+                            <a href="#">连衣裙</a>
+                            <a href="#" class="hot">连衣裙</a>
+                            <a href="#">韩式style</a>
+                            <a href="#" class="hot">T恤</a>
+                            <a href="#">T恤</a>
+                        </div>
+               </div>
+                <span class="con_right1 fr">&gt;</span>
+                <div class="con_left1 fl">
+                	    <h3>最热</h3>
+                    	<div class="clearfix">
+                        	<a href="#" class="hot">超人器套装</a>
+                            <a href="#" >夏季新款</a>
+                            <a href="#" class="hot">T恤</a>
+                            <a href="#">韩式style</a>
+                            <a href="#">连衣裙</a>
+                            <a href="#" class="hot">连衣裙</a>
+                            <a href="#">韩式style</a>
+                            <a href="#" class="hot">T恤</a>
+                            <a href="#">T恤</a>
+                        </div>
+               </div>
+                <span class="con_right1 fr">&gt;</span>
+                <div class="con_left1 fl">
+                	    <h3>最热</h3>
+                    	<div class="clearfix">
+                        	<a href="#" class="hot">超人器套装</a>
+                            <a href="#" >夏季新款</a>
+                            <a href="#" class="hot">T恤</a>
+                            <a href="#">韩式style</a>
+                            <a href="#">连衣裙</a>
+                            <a href="#" class="hot">连衣裙</a>
+                            <a href="#">韩式style</a>
+                            <a href="#" class="hot">T恤</a>
+                            <a href="#">T恤</a>
+                        </div>
+               </div>
+                <span class="con_right1 fr">&gt;</span>
+                <div class="con_left1 fl">
+                	    <h3>最热</h3>
+                    	<div class="clearfix">
+                        	<a href="#" class="hot">超人器套装</a>
+                            <a href="#" >夏季新款</a>
+                            <a href="#" class="hot">T恤</a>
+                            <a href="#">韩式style</a>
+                            <a href="#">连衣裙</a>
+                            <a href="#" class="hot">连衣裙</a>
+                            <a href="#">韩式style</a>
+                            <a href="#" class="hot">T恤</a>
+                            <a href="#">T恤</a>
+                        </div>
+               </div>
+                <span class="con_right1 fr">&gt;</span>
+                <div class="con_left1 modify fl">
+                	    <h3>最热</h3>
+                    	<div class="clearfix">
+                        	<a href="#" class="hot">超人器套装</a>
+                            <a href="#" >夏季新款</a>
+                            <a href="#" class="hot">T恤</a>
+                            <a href="#">韩式style</a>
+                            <a href="#">连衣裙</a>
+                            <a href="#" class="hot">连衣裙</a>
+                            <a href="#">韩式style</a>
+                            <a href="#" class="hot">T恤</a>
+                            <a href="#">T恤</a>
+                        </div>
+               </div>
+                <span class="con_right1 fr">&gt;</span>
+            </div>
+            <div class="con_center fl">
+            	<div class="con_centerup">
+                	<img src="img/con2.png"/>
+                    <ul class="clearfix">
+                    	<li class="list">1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                    </ul>
+                    <div class="arrow">
+                    	<span class="left">&lt;</span>
+                        <span class="right">&gt;</span>
+                    </div>
+                </div>
+                <div class="con_centerdown clearfix">
+                	<img src="img/con3.png" class="fl first"/>
+                    <img src="img/con3.png" class="fl"/>
+                    <img src="img/con3.png" class="fl"/>
+                    <img src="img/con3.png" class="fl"/>
+                </div>
+            </div>
+            <div class="con_right fr">
+            	<img src="img/con4.png" />
+                <img src="img/con4.png" />
+                <img src="img/con4.png" />
+                <img src="img/con4.png" class="last" />
+            </div>
+        </div>
+    </div>
+    
+    <!--renqi -->
+    <div class="renqi w">
+    	<h2>人气推荐<span>单品</span></h2>
+        <div class="clearfix">
+            <div class="renqi_con fl">
+                <a href="#"><img src="img/renqi1.png"/></a>
+                <p>小巧可爱，千万少女的宠爱，快快带上它去旅行吧</p>
+                <div class="price">
+                    <span class="newprice">￥180</span>
+                    <span class="oldprice">￥328</span>
+                </div>
+                <div class="shoped">47人已购买</div>
+            </div>	
+            <div class="renqi_con fl">
+                <a href="#"><img src="img/renqi3.png"/></a>
+                <p>人气超高的情侣装，不秀恩爱，必成备胎呀</p>
+                <div class="price">
+                    <span class="newprice">￥50</span>
+                    <span class="oldprice">￥128</span>
+                </div>
+                <div class="shoped">1241人已购买</div>
+            </div>	
+            <div class="renqi_con fl">
+                <a href="#"><img src="img/renqi4.png"/></a>
+                <p>这么时尚，也给手机穿一件美美的衣服吧</p>
+                <div class="price">
+                    <span class="newprice">￥29.64</span>
+                    <span class="oldprice">￥38</span>
+                </div>
+                <div class="shoped">1076人已购买</div>
+            </div>	
+            <div class="renqi_con fl">
+                <a href="#"><img src="img/renqi1.png"/></a>
+                <p>小巧可爱，千万少女的宠爱，快快带上它去旅行吧</p>
+                <div class="price">
+                    <span class="newprice">￥180</span>
+                    <span class="oldprice">￥328</span>
+                </div>
+                <div class="shoped">47人已购买</div>
+            </div>	
+            <div class="renqi_con fl">
+                <a href="#"><img src="img/renqi3.png"/></a>
+                <p>人气超高的情侣装，不秀恩爱，必成备胎呀</p>
+                <div class="price">
+                    <span class="newprice">￥50</span>
+                    <span class="oldprice">￥128</span>
+                </div>
+                <div class="shoped">1241人已购买</div>
+            </div>	
+            <div class="renqi_con shaonv fl">
+                <a href="#"><img src="img/renqi4.png"/></a>
+                <p>这么时尚，也给手机穿一件美美的衣服吧</p>
+                <div class="price">
+                    <span class="newprice">￥29.64</span>
+                    <span class="oldprice">￥38</span>
+                </div>
+                <div class="shoped">1076人已购买</div>
+            </div>
+            <div class="renqi_con fl">
+                <a href="#"><img src="img/renqi1.png"/></a>
+                <p>小巧可爱，千万少女的宠爱，快快带上它去旅行吧</p>
+                <div class="price">
+                    <span class="newprice">￥180</span>
+                    <span class="oldprice">￥328</span>
+                </div>
+                <div class="shoped">47人已购买</div>
+            </div>	
+            <div class="renqi_con fl">
+                <a href="#"><img src="img/renqi3.png"/></a>
+                <p>人气超高的情侣装，不秀恩爱，必成备胎呀</p>
+                <div class="price">
+                    <span class="newprice">￥50</span>
+                    <span class="oldprice">￥128</span>
+                </div>
+                <div class="shoped">1241人已购买</div>
+            </div>	
+            <div class="renqi_con fl">
+                <a href="#"><img src="img/renqi4.png"/></a>
+                <p>这么时尚，也给手机穿一件美美的衣服吧</p>
+                <div class="price">
+                    <span class="newprice">￥29.64</span>
+                    <span class="oldprice">￥38</span>
+                </div>
+                <div class="shoped">1076人已购买</div>
+            </div>	
+            <div class="renqi_con fl">
+                <a href="#"><img src="img/renqi1.png"/></a>
+                <p>小巧可爱，千万少女的宠爱，快快带上它去旅行吧</p>
+                <div class="price">
+                    <span class="newprice">￥180</span>
+                    <span class="oldprice">￥328</span>
+                </div>
+                <div class="shoped">47人已购买</div>
+            </div>	
+            <div class="renqi_con fl">
+                <a href="#"><img src="img/renqi3.png"/></a>
+                <p>人气超高的情侣装，不秀恩爱，必成备胎呀</p>
+                <div class="price">
+                    <span class="newprice">￥50</span>
+                    <span class="oldprice">￥128</span>
+                </div>
+                <div class="shoped">1241人已购买</div>
+            </div>	
+            <div class="renqi_con shaonv fl">
+                <a href="#"><img src="img/renqi4.png"/></a>
+                <p>这么时尚，也给手机穿一件美美的衣服吧</p>
+                <div class="price">
+                    <span class="newprice">￥29.64</span>
+                    <span class="oldprice">￥38</span>
+                </div>
+                <div class="shoped">1076人已购买</div>
+            </div>
+        </div>
+    </div>
+    <!--tangou -->
+    <div class="tuangou w">
+    	<h2>每日超值<span>团购</span></h2>
+        <div class="clearfix">
+            <div class="tuangou_con fl">
+                <a href="#"><img src="img/tuangou2.png"/></a>
+                <p>原创设计手工渐变花朵人字拖时代复分凡事都</p>
+                <div class="price">
+                    <span class="newprice">￥22.90</span>
+                    <span class="oldprice">￥45.90</span>
+                </div>
+                <div class="shoped">17078人已购买</div>
+            </div>	
+            <div class="tuangou_con fl">
+                <a href="#"><img src="img/tuangou3.png"/></a>
+                <p>原创设计手工渐变花朵人字拖时代复分凡事都</p>
+                <div class="price">
+                    <span class="newprice">￥50</span>
+                    <span class="oldprice">￥128</span>
+                </div>
+                <div class="shoped">3380人已购买</div>
+            </div>	
+            <div class="tuangou_con fl">
+                <a href="#"><img src="img/tuangou2.png"/></a>
+                <p>原创设计手工渐变花朵人字拖时代复分凡事都</p>
+                <div class="price">
+                    <span class="newprice">￥22.90</span>
+                    <span class="oldprice">￥45.90</span>
+                </div>
+                <div class="shoped">17078人已购买</div>
+            </div>	
+            <div class="tuangou_con fl">
+                <a href="#"><img src="img/tuangou3.png"/></a>
+                <p>原创设计手工渐变花朵人字拖时代复分凡事都</p>
+                <div class="price">
+                    <span class="newprice">￥50</span>
+                    <span class="oldprice">￥128</span>
+                </div>
+                <div class="shoped">3380人已购买</div>
+            </div>
+            <div class="tuangou_con fl">
+                <a href="#"><img src="img/tuangou2.png"/></a>
+                <p>原创设计手工渐变花朵人字拖时代复分凡事都</p>
+                <div class="price">
+                    <span class="newprice">￥22.90</span>
+                    <span class="oldprice">￥45.90</span>
+                </div>
+                <div class="shoped">17078人已购买</div>
+            </div>	
+            <div class="tuangou_con huaduo fl">
+                <a href="#"><img src="img/tuangou3.png"/></a>
+                <p>原创设计手工渐变花朵人字拖时代复分凡事都</p>
+                <div class="price">
+                    <span class="newprice">￥50</span>
+                    <span class="oldprice">￥128</span>
+                </div>
+                <div class="shoped">3380人已购买</div>
+            </div>
+        </div>
+    </div>
+    <!--datu -->
+    <div class="w">
+    	<img src="img/datu.png" />
+    </div>
+    <!--yifu -->
+    <div class="yifu w clearfix">
+    	<div class="yifu_hd clearfix">
+        	<h3 class="fl">衣服</h3>
+            <p class="fl">今日上新 <span>4667</span> 件</p>
+        	<a href="#" class="fr">查看所有衣服&gt;</a>
+        </div>
+        <div class="yifu_left fl">
+        	<ul class="yifu_leftup clearfix">
+            	<li>
+                	<a href="#">
+                    	<img src="img/yifu2.png">
+                   		<span>清新甜美套装</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu3.png">
+                   		<span>可爱雪绒</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu4.png">
+                   		<span>夏日长裙显高显瘦</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu3.png">
+                   		<span>可爱雪绒</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu4.png">
+                   		<span>夏日长裙显高显瘦</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu2.png">
+                   		<span>清新甜美套装</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu3.png">
+                   		<span>可爱雪绒</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu4.png">
+                   		<span>夏日长裙显高显瘦</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu3.png">
+                   		<span>可爱雪绒</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu4.png">
+                   		<span>夏日长裙显高显瘦</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="yifu_leftdw clearfix">
+            	<div class="yifu_leftdwsy fl clearfix">
+                	<h3 class="fl">上衣</h3>
+                    <div class="fr link">
+                    	<a href="#">背心</a>
+                        <a href="#">针织衫</a>
+                        <a href="#">打底衫</a>
+                        <a href="#">上杉</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">上杉</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">韩服</a>
+                    </div>
+                </div>
+                <div class="yifu_leftdwsy fl clearfix">
+                	<h3 class="fl">裙子</h3>
+                    <div class="fr link">
+                    	<a href="#">背心</a>
+                        <a href="#">针织衫</a>
+                        <a href="#">打底衫</a>
+                        <a href="#">上杉</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">上杉</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">韩服</a>
+                    </div>
+                </div>
+                <div class="yifu_leftdwsy last fl clearfix">
+                	<h3 class="fl">裤子</h3>
+                    <div class="fr link">
+                    	<a href="#">背心</a>
+                        <a href="#">针织衫</a>
+                        <a href="#">打底衫</a>
+                        <a href="#">上杉</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">上杉</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">韩服</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yifu_right fr clearfix">
+         	<div class="yifu_right_hd clearfix">
+            	<h2 class="fl">最热衣服好店</h2>
+                <a href="#" class="fr">更多好店&gt;</a>
+            </div>  
+            <div class="yifu_right_con ">
+            	<div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright1.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>CarieDo</p>
+                        <p>40件商品/总销量4982</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright2.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>mimius原创复古甜美女装</p>
+                        <p>204件商品/总销量5262</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright3.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>私奔</p>
+                        <p>175件商品/总销量3283</p>
+                    </div>
+            </div> 
+           	    <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright1.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>CarieDo</p>
+                        <p>40件商品/总销量4982</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright2.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>mimius原创复古甜美女装</p>
+                        <p>204件商品/总销量5262</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright3.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>私奔</p>
+                        <p>175件商品/总销量3283</p>
+                    </div>
+            </div> 
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright1.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>CarieDo</p>
+                        <p>40件商品/总销量4982</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright2.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>mimius原创复古甜美女装</p>
+                        <p>204件商品/总销量5262</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 last clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright3.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>私奔</p>
+                        <p>175件商品/总销量3283</p>
+                    </div>
+            </div> 	
+        </div>
+    </div>
+    </div>
+    <!--xiezi -->
+    <div class="xiezi w clearfix">
+    	<div class="xiezi_hd clearfix">
+        	<h3 class="fl">鞋子</h3>
+            <p class="fl">今日上新 <span>5223</span> 件</p>
+        	<a href="#" class="fr">查看所有鞋子&gt;</a>
+        </div>
+        <div class="yifu_left fl">
+        	<ul class="yifu_leftup clearfix">
+            	<li>
+                	<a href="#">
+                    	<img src="img/yifu2.png">
+                   		<span>清新甜美套装</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu3.png">
+                   		<span>可爱雪绒</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu4.png">
+                   		<span>夏日长裙显高显瘦</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu3.png">
+                   		<span>可爱雪绒</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu4.png">
+                   		<span>夏日长裙显高显瘦</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu2.png">
+                   		<span>清新甜美套装</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu3.png">
+                   		<span>可爱雪绒</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu4.png">
+                   		<span>夏日长裙显高显瘦</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu3.png">
+                   		<span>可爱雪绒</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu4.png">
+                   		<span>夏日长裙显高显瘦</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="yifu_leftdw clearfix">
+            	<div class="yifu_leftdwsy fl clearfix">
+                	<h3 class="fl">上衣</h3>
+                    <div class="fr link">
+                    	<a href="#">背心</a>
+                        <a href="#">针织衫</a>
+                        <a href="#">打底衫</a>
+                        <a href="#">上杉</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">上杉</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">韩服</a>
+                    </div>
+                </div>
+                <div class="yifu_leftdwsy fl clearfix">
+                	<h3 class="fl">裙子</h3>
+                    <div class="fr link">
+                    	<a href="#">背心</a>
+                        <a href="#">针织衫</a>
+                        <a href="#">打底衫</a>
+                        <a href="#">上杉</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">上杉</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">韩服</a>
+                    </div>
+                </div>
+                <div class="yifu_leftdwsy last fl clearfix">
+                	<h3 class="fl">裤子</h3>
+                    <div class="fr link">
+                    	<a href="#">背心</a>
+                        <a href="#">针织衫</a>
+                        <a href="#">打底衫</a>
+                        <a href="#">上杉</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">上杉</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">韩服</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yifu_right fr clearfix">
+         	<div class="yifu_right_hd clearfix">
+            	<h2 class="fl">最热衣服好店</h2>
+                <a href="#" class="fr">更多好店&gt;</a>
+            </div>  
+            <div class="yifu_right_con ">
+            	<div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright1.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>CarieDo</p>
+                        <p>40件商品/总销量4982</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright2.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>mimius原创复古甜美女装</p>
+                        <p>204件商品/总销量5262</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright3.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>私奔</p>
+                        <p>175件商品/总销量3283</p>
+                    </div>
+            </div> 
+           	    <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright1.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>CarieDo</p>
+                        <p>40件商品/总销量4982</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright2.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>mimius原创复古甜美女装</p>
+                        <p>204件商品/总销量5262</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright3.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>私奔</p>
+                        <p>175件商品/总销量3283</p>
+                    </div>
+            </div> 
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright1.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>CarieDo</p>
+                        <p>40件商品/总销量4982</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright2.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>mimius原创复古甜美女装</p>
+                        <p>204件商品/总销量5262</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 last clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright3.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>私奔</p>
+                        <p>175件商品/总销量3283</p>
+                    </div>
+            </div> 	
+        </div>
+    </div>
+    </div>
+    <!--baobao -->
+    <div class="baobao w clearfix">
+    	<div class="baobao_hd clearfix">
+        	<h3 class="fl">包包</h3>
+            <p class="fl">今日上新 <span>1457</span> 件</p>
+        	<a href="#" class="fr">查看所有包包&gt;</a>
+        </div>
+        <div class="yifu_left fl">
+        	<ul class="yifu_leftup clearfix">
+            	<li>
+                	<a href="#">
+                    	<img src="img/yifu2.png">
+                   		<span>清新甜美套装</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu3.png">
+                   		<span>可爱雪绒</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu4.png">
+                   		<span>夏日长裙显高显瘦</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu3.png">
+                   		<span>可爱雪绒</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu4.png">
+                   		<span>夏日长裙显高显瘦</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu2.png">
+                   		<span>清新甜美套装</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu3.png">
+                   		<span>可爱雪绒</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu4.png">
+                   		<span>夏日长裙显高显瘦</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu3.png">
+                   		<span>可爱雪绒</span>
+                    </a>
+                </li>
+                <li>
+                	<a href="#">
+                    	<img src="img/yifu4.png">
+                   		<span>夏日长裙显高显瘦</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="yifu_leftdw clearfix">
+            	<div class="yifu_leftdwsy fl clearfix">
+                	<h3 class="fl">上衣</h3>
+                    <div class="fr link">
+                    	<a href="#">背心</a>
+                        <a href="#">针织衫</a>
+                        <a href="#">打底衫</a>
+                        <a href="#">上杉</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">上杉</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">韩服</a>
+                    </div>
+                </div>
+                <div class="yifu_leftdwsy fl clearfix">
+                	<h3 class="fl">裙子</h3>
+                    <div class="fr link">
+                    	<a href="#">背心</a>
+                        <a href="#">针织衫</a>
+                        <a href="#">打底衫</a>
+                        <a href="#">上杉</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">上杉</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">韩服</a>
+                    </div>
+                </div>
+                <div class="yifu_leftdwsy last fl clearfix">
+                	<h3 class="fl">裤子</h3>
+                    <div class="fr link">
+                    	<a href="#">背心</a>
+                        <a href="#">针织衫</a>
+                        <a href="#">打底衫</a>
+                        <a href="#">上杉</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">上杉</a>
+                        <a href="#">卫衣</a>
+                        <a href="#">情侣装</a>
+                        <a href="#">韩服</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yifu_right fr clearfix">
+         	<div class="yifu_right_hd clearfix">
+            	<h2 class="fl">最热衣服好店</h2>
+                <a href="#" class="fr">更多好店&gt;</a>
+            </div>  
+            <div class="yifu_right_con ">
+            	<div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright1.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>CarieDo</p>
+                        <p>40件商品/总销量4982</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright2.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>mimius原创复古甜美女装</p>
+                        <p>204件商品/总销量5262</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright3.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>私奔</p>
+                        <p>175件商品/总销量3283</p>
+                    </div>
+            </div> 
+           	    <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright1.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>CarieDo</p>
+                        <p>40件商品/总销量4982</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright2.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>mimius原创复古甜美女装</p>
+                        <p>204件商品/总销量5262</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright3.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>私奔</p>
+                        <p>175件商品/总销量3283</p>
+                    </div>
+            </div> 
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright1.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>CarieDo</p>
+                        <p>40件商品/总销量4982</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright2.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>mimius原创复古甜美女装</p>
+                        <p>204件商品/总销量5262</p>
+                    </div>
+                </div>
+                <div class="yifu_right_con2 last clearfix">
+                    <div class="yifu_right_con_left fl">
+                        <img src="img/yifuright3.png" />
+                    </div>
+                    <div class="yifu_right_con_right fl">
+                        <p>私奔</p>
+                        <p>175件商品/总销量3283</p>
+                    </div>
+            </div> 	
+        </div>
+    </div>
+    </div>
+    <!--zazhi -->
+    <div class="zazhi w">
+    	<div class="zazhi_title clearfix">
+        	<h2 class="fl">热门<span>杂志</span></h2>
+            <ul class="clearfix fr">
+            	<li><a href="#">欧美</a></li>
+                <li><a href="#">甜美</a></li>
+                <li><a href="#">复古</a></li>
+                <li><a href="#">个性</a></li>
+                <li><a href="#">日系</a></li>
+                <li><a href="#">其他</a></li>
+                <li class="last1"><a href="#">更多杂志&gt;</a></li>
+            </ul>
+        </div>
+        <ul class="clearfix lianwu">
+        	<li>
+            	<p>小女人有恋物癖</p>
+                <img src="img/zazhi2.png" />
+                <div class="clearfix">
+                	<a href="#" class="left fl">886个分享</a>
+                    <a href="#" class="right fr">去看看</a>
+                </div>
+            </li>
+            <li>
+            	<p>怪异文艺腔</p>
+                <img src="img/zazhi3.png" />
+                <div class="clearfix">
+                	<a href="#" class="left fl">2217个分享</a>
+                    <a href="#" class="right fr">去看看</a>
+                </div>
+            </li>
+            <li>
+            	<p>小女人有恋物癖</p>
+                <img src="img/zazhi2.png" />
+                <div class="clearfix">
+                	<a href="#" class="left fl">886个分享</a>
+                    <a href="#" class="right fr">去看看</a>
+                </div>
+            </li>
+            <li>
+            	<p>怪异文艺腔</p>
+                <img src="img/zazhi3.png" />
+                <div class="clearfix">
+                	<a href="#" class="left fl">2217个分享</a>
+                    <a href="#" class="right fr">去看看</a>
+                </div>
+            </li>
+             <li class="last">
+            	<p>小女人有恋物癖</p>
+                <img src="img/zazhi2.png" />
+                <div class="clearfix">
+                	<a href="#" class="left fl">886个分享</a>
+                    <a href="#" class="right fr">去看看</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--datu -->
+    <div class="datu2 w">
+    	<img src="img/datu.png" />
+    </div>
+    <!--footer-->
+    <div class="footer">
+    	<div class="footer_hd w">
+        	<div class="clearfix">
+            	<ul class="clearfix fl">
+                	<li class="clearfix first">
+                    	<span class="fl"></span>
+                         <div class="fl">
+                        	<h2>400-800-577</h2>
+                            <p class="p1"><a href="#">美丽说客服热线</a></p>
+                            <p class="p2"><a href="#">周一至周日：8:00-22:00</a></p>
+                        </div>
+                    </li>
+                  <li>
+                        	<h2>用户帮助</h2>
+                            <p><a href="#">新手指南</a></p>
+                            <p><a href="#">网站地图</a></p>
+                    <p>意见反馈</p>
+                    </li>
+                    <li>
+                        	<h2>关于我们</h2>
+                            <p><a href="#">关于美丽说</a></p>
+                            <p><a href="#">联系我们</a></p>
+                            <p><a href="#">加入美丽说</a></p>
+                            <p><a href="#">商家入驻</a></p>
+                            <p><a href="#">商家推广</a></p>
+                    </li>
+                    <li class="look">
+                        	<h2>关注我们</h2>
+                            <p class="look1"><a href="#">新浪微博</a></p>
+                            <p class="look2"><a href="#">QQ空间</a></p>
+                            <p class="look3"><a href="#">腾讯微博</a></p>
+                    </li>
+                    <li>
+                        	<h2>美丽说微信服务号</h2>
+                            <img src="img/look5.png" />
+                    </li>
+                        	
+                </ul>
+                <div class="fr user">
+                	<h2>美丽说客户端下载</h2>
+                    <a href="#"><img src="img/look4.png" /></a>
+                </div>
+            </div>
+        </div>
+        <div class="friendlink clearfix w">
+        	<div class="friendlink_l fl clearfix">
+            	<p class="fl">友情链接：</p>
+            	<a href="#">腾讯女性</a>
+                <a href="#">列表网</a>
+                <a href="#">太平洋女性网</a>
+                <a href="#">腾讯女性</a>
+                <a href="#">列表网</a>
+                <a href="#">太平洋女性网</a>
+                <a href="#">腾讯女性</a>
+                <a href="#">列表网</a>
+                <a href="#">太平洋女性网</a>
+            </div>
+            <div class="friendlink_r fr">
+            	<a href="#">更多&gt;&gt;</a>
+            </div>
+        </div>
+        <div class="copy w">
+        	<marquee direction="right">勇士战雷霆1-0勇士战雷霆1-0勇士战雷霆1-0勇士战雷霆1-0</marquee>
+        </div>
+    </div>
+</body>
+</html>

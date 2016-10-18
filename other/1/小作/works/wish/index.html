@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title></title>
+<link rel="stylesheet" href="Css/index.css" />
+<script src="ajax-end.js"></script>
+<script>
+							function rand(m,n){
+								return parseInt(Math.random()*(n-m)+m);
+							}
+							function todou(n){
+								return n<10?'0'+n:''+n;
+							}
+							function getTime(ms){
+								var oDate=new Date(ms*1000);//转为s
+								return oDate.getFullYear()+'-'+todou(oDate.getMonth()+1)+'-'+todou(oDate.getDate())+'-'+todou(oDate.getHours())+':'+todou(oDate.getMinutes())+':'+todou(oDate.getSeconds());
+							}
+			window.onload=function(){
+				var oSend=document.getElementById("send");//我要许愿
+				var oSendForm=document.getElementById("send-form");//许下你的愿望
+				var oMain=document.getElementById("main");  //添加许愿条的盒子
+				var oClose=document.getElementById("close");//许下你的愿望的关闭按钮
+				var oSendBtn=document.getElementById("send-btn");//发布
+				var oUserName=document.getElementById("username");//昵称
+				var oCon=document.getElementById("content");//愿望
+				var oFontnum=document.getElementById("font-num");//计数
+				var timer=null;
+				var count1=0;
+				var url='wish.php';
+				
+				//表情包
+				var oPhiz = document.getElementById('phiz');
+				var aPhiz = oPhiz.children;   //表情包的表情图片
+				var arr = ['抱抱','害羞','花心','挤眼','酷','钱','太开心','偷笑','嘻嘻','抓狂'];
+				var arr2 = ['baobao','haixiu','huaxin','jiyan','ku','qian','taikaixin','touxiao','xixi','zhuakuang'];
+				for(var i=0;i<aPhiz.length;i++){
+					aPhiz[i].onclick=function(){
+						oCon.value+='['+this.alt+']';  //向愿望输入框输入点击表情包对应的'['+this.alt+']'
+						oCon.value.length+=1;   //点击之后oCon.value.length减1
+						oFontnum.innerHTML=50-oCon.value.length;
+					};
+				}
+				
+				
+				//我要许愿点击事件
+				oSend.onclick=function(){
+					oSendForm.style.display='block';
+					oSendForm.style.left='50%';
+					oSendForm.style.marginLeft=-oSendForm.offsetWidth/2+'px';
+				};
+				
+				//我要许愿关闭事件
+				oClose.onclick=function(){
+					oCon.disabled=false;
+					oSendForm.style.display='none';
+					oFontnum.innerHTML=50;
+					oUserName.value='';  //点击关闭按钮后清空输入框
+					oCon.value='';
+				};
+				
+				//1.点击发布一条许愿
+				oSendBtn.onclick=click;
+				function click(){
+					oMain.innerHTML='';//先清空oMain的内容,再读出所有的许愿墙的照片
+					ajax({
+						url:url,
+						data:{
+							act:'add',
+							username:oUserName.value,
+							content:oCon.value
+						},
+						success:function(str){
+							var json=eval('('+str+')');
+							if(!json.error){   //如果发布成功
+								alert(json.msg);  //提示发布的信息
+								getWish();//每点击一次都要读出所有的许愿墙的照片,这样就把新添加的显示了
+								oSendForm.style.display='none';
+								oFontnum.innerHTML=50;
+							}
+						}
+					});
+					oUserName.value='';  //点击发布按钮后清空输入框
+					oCon.value='';
+				};
+				
+				//回车控制：
+				oCon.onkeydown=function(ev){
+					var e=ev||event;
+					if(e.keyCode==13){
+						click();
+					}
+				};
+				
+				//2.创建许愿单
+				function createWish(id,username,content,time){
+					for(var i=0;i<arr.length;i++){   //把愿望输入框里的表情转为图片发布
+						if(content.indexOf('['+arr[i]+']')!=-1){
+							content=content.replace('['+arr[i]+']','<img src="./Images/phiz/'+arr2[i]+'.gif" alt="'+arr[i]+'" />');
+							i--;  //用于再次查找content里面是否还有'['+arr[i]+']'
+						}
+					}
+					var oDl=document.createElement('dl');
+					oDl.className='paper a'+rand(1,6);//许愿单有5种样式,随机选择
+					var str='<dt>'+
+					            '<span class="username">'+username+'</span>'+
+					            '<span class="num">No.'+id+'</span>'+
+					        '</dt>'+
+					        '<dd class="content">'+content+'</dd>'+
+					        '<dd class="bottom">'+
+					            '<span class="time">'+getTime(time)+'</span>'+
+					            '<a href="javascript:;" class="close"></a>'+
+						        '</dd>';
+					oDl.innerHTML=str;
+					
+					//删除
+					var oDel=oDl.getElementsByTagName('a')[0];
+					oDel.onclick=function(){
+						var result=confirm('亲,确定要删除吗?');
+						if(result){
+							ajax({
+								url:url,
+								data:{
+									act:'delete',
+									id:id
+								},
+								success:function(str){
+									var json=eval('('+str+')');
+									if(!json.error){
+										alert(json.msg);
+										oMain.removeChild(oDl)
+									}
+								}
+						});
+						}
+					};
+					
+					
+					
+					//拖拽
+					oDl.onmousedown=function(ev){
+						var e=ev||event;
+						var disX=e.clientX-oDl.offsetLeft;
+						var disY=e.clientY-oDl.offsetTop;
+						this.style.zIndex=count1++;
+						document.onmousemove=function(ev){
+							var e=ev||event;
+							var l=e.clientX-disX;
+							var t=e.clientY-disY;
+							if(l<=50){
+								l=0;
+							}else if(l>=document.documentElement.clientWidth-oDl.offsetWidth){
+								l=document.documentElement.clientWidth-oDl.offsetWidth;
+							}
+							if(t<=50){
+								t=0;
+							}else if(t>=document.documentElement.clientHeight-oDl.offsetHeight-126){
+								t=document.documentElement.clientHeight-oDl.offsetHeight-126;
+							}
+							oDl.style.left=l+'px';
+							oDl.style.top=t+'px';
+						};
+						document.onmouseup=function(){
+							document.onmousemove=null;
+							document.onmouseup=null;
+							oDl.releaseCapture&&oDl.releaseCapture();
+						};
+						oDl.setCapture&&oDl.setCapture();
+						return false;
+					};
+					
+					return oDl;  //一定要有返回值,getWish中用
+				}
+				
+				//3.读出所有的许愿墙的照片
+				function getWish(){
+					ajax({
+						url:url,
+						data:{act:'get'},
+						success:function(str){
+							var json=eval('('+str+')');
+							var arr=json.msg;    //msg:[{'id':1, 'username':'xxx', 'content':'xxx'，time:''}
+							for(var i=0;i<arr.length;i++){
+								var oDl=createWish(arr[i].id,arr[i].username,arr[i].content,arr[i].time);
+								oMain.appendChild(oDl);
+								var maxL=document.documentElement.clientWidth-oDl.offsetWidth;
+								var maxT=document.documentElement.clientHeight-oDl.offsetHeight-126;//减去上面一部分的高度
+								oDl.style.left=rand(0,maxL)+'px';
+								oDl.style.top=rand(0,maxT)+'px';
+							}
+						}
+					});
+				}
+				getWish();//必须要执行一遍
+				
+				//计数
+					function count(){
+						 if(window.navigator.userAgent.indexOf('MSIE 9.0')!=-1){
+				 			oCon.onfocus=function(){//文本框聚焦时开启定时器,每100ms统计一下文本框的值；
+					 			clearInterval(timer);
+					 			timer=setInterval(function(){
+					 				oFontnum.innerHTML=50-oCon.value.length;
+					 				},100);
+					 			}
+					 			oCon.onblur=function(){
+					 				clearInterval(timer);
+				 			}
+				 		}else{
+				 			oCon.onpropertychange=oCon.oninput=function(){//oninput不兼容IE8--;onpropertychange不兼容ie9和ie11;
+				 				oFontnum.innerHTML=50-oCon.value.length;
+				 				if(parseInt(oFontnum.innerHTML)<=0){
+				 					alert('只能输入50字');
+				 					oCon.disabled=true;
+				 				};
+						 		}
+						 	}
+					}
+					count();
+					
+					
+			};
+</script>
+</head>
+<body>
+<div id='top'>
+    <span id='send'></span>
+</div>
+<div id='main'>
+    <!--<dl class='paper a1'>
+        <dt>
+            <span class='username'>智能社发的萨芬啊</span>
+            <span class='num'>No.00001</span>
+        </dt>
+        <dd class='content'>欢迎来到智能社</dd>
+        <dd class='bottom'>
+            <span class='time'>今天08:30</span>
+            <a href="" class='close'></a>
+        </dd>
+    </dl>-->
+</div>
+
+<div id='send-form'>
+    <p class='title'><span>许下你的愿望</span><a href="javascript:;" id='close'></a></p>
+    <form action="" name='wish'>
+        <p>
+            <label for="username">昵称：</label>
+            <input type="text" name='username' id='username'/>
+        </p>
+        <p>
+            <label for="content">愿望：(您还可以输入&nbsp;<span id='font-num'>50</span>&nbsp;个字)</label>
+            <textarea name="content" id='content'></textarea>
+            <div id='phiz'>
+                <img src="./Images/phiz/zhuakuang.gif" alt="抓狂" />
+                <img src="./Images/phiz/baobao.gif" alt="抱抱" />
+                <img src="./Images/phiz/haixiu.gif" alt="害羞" />
+                <img src="./Images/phiz/ku.gif" alt="酷" />
+                <img src="./Images/phiz/xixi.gif" alt="嘻嘻" />
+                <img src="./Images/phiz/taikaixin.gif" alt="太开心" />
+                <img src="./Images/phiz/touxiao.gif" alt="偷笑" />
+                <img src="./Images/phiz/qian.gif" alt="钱" />
+                <img src="./Images/phiz/huaxin.gif" alt="花心" />
+                <img src="./Images/phiz/jiyan.gif" alt="挤眼" />
+            </div>
+        </p>
+        <span id='send-btn'></span>
+    </form>
+</div>
+<!--[if IE 6]>
+<script type="text/javascript" src="./Js/iepng.js"></script>
+<script type="text/javascript">
+    DD_belatedPNG.fix('#send,#close,.close','background');
+</script>
+<![endif]-->
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+				list-style:none;
+				outline: none;
+			}
+			body{
+				overflow: hidden;
+			}
+			#wrap{
+				width:100%;
+				height:650px;
+				position: relative;
+			}
+			#wrap img{
+				width:100%;
+				height:650px;
+			}
+			#box{
+				width:400px;
+				height:400px;
+				position: absolute;
+				top:0;
+				bottom:0;
+				right:0;
+				left:0;
+				margin:auto;
+				border-radius:50%;
+				border:1px solid red;
+			}
+			#box li{
+				width:60px;
+				height:60px;
+				position: absolute;
+				left:50%;
+				top:0px;
+				margin-left:-30px;
+				margin-top:-30px;
+				background: green;
+				border-radius:50%;
+			}
+			#name{
+				width:100px;
+				height:100px;
+				line-height:100px;
+				position: absolute;
+				top:0;
+				bottom:0;
+				right:0;
+				left:0;
+				margin:auto;
+				color:#fff;
+				font-size:28px;
+				text-align: center;
+				border-radius: 50%;
+				background: red;}
+			#btn{
+				width:80px;
+				height:60px;
+				line-height:60px;
+				text-align: center;
+				color:#fff;
+				font-size:26px;
+				background:purple;
+				position: absolute;
+				bottom:20px;
+				left:50%;
+				margin-left:-40px;
+				border-radius: 20px;
+				
+			}
+		</style>
+		<script>
+			function rand(n,m){
+				return parseInt(Math.random()*(m-n)+n);
+			}
+			//角度转弧度,n代表角度
+			function d2a(n){
+				return n*Math.PI/180;
+			}
+			//弧度转角度,n代表弧度
+			function a2d(n){
+				return n*180/Math.PI;
+			}
+			window.onload=function(){
+				var oBox=document.getElementById("box");
+				var oName=document.getElementById("name");
+				var oBtn=document.getElementById("btn");
+				//R表示半径,
+				var R=oBox.offsetWidth/2;
+				var N=12;//表示有多少个小球
+				var bOK=true;
+				for(var i=0;i<N;i++){
+					var oLi=document.createElement('li');
+					oBox.appendChild(oLi);
+				}
+				
+				//运动
+				function start(){
+					var aLi=oBox.getElementsByTagName('li');
+					if(bOK){
+						for(var i=0;i<aLi.length;i++){
+							move(aLi[i],i*30);
+							oName.style.background='rgb('+rand(0,256)+','+rand(0,256)+','+rand(0,256)+')';
+						}
+					}else{
+						for(var i=0;i<aLi.length;i++){
+								move(aLi[i],0);
+								oName.style.background='rgb('+rand(0,256)+','+rand(0,256)+','+rand(0,256)+')';
+						}
+					}
+					
+				}
+				
+				//封装的move函数
+				function move(obj,oTarget,fn){
+					var start=obj.left||0;//开始的时候没有obj.left,start=0;
+					var dis=oTarget-start;
+					var count=Math.floor(2000/30);
+					var n=0;
+					clearInterval(obj.timer);
+					obj.timer=setInterval(function(){
+						n++;
+						var cur=start+n/count*dis;
+						var x=R+R*Math.sin(d2a(cur));//利用弧度求距离
+						var y=R-R*Math.cos(d2a(cur));
+						obj.style.left=x+'px';
+						obj.style.top=y+"px";
+						if(n==count){
+							clearInterval(obj.timer);
+							obj.left=cur;//起始位置
+						}
+						
+					},30);
+				}
+				
+				oBtn.onclick=function(){
+					start();
+					bOK=!bOK;
+				};
+				
+				
+				
+			};
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<img src="img/bg.jpg" />
+			<ul id="box">
+			</ul>
+			<div id="name">正面</div>
+			<input type="button"  id="btn" value="换色" />
+		</div>
+	</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<style>
+			#wrap{
+				width:100%;
+				height:100%;
+				position: relative;
+			}
+			#wrap img{
+				width:100%;
+				height:650px;
+			}
+			#box{
+				width:800px;
+				height:500px;
+				position: absolute;
+				left:0px;
+				top:0px;
+				bottom:0px;
+				right:0px;
+				margin:auto;
+				background: #1582BD;
+				overflow: hidden;
+			}
+			#box li{
+				position: absolute;
+			}
+			#box li img{
+				width:160px;
+				height:100px;
+			}
+		</style>
+		<script>
+				function rand(n,m){
+					return parseInt(Math.random()*(m-n)+n);
+				}
+			window.onload=function(){
+				var oBox=document.getElementById("box");
+				var arr=[];
+				var aLi=oBox.getElementsByTagName('li');
+				for(var i=0;i<aLi.length;i++){   //随机分配aLi的位置与层级
+					aLi[i].style.left=rand(0,640)+'px';
+					aLi[i].style.top=rand(0,400)+'px';
+					aLi[i].style.zIndex=rand(1,10);
+				}
+				oBox.onmousedown=function(ev){
+					var e=ev||event;
+					var disX=e.clientX;
+					var disY=e.clientY;
+					for(var i=0;i<aLi.length;i++){  //鼠标按下之后再去获取aLi的位置
+						arr[i]={left:aLi[i].offsetLeft,top:aLi[i].offsetTop,zIndex:rand(1,10)};
+					}
+					document.onmousemove=function(ev){
+						var e=ev||event;
+						var l=e.clientX-disX;
+						var t=e.clientY-disY;
+						for(var i=0;i<aLi.length;i++){
+							aLi[i].style.left=arr[i].left+0.05*l*arr[i].zIndex+'px';
+							aLi[i].style.top=arr[i].top+0.05*t*arr[i].zIndex+'px';
+						}
+					};
+					document.onmouseup=function(){
+						document.onmousemove=null;
+						document.onmouseup=null;
+						oBox.releaseCapture&&oBox.releaseCapture();
+					};
+					oBox.setCapture&&oBox.setCapture();
+					return false;
+				};
+			}
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<img src="img/bg.jpg"/>
+			<ul id="box">
+						<li ><img src="img/1.jpg" /></li>
+						<li ><img src="img/2.jpg" /></li>
+						<li ><img src="img/3.jpg" /></li>
+						<li ><img src="img/4.jpg" /></li>
+						<li ><img src="img/5.jpg" /></li>
+						<li ><img src="img/6.jpg" /></li>
+			</ul>
+		</div>
+	</body>
+</html>

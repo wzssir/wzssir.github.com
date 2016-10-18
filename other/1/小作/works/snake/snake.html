@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<style>
+				*{
+					outline:none;
+				}
+				
+				/*去掉页面滚动条*/
+				body{
+					overflow: hidden;
+				}
+				#wrap{
+					width:100%;
+					height:650px;
+					position: relative;
+				}
+				#start{
+					width:600px;
+					height:500px;
+					position: absolute;
+					top:0;
+					bottom:0;
+					left:0;
+					right:0;
+					margin:auto;
+					background: black;
+					opacity:1;
+					filter:alpha(opacity:100);
+					z-index:99;
+				}
+				#guan{
+					width:500px;
+					height:50px;
+					position: absolute;
+					top:150px;
+					left:80px;
+				}
+				#guan input{
+					width:100px;
+					height:50px;
+					color:#fff;
+					font-weight:bold;
+					float:left;
+					font-size:22px;
+					background: #ccc;
+					border-radius:10px;
+					margin-right:20px;
+				}
+				#guan #click{
+					width:100px;
+					height:100px;
+					line-height:100px;
+					text-align: center;
+					color:#fff;
+					font-weight:bold;
+					float:left;
+					font-size:40px;
+					background: red;
+					border-radius:50%;
+					position: absolute;
+					top:150px;
+					left:50%;
+					margin-left:-70px;
+				}
+				#box{
+					width:600px;
+					height:500px;
+					position: absolute;
+					top:0;
+					bottom:0;
+					left:0;
+					right:0;
+					margin:auto;
+					background: #999;
+					opacity:0;
+					filter:alpha(opacity:0);
+				}
+				#box #ul{
+					position: absolute;
+					width:600px;
+					height:500px;
+				}
+				#box .snake{
+					position: absolute;
+					background: green;
+					width:20px;
+					height:20px;
+					border-radius:50%;
+				}
+		</style>
+		<script src="move.js"></script>
+		<script>
+				function rand(n,m){
+					return parseInt(Math.random()*(m-n)+n);
+				}
+			window.onload=function(){
+				var oBox=document.getElementById("box");//有蛇运动的大盒子
+				var oUl=document.getElementById("ul");//蛇的父级
+				var oStart=document.getElementById("start");//设置关卡的盒子
+				var oClick=document.getElementById("click");//开始按钮
+				var oGu=document.getElementById("guan");//oStart的直接子集
+				var aInput=oGu.getElementsByTagName('input');//设置关卡的按钮
+				var arr=[];//用于存放aLi的位置
+				var timer=null;
+				var num=0;//得分score
+				var speed=0;//控制蛇的运动时间,也就是速度
+				var bOK=false;//用于判断是否设置关卡
+				for(var i=0;i<aInput.length;i++){
+					aInput[i].index=i;
+					aInput[i].onclick=function(){  //设置关卡
+						bOK=true;
+						for(var i=0;i<aInput.length;i++){
+							aInput[i].style.background='#ccc';
+						}
+						this.style.background='purple';
+						speed=(aInput.length-this.index)*200;//每一关卡对应蛇运动速度
+					};
+				}
+				oClick.onclick=function(){
+					if(bOK){//关卡设置后要做的事
+						move(oStart,{opacity:0},{time:500,easing:'ease-out'});
+						move(oBox,{opacity:1},{time:500,easing:'ease-out'});
+						snake();
+					}else{
+						alert("亲,还没有设置关卡!!!");
+					}
+				};
+			
+			function snake(){
+						//获取蛇身体的位置
+				function getPosition(){
+					var aLi=oUl.children;
+					var arr=[];
+					for(var i=0;i<aLi.length;i++){
+						arr[i]={
+							left:aLi[i].offsetLeft,
+							top:aLi[i].offsetTop
+						}
+					}
+					return arr;
+				}
+				
+				//创建一个头部
+				function preCreate(){
+					var oLi=document.createElement('li');
+					oLi.className='snake';
+					oLi.style.left=parseInt(rand(4,28))*20+'px';//上下左右都要留有余地,不然开始就结束
+					oLi.style.top=parseInt(rand(2,23))*20+'px';
+					oLi.style.background='red';
+					oUl.appendChild(oLi);
+				}
+				preCreate();
+				
+				//创建三个身体
+				function create(){
+					var aLi=oUl.children;
+					var pos=getPosition();//每创建一次都要重新获取位置
+					var oLi=document.createElement('li');
+					oLi.className='snake';
+					oLi.style.left=pos[aLi.length-1].left-20+'px';//最初创建的top相同,left相差20px
+					oLi.style.top=pos[aLi.length-1].top+'px';
+					oUl.appendChild(oLi);
+				}
+				for(var i=0;i<3;i++){
+					create();
+				}
+				
+				//食物
+				function createNew(){
+					var oEm=document.createElement('em');
+					oEm.className='snake';
+					oEm.style.left=parseInt(rand(2,28))*20+'px';
+					oEm.style.top=parseInt(rand(2,23))*20+'px';
+					oEm.style.background='red';
+					oBox.appendChild(oEm);
+				}
+				createNew();
+				
+				
+				//蛇的运动,l是控制左右一次走多少,t是控制上下一次走多少,time是时间
+				function moveX(l,t,time){
+					var aLi=oUl.children;
+					var oEm=oBox.getElementsByTagName('em')[0];
+					clearInterval(timer);
+					timer=setInterval(function(){
+						var pos=getPosition();
+						for (var i = aLi.length - 1; i > 0; i--) { //后面的跟着前面的走
+                        aLi[i].style.left=pos[i-1].left+'px';
+                        aLi[i].style.top=pos[i-1].top+'px';
+                  }
+						aLi[0].style.left=pos[0].left+l+'px';//第0个才是我们真正控制运动的
+						aLi[0].style.top=pos[0].top+t+'px';
+						//蛇吃食物
+						if(pos[0].left==oEm.offsetLeft&&pos[0].top==oEm.offsetTop){
+							num+=10;
+							oBox.removeChild(oEm);
+							create();//吃完食物身体要增加一个
+							createNew();//吃完食物要重新创建食物
+						}
+						
+						//游戏结束之后
+						function gameOver(){
+							var oEm=oBox.getElementsByTagName('em')[0];
+							clearInterval(timer);
+							alert('Game over,您的分数是:'+num+'');
+							var result=confirm('是否重新开始');
+							if(result){
+								move(oStart,{opacity:1},{time:500,easing:'ease-out'});
+								move(oBox,{opacity:0},{time:500,easing:'ease-out'});
+								oUl.innerHTML='';//游戏结束后清空蛇
+								oBox.removeChild(oEm);//同时移出食物
+							}
+						}
+						
+							//游戏结束的条件一:碰到边界---有问题
+							if(aLi[0].offsetLeft<10||aLi[0].offsetLeft>560||aLi[0].offsetTop<10||aLi[0].offsetTop>460){
+								gameOver();
+							}
+							//游戏结束的条件二:碰撞自己的身体
+							for(var i=1;i<aLi.length;i++){  //i从1开始
+								if(pos[0].left==pos[i].left&&pos[0].top==pos[i].top){
+									gameOver();
+								}
+							}
+						
+						},time);
+					}
+						moveX(20,0,speed);
+				
+				
+				
+				
+				
+				//键盘控制蛇的运动
+				function go(){
+					var bDown=true;//控制上下左右不能冲突
+					var bLeft=true;
+					document.onkeydown=function(ev){
+					var e=ev||event;
+					var aLi=oUl.children;
+					var pos=getPosition();
+					switch(e.keyCode){
+							case 37:
+									if(bLeft){
+										moveX(-20,0,speed);
+										bLeft=false;  //按下向左的键之后就不能向右走,但是可以上下走
+										bDown=true;
+									}
+									break;
+							case 39:
+									if(bLeft){
+										moveX(20,0,speed);
+										bLeft=false;
+										bDown=true;
+									}
+									break;		
+							case 38:
+									if(bDown){
+										moveX(0,-20,speed);
+										bDown=false;
+										bLeft=true;
+									}
+									break;
+							case 40:
+									if(bDown){
+											moveX(0,20,speed);
+											bDown=false;
+											bLeft=true;
+									}
+									break;	
+							case 32:
+							clearInterval(timer);
+						}	
+					}
+				}
+				go();
+				}
+				
+				
+			};
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+				<div id="start" class="clearfix">
+						<div id="guan">
+							<input type="button" value="第一关" />
+							<input type="button" value="第二关" />
+							<input type="button" value="第三关" />
+							<input type="button" value="第四关" />
+							<div id="click">GO</div>
+						</div>
+				</div>
+				<div id="box">
+					<ul id="ul"></ul>
+				</div>
+		</div>
+	</body>
+</html>

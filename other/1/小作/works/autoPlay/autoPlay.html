@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<style>
+			#wrap{
+				width:100%;
+				height:100%;
+				position: relative;
+			}
+			#wrap img{
+				width:100%;
+				height:650px;
+			}
+			#wrap1{
+				width:600px;
+				height:300px;
+				position: absolute;
+				top:0;
+				bottom:0;
+				right:0;
+				left:0;
+				margin: auto;
+				overflow: hidden;
+			}
+			#box{
+				height:300px;
+				position: absolute;
+				top:0px;
+				left:0px;
+			}
+			#box li{
+				float:left;
+			}
+			#box img{
+				width:600px;
+				height:300px;
+			}
+			#mask{
+				width:280px;
+				height:30px;
+				position: absolute;
+				bottom:10px;
+				left:50%;
+				margin-left:-140px;
+			}
+			#mask li{
+				width:50px;
+				height:30px;
+				margin-right:20px;
+				float:left;
+				background: #999;
+			}
+		#mask	.on{
+				background:green;
+			}
+		</style>
+		<script src="js/move.js"></script>
+		<script>
+			window.onload=function(){
+				var oWrap1=document.getElementById("wrap1");
+				var oBox=document.getElementById("box");
+				var aImg=oBox.getElementsByTagName('img');
+				var oMask=document.getElementById("mask");
+				var aLi=oMask.getElementsByTagName('li');
+				var count=0;
+				var timer=null;
+				oBox.innerHTML+=oBox.innerHTML;
+				oBox.style.width=aImg[0].offsetWidth*aImg.length+'px';
+				//
+					function tab(){
+						for(var i=0;i<aLi.length;i++){
+							aLi[i].className='';
+						}
+						if(count==aLi.length){
+							aLi[0].className='on';
+						}else{aLi[count].className='on';}
+						
+						move(oBox,{left:-aImg[0].offsetWidth*count},{time:500,easing:'ease-out',fn:function(){
+							if(count==aLi.length){
+								count=0;
+								oBox.style.left=0;
+							}
+						}});
+					}
+					//
+					function next(){
+						count++;
+						tab();
+					}
+					clearInterval(timer);
+					timer=setInterval(next,1000);
+					
+					//
+					for(var i=0;i<aLi.length;i++){
+						aLi[i].index=i;
+						aLi[i].onmouseenter=function(){
+							count=this.index;
+							tab();
+						};
+					}
+				
+				//
+				oWrap1.onmouseenter=function(){
+					clearInterval(timer);
+				};
+				oWrap1.onmouseleave=function(){
+					clearInterval(timer);
+					timer=setInterval(next,1000);
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+				<img src="img/bg.jpg" />
+				<div id="wrap1">
+							<ul id="box" class="clearfix">
+								<li><img src="img/1.jpg"  /></li>
+								<li><img src="img/2.jpg"  /></li>
+								<li><img src="img/3.jpg"  /></li>
+								<li><img src="img/4.jpg"  /></li>
+							</ul>
+							<ol id="mask" class="clearfix">
+								<li class="on"></li>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ol>
+				</div>
+		</div>
+	</body>
+</html>

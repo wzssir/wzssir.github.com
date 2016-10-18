@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+				*{
+					margin:0px;
+					padding:0px;
+					outline: none;
+				}
+				#wrap{
+					width:100%;
+					height:650px;
+					position: relative;
+					
+				}
+				#wrap #img{
+					width:100%;
+					height:650px;
+				}
+				#box{
+					width:500px;
+					height:300px;
+					position: absolute;
+					top:120px;
+					left:400px;
+					border:2px solid #666;
+					background: #ccc;
+				}
+				#box div{
+					width:500px;
+					height:40px;
+					font-size:25px;
+					margin-top:20px;
+					margin-left:10px;
+				}
+				#box div input{
+					width:190px;
+					height:40px;
+					font-size:25px;
+					padding-left:10px;
+				}
+				#box	div input.err{
+				border:1px solid #f00;
+				}
+				#box	div input.ok{
+				border:1px solid #0f0;
+				}
+				#box	div  span{
+				color:#f00;
+				font-size:20px;
+				}
+				#submit{
+					width:50px;
+					height:30px;
+					font-size:20px;
+					color:#fff;
+					background: green;
+					position: absolute;
+					bottom:10px;
+					left:10px;
+				}
+				#reset{
+					width:50px;
+					height:30px;
+					font-size:20px;
+					color:#fff;
+					background: green;
+					position: absolute;
+					bottom:10px;
+					right:10px;
+				}
+		</style>
+		<script>
+				window.onload=function(){
+					var oF=document.getElementById("form");
+					var aInput=oF.getElementsByTagName('input');
+					var re={
+						email:/^\w+@[a-z0-9]+(\.[a-z]{2,6}){1,2}$/,
+						phone:/^(0[1-9]\d{1,2}-)?[1-9]\d{6,7}$/,
+						age:/^(1[89]|[2-9]\d|100)$/,
+						name:/^[\u4e00-\u9fa5]{2,6}$/
+					}
+					
+					function check(obj,re){
+						if(obj.value){   //输入框的内容不为空
+							if(re.test(obj.value)){  //检测成功
+								obj.parentNode.children[1].innerHTML='';  //span的内容为空
+								obj.className='ok';
+								return true;  //返回的是true,false，没有阻止默认事件
+							}else{  //检测不成功
+								obj.parentNode.children[1].innerHTML=obj.getAttribute('tip');//span的内容为自定义属性值
+								obj.className='err';
+								return false;
+							}
+							
+						}else{   //输入框的内容为空
+							obj.parentNode.children[1].innerHTML='***内容不能为空***';
+							obj.className='err';
+							return false;
+						}
+					}
+					
+					//表单提交事件
+					oF.onsubmit=function(){
+						var err=true;
+						for(var i=0;i<aInput.length;i++){
+							if(aInput[i].name){   //有name属性的input
+								if(!check(aInput[i],re[aInput[i].name])){
+									err=false; //防止只检测一个
+								}
+							}
+						}
+						return err;
+					};
+					
+					//失焦
+					for(var i=0;i<aInput.length;i++){
+							if(aInput[i].name){
+								aInput[i].onblur=function(){//失焦后检测
+									check(this,re[this.name]);
+								};
+							}
+						}
+					
+					//reset
+					oF.onreset=function(){
+						var t=confirm('亲,确定重置吗?');
+						if(!t){
+							return false;
+						}else{
+							for(var i=0;i<aInput.length;i++){
+								if(aInput[i].name){
+										aInput[i].parentNode.children[1].innerHTML='';
+										aInput[i].className='';
+								}
+							}
+						}
+					};
+				};
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+				<img src="img/bg.jpg" id="img"/>
+				<div id="box">
+						<form action="http://www.baidu.com" id="form">
+							<div>
+									邮箱:<input type="text" name="email" placeholder="邮箱" tip="***输入邮箱有误***"/>
+									<span></span>
+							</div>
+							<div>
+									电话:<input type="text" name="phone" placeholder="电话" tip="***输入电话有误***"/>
+									<span></span>
+							</div>
+							<div>
+									年龄:<input type="text" name="age" placeholder="年龄" tip="***输入年龄有误***"/>
+									<span></span>
+							</div>
+							<div>
+									姓名:<input type="text" name="name" placeholder="姓名" tip="***输入姓名有误***"/>
+									<span></span>
+							</div>
+							<input type="submit" value="提交" id="submit"/>
+							<input type="reset" value="重置" id="reset"/>
+						</form>
+				</div>
+		</div>
+	</body>
+</html>

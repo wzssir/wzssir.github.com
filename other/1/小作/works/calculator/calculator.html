@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<style>
+			#wrap{
+				width:100%;
+				height:600px;
+				position: relative;
+			}
+			#wrap img{
+				width:100%;
+				height:100%;
+			}
+			#box{
+				width:500px;
+				height:440px;
+				border:2px solid #ccc;
+				position:absolute;
+				top:90px;
+				left:500px;
+				background: #357D13;
+			}
+			#box textarea{
+				width:390px;
+				height:60px;
+				position:absolute;
+				left:50px;
+				top:20px;
+				font-size:46px;
+				text-align:right;
+				padding-right:10px;
+			}
+			#con{
+				width:400px;
+				height:300px;
+				position: absolute;
+				bottom:20px;
+				left:50px;
+				border:2px solid #333;
+				background: #ccc;
+			}
+			#con li{
+				float:left;
+				width:80px;
+				height:60px;
+				line-height:60px;
+				margin-left:15px;
+				margin-top:12px;
+				background: #080;
+				border-radius:10px;
+				font-size:40px;
+				color:#fff;
+				text-align: center;
+				opacity:0.6;
+				filter: alpha(opacity:60);
+			}
+		</style>
+		<script src="js/move.js"></script>
+		<script>
+				function cal(num1,num2,opr){
+							var result=0;
+							switch(opr){
+									case '+':
+											result=parseInt(num1)+parseInt(num2);
+											break;
+									case '-':
+											result=num1-num2;
+											break;
+									case '*':
+											result=num1*num2;
+											break;
+									case '/':
+											result=num1/num2;
+											break;
+									default:
+											result=num2;
+							}
+							return result;
+						}
+			window.onload=function(){
+				var oCon=document.getElementById("con");
+				var oTxt=document.getElementById("txt");
+				var aLi=oCon.getElementsByTagName('li');
+				var num1=0;
+				var num2=0;
+				var val='';//用于存储+-*/
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].onclick=function(){
+							var con=this.innerHTML;
+							switch(con){
+									case '+':
+									case '-':
+									case '*':
+									case '/':
+										var re=/\d+/;   //解决parseInt(*2)为NaN的问题
+										var num=oTxt.value.match(re);
+										num1=parseInt(num);
+										oTxt.value=con;
+										val=con;
+										break;
+										
+									case '=':
+											var re=/\d+/;
+											var num=oTxt.value.match(re);
+											num2=num;
+											oTxt.value=cal(num1,num2,val).toFixed(2);
+											break;
+									case 'c':
+											oTxt.value=0;
+											break;
+									default:
+											if(oTxt.value==0){   //解决输入框开始为0的问题
+												oTxt.value=this.innerHTML;
+											}else{
+												oTxt.value+=this.innerHTML;
+											}
+												
+												break;
+							}
+						
+						
+						
+						
+					};
+					
+					aLi[i].onmouseover=function(){
+						move(this,{opacity:1},{time:500,easing:'ease-out'});
+					};
+					aLi[i].onmouseout=function(){
+						move(this,{opacity:0.6},{time:500,easing:'ease-out'});
+					};
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+				<div id="box">
+					<textarea  rows="5" cols="70" id="txt">0</textarea>
+					<ul id="con" class="clearfix">
+						<li>7</li>
+						<li>8</li>
+						<li>9</li>
+						<li>+</li>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+						<li>-</li>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>*</li>
+						<li>0</li>
+						<li>c</li>
+						<li>=</li>
+						<li>/</li>
+					</ul>
+				</div>
+		</div>
+	</body>
+</html>

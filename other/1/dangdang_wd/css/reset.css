@@ -1,0 +1,45 @@
+/* reset */
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+q:before,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,strong,b{font-weight:bold;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,\5b8b\4f53;color:#333;outline:0;}
+var,strong,em,i,s,b{list-style:none;font-style:normal;}
+
+html,body{width:100%;height:100%;}
+body{font-size:12px;font-family:'微软雅黑' Microsoft YaHei;color:#000;-webkit-user-select: none;margin:0 auto;max-width:640px;}
+a{color:#007ebf;}
+
+/*清浮动*/
+.fix{zoom:1;}
+.fix:before,.fix:after{content:'';display:block;overflow:hidden;visibility:hidden;font-size:0;line-height:0;width:0;height:0;}
+.fix:after{clear:both;}
+/* 隐藏 */
+.c_hide{display:none;}
+/*loading*/
+#loading{position:absolute;top:0;left:0;width:100%;height:100%;font-size:48px;text-align:center;color:#1998cd;z-index:999;background:#000;}
+#loading>div{position:absolute;width:100%;top:46%;}
+/*横屏设置*/
+.orientation_set{display:none;}
+@media screen and (orientation:landscape){
+	.wrap{display:none !important;}
+	.orientation_set{display:block; position:fixed;top:0;left:0; width:100%;height:100%; background:#2b4372; text-align:center;color:#fff;/*  display: -webkit-box; -weibit-box-pack: center; -webkit-box-align: center; */ z-index:1002; font-size:30px; line-height: 200px;}
+	.orientation_set > div{width:100%;}
+}
+/* 提示弹窗样式 */
+.mask{position:fixed;left:0;top:0;width:100%;height:100%;z-index:1000;display:none;background:rgba(0,0,0,0.8);}
+.message{position:absolute;max-width:80%;text-align:center;line-height:102px;left:50%;top:50%;width:543px;height:102px;z-index:1001;font-size:36px;background:#e7242e;border-radius:17px;color:#fff; -webkit-transform: translate(-50%,-50%);-moz-transform: translate(-50%,-50%);-ms-transform: translate(-50%,-50%);transform: translate(-50%,-50%);text-align:center;padding:0 10px;}
+

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport"content="width=640,minimal-ui, target-densitydpi=device-dpi,maximum-scale=2.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>当当网求职问答</title>
+	<link href="css/reset.css" rel="stylesheet">
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script src="js/loading_css.js"></script>
+	<script src="js/loading_img.js"></script>
+	<script type="text/javascript" src="js/radar.js"></script>
+	<script type="text/javascript">
+		loadingCss('css/index.css',function(){
+			$(document.body).show();
+		});
+		var items=[];
+	</script>
+</head>
+<body class='c_hide'>
+<div id="loading">
+	<div>
+		<p>正在加载中...<var id="loadingNum">0</var>%</p>
+	</div>
+</div>
+<div id='startPage' class='c_hide step'>
+	<div class='one_logo'></div>
+	<pre class='message_point'>每天最精彩的8小时献给工作，
+人生中最精华的青春交付职业，
+那么，
+你现在做的，
+是你最爱的工作吗？</pre>
+	<a href='javascript:;' id='enterBtn' class='btn'>快来查收你的最新offer吧！</a>
+</div>
+<div id='wrap' class='c_hide step'>
+	<div class='step1'>
+		<div class='two_logo'><p class='logoText'>当当携智联求贤ing </p></div>
+		<div class='content'>
+			<h3>您的目标行业是哪个呢？</h3>
+			<ul>
+				<li func='A' class='active'>A.仓储管理</li>
+				<li func='B'>B.技术应用</li>
+				<li func='C'>C.市场及运营</li>
+				<li func='D'>D.财务管理</li>
+				<li func='E'>E.行政管理</li>
+				<li func='F'>F.产品招商</li>
+			</ul>
+		</div>
+		<a href='javascript:;' class='btn' id='selectBtn'>继续</a>
+		<div class='gifImg'></div>
+	</div>
+	<div class='step2 c_hide'>
+		<div class='two_logo'><p class='logoText'>当当携智联求贤ing </p></div>
+		<div class='content'>
+			<h3>您的目标职位是哪个呢？</h3>
+			<ul>
+				<li class='active'>仓储班组长</li>
+				<li>仓储主管</li>
+				<li>仓库经理</li>
+			</ul>
+		</div>
+		<a href='javascript:;' class='btn' id='nextSBtn'>继续</a>
+		<div class='gifImg'></div>
+	</div>
+	<div class='step3 c_hide' id='askQuestion'>
+		<div class='two_logo'><p class='logoText'>当当携智联求贤ing </p></div>
+		<div class='content'>
+			<h3 type=''>请答题</h3>
+			<ul>
+				<li score='3'></li>
+				<li score='2'></li>
+				<li score='1'></li>
+			</ul>
+		</div>
+		<a href='javascript:;' class='btn' id='nextQBtn'>继续</a>
+		<div class='gifImg'></div>
+	</div>
+	<div class='step4 c_hide' id='share'>
+		<div class='share_bg'></div>
+		<span class='share_top'></span>
+		<span class='share_bottom'></span>
+	</div>
+	<div class='step5 c_hide' id='reault'>
+		<div class='two_logo'><p class='logoText'>当当携智联求贤ing </p></div>
+		<div class='content'>
+			<h3>您的测试结果：</h3>
+			<div>
+				<canvas width="650" height="480" id="sample"></canvas>
+			</div>
+		</div>
+		<a href='javascript:;' class='btn' id='resuleBtn' onclick='window.location.reload();'>点击获得更多适合你的职位哦！<span></span></a>
+		<div class='gifImg'></div>
+	</div>
+</div>
+<!-- 请将屏幕竖向浏览：start -->
+<div class="orientation_set"><div>请将屏幕竖向浏览</div></div>
+<!-- 请将屏幕竖向浏览：end -->
+<div class='mask'><div class='message'></div></div>
+<script type="text/javascript">
+$(document.body).show();
+var device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
+var clickEvtName = device ? 'tap' : 'click';
+var timer = null;
+function showDtail(str, status){
+   clearTimeout(timer);
+   $('.message').html(str);
+   $('.mask').show();
+   if(!status){
+       timer = setTimeout(function(){
+           $('.mask').hide();
+       },2000);
+   }
+}
+</script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/share.js"></script>
+</body>
+</html>
