@@ -5,23 +5,23 @@
  * @copyright 云途明志科技有限公司
  */
 var imgData = [
-	{'url':'http://yunxiaoming.qiniudn.com/img/bg.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/bg_top.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item1_1.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item1_2.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item1_3.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item2_1.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item2_bg.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item3_1.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item4_1.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item5_1.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item5_bg.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item6_1.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item6_dashed.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item7_1.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item7_crack1.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item7_crack2.png'},
-	{'url':'http://yunxiaoming.qiniudn.com/img/item7_crack3.png'}
+	{'url':'../img/bg.png'},
+	{'url':'../img/bg_top.png'},
+	{'url':'../img/item1_1.png'},
+	{'url':'../img/item1_2.png'},
+	{'url':'../img/item1_3.png'},
+	{'url':'../img/item2_1.png'},
+	{'url':'../img/item2_bg.png'},
+	{'url':'../img/item3_1.png'},
+	{'url':'../img/item4_1.png'},
+	{'url':'../img/item5_1.png'},
+	{'url':'../img/item5_bg.png'},
+	{'url':'../img/item6_1.png'},
+	{'url':'../img/item6_dashed.png'},
+	{'url':'../img/item7_1.png'},
+	{'url':'../img/item7_crack1.png'},
+	{'url':'../img/item7_crack2.png'},
+	{'url':'../img/item7_crack3.png'}
 ];
 // 读取图片元素
 // setTimeout(function(){
