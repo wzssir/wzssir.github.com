@@ -1,0 +1,123 @@
+@charset "UTF-8";
+body{background-color: #fafafa;}
+#emark_header{background-color: #fff;}
+#emark_header .logo{width:1280px;padding:47px 0 24px;margin:0 auto;}
+#emark_header .logo a{display: inline-block;}
+#emark_header .logo img{display:inline-block;height:42px;}
+/*结构*/
+#emark_wrapper{width:1280px;margin:0 auto;}
+#menu{width:194px;border:1px solid #f9b427;padding:1px;background-color: #fafafa;float:left;} 
+.menu_item{display:block;height:42px;line-height:42px;padding:0 8px;color:#fefefe;font-size:18px;cursor:pointer;background-color:#f9b427;color:#fefefe;border:1px solid #fafafa;}
+.menu_caret{width:10px;height:10px;background:url(../images/menu_bg.png) no-repeat;margin-top:16px;float:right;}
+.active .menu_item .menu_caret{background-position:left bottom;}
+.menu_item_list{padding-left:7px;line-height:32px;font-size:14px;color:#4c4c4c;display:block;}
+.menu_item_list:hover,.menu_item_list.active{color:#f9b427;}
+.menu_item_list.active{display: block;background:url(../images/menu_list_bg.png) no-repeat right center;}
+.menu_ul{display:none;padding:4px 0;}
+/* .active .menu_ul{display: block;} */
+/*公用过渡*/
+#menu_list .menu_item{-webkit-transform: translate3d(0,0,0); -webkit-transition:all .1s ease-in; -moz-transition:all .1s ease-in; -ms-transition:all .1s ease-in; -o-transition:all .1s ease-in; transition:all .1s ease-in;}
+#container{width:1046px;float:right;}
+.myEmark_title{padding-top:14px;height:46px;}
+.e_title_line{width:4px;height:24px;background-color: #f9b427;float:left;margin-top:11px;}
+.e_title_nav{float:left;font-size:24px;color:#4c4c4c;line-height: 32px;margin-top:7px;font-weight: bold;margin-left:6px;}
+.e_title_nav a{color:#005daa;}
+
+.return_back{float:right;width:23px;height:22px;background:url(../images/myEmark_index.png) no-repeat center center;margin-right:17px;margin-top:12px;}
+
+.my_emark_list_box{border:1px solid #e6e6e6;background-color: #fff;padding:19px 19px 110px;}
+.checkTime{width:170px;height:40px;border:1px solid #e6e6e6;color:#4c4c4c;margin-right:26px;background: url(../images/rili_bg.png) no-repeat 135px center #fff;cursor: pointer;padding:8px 40px 8px 17px;}
+.search_key{float:right;position: relative;z-index: 110}
+.checkKey{width:510px;height:40px;border:1px solid #e6e6e6;padding:10px 105px 10px 12px;background-color: #fff;font-size:14px;line-height: 18px;}
+.search_btn{width:100px;height:34px;position: absolute;right:3px;top:3px;font-size: 18px;color:#fff;font-weight: bold;background-color: #f9b427;border-radius: 2px;}
+
+.order_total{line-height:46px;font-size:18px;color:#4c4c4c;font-weight: bold;}
+.order_total em{font-size:24px;color:#055fab;margin-left:8px;}
+
+.my_emark_table{width:100%;text-align: center;}
+.my_emark_table th{font-size:20px;color:#005daa;height:60px;border:1px solid #8dd2ee;background-color: #dff6ff;font-weight: bold;}
+.my_emark_table td{color:#4d4d4d;font-size:16px;border:1px solid #8dd2ee;vertical-align: middle;height:30px;padding:10px;word-break:break-all;word-wrap:break-word;white-space:normal;}
+.my_emark_table .table_btn{padding:0 40px;text-align:center;font-weight: bold;}
+.my_emark_table .table_btn a:hover{text-decoration: underline;}
+.fl{float:left;}
+.fr{float:right;}
+.c_orange{color:#f9b427 !important;}
+.c_red{color:#ff4c4c !important;}
+.c_blue{color:#005daa !important;}
+.fontWeight{font-weight: bold;}
+/* 订单管理 */
+.emark_orderList .order_total{margin-bottom:-6px;}
+.emark_orderList .my_emark_table{margin-top:6px;}
+.emark_orderList .my_emark_table th{height:50px;font-size:16px;}
+.emark_orderList .orderList_tr_title{background-color: #dff6ff;}
+.emark_orderList .orderList_tr_title td{text-align: left;padding:0 8px;height:36px;font-size:18px;color:#333;font-weight: bold;}
+.emark_orderList .orderList_tr_title td i{margin-left:26px;font-weight: normal;font-size:14px;vertical-align: middle;}
+.emark_orderList .orderList_tr_title td em{font-size: 18px;}
+.emark_orderList .my_emark_table .table_btn{padding:10px 10px 24px;}
+.emark_orderList .my_emark_table .table_btn a{display: block;margin:14px auto 0;}
+.emark_orderList .my_emark_table .orderList_tr_empty{height:6px;overflow:hidden;}
+.order_time{display: block;color:#ff4c4c;font-size:14px;}
+.emark_orderList .checkKey{width:417px;padding-right:12px;}
+.not_find{font-size:30px;line-height: 60px;text-align: center;color:#333 ;margin-top:50px;}
+/* 申请人管理 */
+.applicantList .my_emark_search{margin-bottom:-38px;}
+.applicantList .checkKey{width:268px;}
+
+.search_select{margin-top:16px;}
+.search_select_list{float:left;margin-right:60px;}
+.search_select_title{float:left;line-height: 34px;font-weight: bold;font-size: 14px;}
+.search_select .selectContainer{width:122px;font-size: 14px;height:34px;float:left;margin-left:10px;}
+.search_select .selectOption{line-height: 18px;height:34px;padding:7px 18px 7px 5px;float:left;}
+.search_select .selectIcon{right:9px;}
+.search_select .selectContainer ul{top:34px;}
+.search_select .selectContainer ul li{line-height:30px;padding: 0 15px;}
+.search_select .search_btn{position: static;float:right;}
+/* 修改密码 */
+.emark_from{padding-top:28px;}
+.emark_from_list{padding:7px 0;}
+.emark_from_left{width:187px;text-align: right;font-size: 18px;float:left;color:#808080;line-height: 42px;margin-right:50px;position: relative;}
+.emark_from_left_icon{position: absolute;right:0;bottom:-4px;line-height: 18px;font-weight: normal;font-size: 14px;}
+.emark_from_right{margin-left:237px;width:557px;}
+.emark_from .m_star{width:16px;height:42px;}
+.emark_from .c_input{padding:9px 14px 8px;height:42px;}
+.emark_from .m_point{margin-bottom:5px;}
+.emark_from_noHandle{color:#333;font-size: 18px;line-height: 42px;font-weight: bold;}
+.emark_btn_box{padding-top:27px;margin-left:237px;overflow: hidden;}
+.emark_btn{float:left;line-height: 42px;width:140px;text-align: center;color: #fff;font-size: 18px;font-weight: bold;background-color: #f9b427;display: block;border-radius: 20px;}
+.mr52{margin-right:52px;}
+.c_background_red{background-color:#ff4c4c;}
+/* 费用信息 */
+.costInformation .my_emark_list_box{padding-top:30px;padding-left:36px;font-weight: bold;line-height:40px;}
+.cost_total{color:#4c4c4c;font-size:18px;}
+.cost_total em{color:#ff1111;font-size:30px;margin-left:38px;vertical-align: middle;}
+.cost_point{color:#808080;font-size:14px;}
+/* 查看详情 */
+.viewDetails .emark_from_right{width:auto;}
+.view_details_title{border-top:1px solid #dff6ff;position: relative;margin-top:22px;}
+.view_details_title span{position: absolute;left:0;top:-12px;line-height: 24px;font-size:18px;line-height: 24px;color:#005daa;background-color: #fff}
+.viewDetails .emark_from{padding-top:22px;} 
+.emark_type{display: inline-block;text-align: center;width:126px;line-height:26px;border:1px solid #333;vertical-align: middle;}
+.viewDetails .order_time{font-size: 16px;display: inline-block;margin-left:23px;}
+.mt18{margin-top:18px;}
+.emark_upload .emark_from_left{line-height: 50px;}
+.trademark_tab_list{margin-top:12px;}
+/* 失败信息 */
+.mt10{margin-top:10px;}
+.failure .emark_from_right{width:694px;}
+.failure_point{font-size: 18px;line-height: 22px;color:#808080;margin-top:18px;}
+/* 账户信息修改 */
+.send_address{padding-top:10px;}
+.editUserInformation .m_radio{padding:0;}
+/*page*/
+.c_page {clear:both;margin-top:10px;text-align:right;}
+.c_page em{display:inline-block;line-height:22px;width:22px;height:22px;text-align:center;position:relative;top:0;color:#8dd2ee;}
+.c_page a {display: inline-block;line-height:22px;width:22px;height:22px;margin-left:1px;text-align:center;border:1px solid #8dd2ee;background:#fff;border-radius:3px;color:#8dd2ee;}
+.c_page .first,.c_page .last,.c_page .skip{color: #005daa;display:inline-block;height:24px;width:auto;line-height:24px;border:none;font-weight: bold;}
+.c_page .first{margin-right:5px;}
+.c_page .last{margin-left:5px;}
+.c_page a.page_on,.c_page a:hover{background:#e1f6ff;color:#005daa;border-color:#005daa;}
+.c_page .first:hover,.c_page .last:hover,.c_page .skip:hover{background:none;text-decoration: underline;}
+.c_page .c_page_num{width:48px;height:24px;line-height:18px;padding:2px;text-align: center;border:1px solid #8dd2ee;background-color: #fff;margin-left:27px;font-size: 14px;color:#333;}
+.c_page .first i,.c_page .last i,.c_page .skip i{display: inline-block;width:7px;height:100%;background-repeat:no-repeat;background-position:center center;margin-right:6px;vertical-align: top;}
+.page_arrow_left{background-image:url(../images/page_arrow_left.png);margin-right:6px;}
+.page_arrow_right{background-image:url(../images/page_arrow_right.png);margin-left:6px;}

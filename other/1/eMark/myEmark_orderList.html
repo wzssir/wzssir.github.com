@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>My eMark</title>
+	<link href="css/public.css" rel="stylesheet" type="text/css" />
+	<link href="css/myEmark.css" rel="stylesheet" type="text/css" />
+    <link href="js/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="emark_header">
+    <div class='logo'><a href="index.html"><img src="images/logo.png" height="50" class="vm"></a></div>
+</div>
+<div id="wrapper_box" class='emark_orderList fix'>
+    <div id="menu">
+        <ul id="menu_list">
+            <li>
+                <span class="menu_item"></i>My Account<b class="menu_caret"></b></span>
+                <div class='menu_ul'>
+                    <a href="myEmark_userInformation.html" class="menu_item_list">User Information</a>
+                    <a href="myEmark_setPassword.html" class="menu_item_list">Password</a>
+                    <a href="myEmark_applicantList.html" class="menu_item_list">Frequent Applicant</a>
+                    <a href="myEmark_costInformation.html" class="menu_item_list">Payment Information</a>
+                </div>
+            </li>
+            <li>
+                <span class="menu_item"></i>Order Management<b class="menu_caret"></b></span>
+                <div class='menu_ul'>
+                    <a href="myEmark_orderList.html" class="menu_item_list active">Order</a>
+                    <a href="myEmark_draftList.html" class="menu_item_list">Draft</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="container">
+    	<div class='myEmark_title fix'>
+    		<i class='e_title_line'></i>
+    		<!-- <p class='e_title_nav'><a href='javascript:;'>Order</a>>Applicant</p> -->
+    		<p class='e_title_nav'>Order</p>
+    		<div class='my_emark_user'>
+    			<a href='javascript:;' class='my_emark_handle'>
+    				<span>shiqingyushiqingyu@163.com</span>
+    			</a>
+    			<div class='user_ul'>
+    				<a href='myEmark_userInformation.html'>User Information</a>
+                    <a href='javascript:;' class='J_sign_out'>Sign out</a>
+    			</div>
+    		</div>
+			<a href='index.html' class='return_back'></a>
+    	</div>
+        <div class='my_emark_list_box'>
+            <div class='my_emark_search fix'>
+                <form id="formid" method = 'post'  action = 'myEmark_orderList.html' name= "myform">
+                    <input type='text' readonly="readonly" class='c_input checkTime J_startTime' name='form_startTime'/>
+                    <input type='text' readonly="readonly" class='c_input checkTime J_endTime' name='form_endTime'/>
+                    <div class='search_key' style='position:static;'>
+                        <input type='text' class='c_input checkKey' placeholder='Please enter the order number or the name of the applicant' name='form_keyWord'/>
+                    </div>
+                    <div class='search_select'>
+                        <div class='search_select_list'>
+                            <span class='search_select_title'>Order Status</span>
+                            <div class="selectContainer">
+                                <i class='selectIcon'></i>
+                                <span class="selectOption" data-value='0'>All</span>
+                                <input type='hidden' name='form_orderStatus' class='J_select_input'/>
+                                <ul class="selectMenu">
+                                    <li val='0'>All</li>
+                                    <li val='1'>Unpaid</li>
+                                    <li val='2'>Paid</li>
+                                    <li val='3'>Invalid</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class='search_select_list'>
+                            <span class='search_select_title'>Result</span>
+                            <div class="selectContainer">
+                                <i class='selectIcon'></i>
+                                <span class="selectOption" data-value='0'>All</span>
+                                <input type='hidden' name='form_result' class='J_select_input'/>
+                                <ul class="selectMenu">
+                                    <li val='0'>All</li>
+                                    <li val='1'>In progressing</li>
+                                    <li val='2'>Verifying</li>
+                                    <li val='3'>Failed</li>
+                                    <li val='4'>Completed</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class='search_select_list'>
+                            <span class='search_select_title'>Application Form</span>
+                            <div class="selectContainer" style='width:180px;'>
+                                <i class='selectIcon'></i>
+                                <span class="selectOption" data-value='0'>All</span>
+                                <input type='hidden' name='form_applicationForm' class='J_select_input'/>
+                                <ul class="selectMenu">
+                                    <li val='0'>All</li>
+                                    <li val='1'>Single-class application</li>
+                                    <li val='2'>Multi-class application</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class='search_btn'>Search</button>
+                    </div>
+                </form>
+            </div>
+            <!-- 有查找记录 start -->
+            <p class='order_total'>Total<em>12</em></p>
+            <table  cellspacing="0" class="my_emark_table">
+                <thead>
+                    <tr>
+                        <th width='12%'>Trademark</th>
+                        <th width='15%'>Application Form</th>
+                        <th width='11%'>Applicant</th>
+                        <th width="11.5%">Date of Order</th>
+                        <th width='11.5%'>Time of Cost</th>
+                        <th width='13%'>Order Status</th>
+                        <th width='11%'>Result</th>
+                        <th width='13%'>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 列表1 -->
+                    <tr class='orderList_tr_empty'></tr>
+                    <tr class='orderList_tr_title'>
+                        <td colspan="8">2015-05-05<i>Order No.&nbsp;<em>1123123132123</em></i></td>
+                    </tr>
+                    <tr class='J_order_parent' data-id='1'>
+                        <td class='fontWeight'>Reebok</td>
+                        <td>Single-class<br/>application</td>
+                        <td>FRANK</td>
+                        <td>2015-03-05<br/>20:00</td>
+                        <td>2015-03-05<br/>20:00</td>
+                        <td>Unpaid<span class='order_time J_countDown' data='2015/10/29 15:00:00'></span></td>
+                        <td>Waiting</td>
+                        <td class='table_btn fix'>
+                            <a href='myEmark_viewDetails.html' class='c_orange'>Details</a>
+                            <a href='trademark_step6.html' class='c_orange'>Pay</a>
+                            <a href='javascript:;' class='c_red J_order_del'>Delete</a>
+                        </td>
+                    </tr>
+                    <!-- 列表2 -->
+                    <tr class='orderList_tr_empty'></tr>
+                    <tr class='orderList_tr_title'>
+                        <td colspan="8">2015-05-05<i>Order No.&nbsp;<em>1123123132123</em></i></td>
+                    </tr>
+                    <tr data-id='2'>
+                        <td class='fontWeight'>Reebok</td>
+                        <td>Single-class<br/>application</td>
+                        <td>FRANK</td>
+                        <td>2015-03-05<br/>20:00</td>
+                        <td>--</td>
+                        <td>Paid</td>
+                        <td>Verifying</td>
+                        <td class='table_btn fix'>
+                            <a href='myEmark_viewDetails.html' class='c_orange'>Details</a>
+                        </td>
+                    </tr>
+                    <!-- 列表3 -->
+                    <tr class='orderList_tr_empty'></tr>
+                    <tr class='orderList_tr_title'>
+                        <td colspan="8">2015-05-05<i>Order No.&nbsp;<em>1123123132123</em></i></td>
+                    </tr>
+                    <tr data-id='3'>
+                        <td class='fontWeight'>Reebok</td>
+                        <td>Single-class<br/>application</td>
+                        <td>FRANK</td>
+                        <td>2015-03-05<br/>20:00</td>
+                        <td>--</td>
+                        <td>Paid</td>
+                        <td>Failed</td>
+                        <td class='table_btn fix'>
+                            <a href='myEmark_viewDetails.html' class='c_orange'>Details</a>
+                            <a href='myEmark_failure.html' class='c_orange'>Failure reason</a>
+                        </td>
+                    </tr>
+                    <!-- 列表4 -->
+                    <tr class='orderList_tr_empty'></tr>
+                    <tr class='orderList_tr_title'>
+                        <td colspan="8">2015-05-05<i>Order No.&nbsp;<em>1123123132123</em></i></td>
+                    </tr>
+                    <tr data-id='4'>
+                        <td class='fontWeight'>Reebok</td>
+                        <td>Single-class<br/>application</td>
+                        <td>FRANK</td>
+                        <td>2015-03-05<br/>20:00</td>
+                        <td>2015-08-05<br/>20:00</td>
+                        <td>Paid</td>
+                        <td>Completed</td>
+                        <td class='table_btn fix'>
+                            <a href='myEmark_viewDetails.html' class='c_orange'>Details</a>
+                            <a href='javascript:;' class='c_orange'>Download</a>
+                        </td>
+                    </tr>
+                    <!-- 列表5 -->
+                    <tr class='orderList_tr_empty'></tr>
+                    <tr class='orderList_tr_title'>
+                        <td colspan="8">2015-05-05<i>Order No.&nbsp;<em>1123123132123</em></i></td>
+                    </tr>
+                    <tr class='J_order_parent' data-id='5'>
+                        <td class='fontWeight'>Reebok</td>
+                        <td>Single-class<br/>application</td>
+                        <td>FRANK</td>
+                        <td>2015-03-05<br/>20:00</td>
+                        <td>--</td>
+                        <td>Invalid</td>
+                        <td>Waiting</td>
+                        <td class='table_btn fix'>
+                            <a href='myEmark_viewDetails.html' class='c_orange'>Details</a>
+                            <a href='javascript:;' class='c_red J_order_del'>Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- page：start -->
+            <div class="c_page">
+                <a href="javascript:void(0);" class="first" ><i class='page_arrow_left'></i>Previous</a>
+                <a href="javascript:void(0);" class="page_on">1</a>
+                <a href="javascript:void(0);">2</a>
+                <a href="javascript:void(0);">3</a>
+                <a href="javascript:void(0);">4</a>
+                <a href="javascript:void(0);">5</a>
+                <a href="javascript:void(0);">6</a>
+                <em>...</em>
+                <a href="javascript:void(0);">12</a>
+                <a href="javascript:void(0);" class="last">Next<i class='page_arrow_right'></i></a>
+                <input type="text" class="c_input c_page_num">
+                <a href="javascript:void(0);" class="skip">Go<i class='page_arrow_right'></i></a>
+            </div>
+            <!-- page：end-->
+            <!-- 有查找记录 end -->
+            <!-- 未找到相关记录 start -->
+            <p class='not_find'>No matchedrecord.</p>
+            <!-- 未找到相关记录 end -->
+        </div>
+    </div>
+</div>
+<div class='footer'>
+    <div class='footer_link'>
+        <a href='aboutUs.html'>About us</a>
+        <em>/</em>
+        <a href='javascript:;'>Partners</a>
+        <em>/</em>
+        <a href='contactUs.html'>Contact us</a>
+        <em>/</em>
+        <a href='help_page1.html'>Help center</a>
+        <em>/</em>
+        <a href='javascript:;'>Site map</a>                        
+    </div>
+    <p class='footer_point'>Copyright ©2015 eMarkChina IP Services Co., Ltd. All Rights Reserved.</p>
+    <img src='images/footer_bg1.png' class='footer_icon'/>
+    <span class='footer_email'><i>E-mail</i><a href="mailto:info@emarkchina.com">info@emarkchina.com</a></span>
+    <div class='footer_bottom'>
+        <a href='javascript:;' class='footer_bottom1'></a><a href='javascript:;' class='footer_bottom2'></a>
+    </div>
+</div>
+<input type='hidden' value='data.php' class='J_delete_dataUrl'/>
+<script type="text/javascript" src="js/tools/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="js/tools/base.js"></script>
+<script type="text/javascript" src="js/myEmark.js"></script>
+</body>
+</html>

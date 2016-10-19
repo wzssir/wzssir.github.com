@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Sign In</title>
+	<link href="css/public.css" rel="stylesheet" type="text/css" />
+	<link href="css/register.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+	<a href='index.html'><img src='images/logo.png' class='login_logo'/></a>
+</div>
+<div id="wrapper">
+	<div class='login_box'>
+		<h2 class='login_title fix'>
+			<span class='login_title_left'>Sign in</span>
+			<div class='login_title_right'>
+				<a href='register_step1.html'>Create account</a><em>/</em><a href='index.html'>Index</a>
+			</div>
+			<i class='login_title_bg'></i>
+		</h2>
+	</div>
+	<div class='login_from login_page'>
+		<ul class='login_list'>
+			<li class='login_form_li'>
+				<div class='login_from_right'>
+					<input type='text' value='' placeholder='Your E-mail' class='login_input m_email' maxlength="50" />
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<div class='login_from_right'>
+					<input type='password' value='' placeholder='Password' class='login_input m_password' maxlength="30" />
+				</div>
+				<p class='m_point'></p>
+			</li>
+			<li class='login_form_li'>
+				<div class='login_from_right fix'>
+					<div class='idention_img'>
+						<img class='idention_code' src='images/idention_code.jpg' title='change another'/>
+					</div>
+					<div class='idention_input'>
+						<input type='text' value='' placeholder='Verification code' class='login_input m_code' />
+					</div>
+				</div>
+				<p class='m_point'></p>
+			</li>
+		</ul>
+		<button class='login_btn'>Sign in</button>
+		<div class='m_agreement_bottom fix'>
+			<span class='m_square c_switch'><i></i></span>
+			<span class='m_square_text'>Remember me for 14 days.</span>
+			<a href='forgetPassword.html' class='m_login_link'>Forgot Password?</a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/tools/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/tools/base.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
+</body>
+</html>

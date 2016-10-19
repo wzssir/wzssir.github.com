@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Create Account (Step 2)</title>
+	<link href="css/public.css" rel="stylesheet" type="text/css" />
+	<link href="css/register.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+	<a href='index.html'><img src='images/logo.png' class='login_logo'/></a>
+</div>
+<div id="wrapper">
+	<div class='login_box'>
+		<h2 class='login_title fix'>
+			<span class='login_title_left'>Create account</span>
+			<div class='login_title_right'>
+				<a href='login.html'>Sign in</a><em>/</em><a href='index.html'>Index</a>
+			</div>
+			<div class='login_title_box'>
+				<i class='login_title_bg'></i>
+				<i class='login_title_bg2'></i>
+			</div>
+		</h2>
+	</div>
+	<div class='login_from register_step2'>
+		<div class='m_radio fix J_type_radio' style='margin-bottom:24px;'>
+			<div class='m_radio_list'>
+				<span class='m_label checked' data-value='1'>
+					<span class='m_rotate'><i></i></span>
+					<i class='m_label_text'>Individual</i>
+				</span>
+			</div>
+			<div class='m_radio_list'>
+				<span class='m_label' data-value='2'>
+					<span class='m_rotate'><i></i></span>
+					<i class='m_label_text'>Company</i>
+				</span>
+			</div>
+		</div>
+		<ul class='login_list register_list'>
+			<li class='login_form_li'>
+				<span class='login_star'></span>
+				<div class='login_from_right'>
+					<input type='text' value='' placeholder='Name' class='login_input m_name c_toUpper_input' />
+				</div>
+				<p class='m_point'></p>
+			</li>
+			<li class='login_form_li'>
+				<div class='login_from_right'>
+					<input type='text' value='' placeholder='Telephone' class='login_input m_tel' maxlength="20" />
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<div class='login_from_right'>
+					<input type='text' value='' placeholder='Fax' class='login_input m_fax' maxlength="20" />
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<span class='login_star'></span>
+				<div class='login_from_right'>
+					<input type='text' value='' placeholder='Company name' class='login_input m_company c_toUpper_input' maxlength="50" />
+				</div>
+				<p class='m_point'></p>
+			</li>
+		</ul>
+		<p class='register_text'>Office address</p>
+		<ul class='login_list'>
+			<li class='login_form_li'>
+				<span class='login_star'></span>
+				<div class='login_from_right'>
+					<textarea value='' placeholder='House name/number and street,P.O.box, company name,c/o' class='login_input m_street c_toUpper_input' maxlength="200" /></textarea>
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<div class='login_from_right'>
+					<textarea value='' placeholder='Apartment,suite,unit,building,floor,etc.' class='login_input m_floor c_toUpper_input' maxlength="200" /></textarea>
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<span class='login_star'></span>
+				<div class='login_from_right'>
+					<input type='text' value='' placeholder='Town/city' class='login_input m_city c_toUpper_input' maxlength="50" />
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<div class='login_from_right'>
+					<input type='text' value='' placeholder='State/Province/County/Region' class='login_input m_province c_toUpper_input' maxlength="50" />
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<span class='login_star'></span>
+				<div class='login_from_right m_country_select'>
+					<input type='text' value='UNITED STATES' readonly="readonly" class='login_input m_country J_country'/>
+					<i></i>
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<!-- <span class='login_star'></span> -->
+				<div class='login_from_right'>
+					<input type='text' value='' placeholder='Postcode/Zip' class='login_input m_postcode c_toUpper_input' maxlength="15" />
+				</div>
+				<p class='m_point'></p>
+			</li>
+		</ul>
+		<div class='m_radio fix J_addr_radio'>
+			<p class='m_radio_title'>Do you want your mails delivered here?</p>
+			<div class='m_radio_list'>
+				<span class='m_label checked' data-value='1'>
+					<span class='m_rotate'><i></i></span>
+					<i class='m_label_text'>Yes</i>
+				</span>
+			</div>
+			<div class='m_radio_list'>
+				<span class='m_label' data-value='2'>
+					<span class='m_rotate'><i></i></span>
+					<i class='m_label_text'>No</i>
+				</span>
+			</div>
+		</div>
+		<ul class='login_list send_address'>
+			<li class='login_form_li'>
+				<span class='login_star'></span>
+				<div class='login_from_right'>
+					<textarea value='' placeholder='House name/number and street,P.O.box, company name,c/o' class='login_input m_street1 c_toUpper_input' maxlength="200" /></textarea>
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<div class='login_from_right'>
+					<textarea value='' placeholder='Apartment,suite,unit,building,floor,etc.' class='login_input m_floor1 c_toUpper_input' maxlength="200" /></textarea>
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<span class='login_star'></span>
+				<div class='login_from_right'>
+					<input type='text' value='' placeholder='Town/city' class='login_input m_city1 c_toUpper_input' maxlength="50" />
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<div class='login_from_right'>
+					<input type='text' value='' placeholder='State/Province/County/Region' class='login_input m_province1 c_toUpper_input' maxlength="50" />
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<span class='login_star'></span>
+				<div class='login_from_right m_country_select'>
+					<input type='text' value='UNITED STATES' readonly="readonly" class='login_input m_country1 J_country'/>
+					<i></i>
+				</div>
+			</li>
+			<li class='login_form_li'>
+				<!-- <span class='login_star'></span> -->
+				<div class='login_from_right'>
+					<input type='text' value='' placeholder='Postcode/Zip' class='login_input m_postcode1 c_toUpper_input' maxlength="15" />
+				</div>
+				<p class='m_point'></p>
+			</li>
+		</ul>
+		<button class='login_btn'>Complete</button>
+	</div>
+</div>
+<script type="text/javascript" src="js/tools/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/tools/base.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
+</body>
+</html>
