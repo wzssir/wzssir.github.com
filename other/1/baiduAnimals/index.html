@@ -64,6 +64,42 @@ function rNum(){
 }
 
 // 微信分享设置
+window.shareData = {
+    "imgUrl": "",
+    "timeLineLink": "http://baiduzoo.caijing.mingzhi.xyz",
+    "tTitle": '',
+    "tContent": ''
+};
+var ranConText = rNum();
+
+window.shareData.tTitle = shareTitle[ranConText];
+window.shareData.imgUrl = shareImage[ranConText];
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+        WeixinJSBridge.invoke('sendAppMessage', {
+            "img_url": window.shareData.imgUrl,
+            "link": window.shareData.timeLineLink,
+            "desc": window.shareData.tContent,
+            "title": window.shareData.tTitle
+        }, function(res) {
+        })
+    });
+
+    WeixinJSBridge.on('menu:share:timeline', function(argv) {
+        WeixinJSBridge.invoke('shareTimeline', {
+            "img_url": window.shareData.imgUrl,
+            "img_width": "120",
+            "img_height": "120",
+            "link": window.shareData.timeLineLink,
+            "desc": window.shareData.tContent,
+            "title": window.shareData.tTitle
+        }, function(res) {
+        });
+    });
+}, false);
+
+
 
 function loadImg(imgData){
 	var l=imgData.length;
