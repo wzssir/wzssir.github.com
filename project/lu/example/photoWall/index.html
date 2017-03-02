@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin:0px;padding:0px;}
+			#ul1{width:660px;position: relative;margin:50px auto;}
+			#ul1 li{width:200px;height:150px;float:left;list-style:none;margin:10px;z-index:1;}
+			#ul1 li img{width: 100%;height: 100%}
+			#ul1 .active{border:2px dotted red;}
+		</style>
+		<script src="../../js/move.js"></script>
+		<script>
+			window.onload=function(){
+				var oUl=document.getElementById("ul1");
+				var aLi=oUl.getElementsByTagName('li');
+				var aPos=[];        //存储top,left，，里面存的是json
+				var iMinZindex=2;   //层级
+				var l=0;
+				var t=0;
+				//布局转换
+				for(var i=0;i<aLi.length;i++){
+					aPos[i]={left:aLi[i].offsetLeft,top:aLi[i].offsetTop};
+				}
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].style.position='absolute';
+					aLi[i].style.left=aPos[i].left+'px';
+					aLi[i].style.top=aPos[i].top+'px';
+					aLi[i].style.margin='0';
+					aLi[i].index=i;     //索引值，用于后面的替换位置
+				}
+				//拖拽
+				for(i=0;i<aLi.length;i++){
+					setDrag(aLi[i]);
+				}
+				function setDrag(obj){
+					obj.onmousedown=function(ev){
+						var e=ev||event;
+						var disX=e.clientX-obj.offsetLeft;
+						var disY=e.clientY-obj.offsetTop;
+						
+						obj.style.zIndex=iMinZindex++;  //提升层级
+						document.onmousemove=function(ev){
+							var e=ev||event;
+							l=e.clientX-disX;
+							t=e.clientY-disY;
+							obj.style.left=l+'px';
+							obj.style.top=t+'px';
+							
+							//先清空所有
+							for(i=0;i<aLi.length;i++){
+								aLi[i].className='';
+							}
+							//如果有最近值，就加class
+							var oNear=findNearest(obj);
+							if(oNear){
+								oNear.className='active';
+							}
+							
+//							for(var i=0;i<aLi.length;i++){
+//								aLi[i].className="";//先清空所有的class
+//								if(obj==aLi[i]){continue;}//是自己就跳过
+//								if(cdTest(obj,aLi[i])){
+//									aLi[i].className='active';
+//								}
+//							}
+						}
+						document.onmouseup=function(){
+							document.onmousemove=null;
+							document.onmouseup=null;
+							//
+							var oNear=findNearest(obj);
+							if(oNear){
+								oNear.className='';//鼠标抬起清空class
+								/*oNear->obj
+								obj->oNear*/
+								oNear.style.zIndex=iMinZindex++;//提升层级
+								obj.style.zIndex=iMinZindex++;
+								
+								move(oNear,aPos[obj.index],{time:500});
+								move(obj,aPos[oNear.index],{time:500});
+								//替换index
+								var tmp=0;
+								tmp=obj.index;
+								obj.index=oNear.index;
+								oNear.index=tmp;
+								
+							}else{
+								move(obj,aPos[obj.index],{time:500});
+							}
+						}
+						clearInterval(obj.timer);
+						return false;
+					}
+				}
+				//碰撞检测
+				function cdTest(obj1,obj2){
+					var l1=obj1.offsetLeft;
+					var r1=obj1.offsetLeft+obj1.offsetWidth;
+					var t1=obj1.offsetTop;
+					var b1=obj1.offsetTop+obj1.offsetHeight;
+					
+					var l2=obj2.offsetLeft;
+					var r2=obj2.offsetLeft+obj2.offsetWidth;
+					var t2=obj2.offsetTop;
+					var b2=obj2.offsetTop+obj2.offsetHeight;
+					if(r1<l2 || l1>r2 || b1<t2 || t1>b2){
+						return false;//没有碰撞
+					}else{
+						return true;
+					}
+				}
+				//算距离
+				function getDis(obj1,obj2){
+					var a=obj1.offsetLeft-obj2.offsetLeft;
+					var b=obj1.offsetTop-obj2.offsetTop;
+					return Math.sqrt(a*a+b*b);
+				}
+				//找最近值
+				function findNearest(obj){
+					var iMin=9999999;//假设最小值
+					var iMinIndex=-1;//假设最小值出现的位置
+					for(var i=0;i<aLi.length;i++){
+						if(obj==aLi[i]){continue;}//是自己则跳过
+						if(cdTest(obj, aLi[i])){
+							var dis=getDis(obj,aLi[i]);
+							if(dis<iMin){
+								iMin=dis;
+								iMinIndex=i;
+							}
+						}
+					}
+					if(iMinIndex==-1){
+						return null;//没有跟任何li碰撞
+					}else{
+						return aLi[iMinIndex];
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li><img src="../../img/1.jpg"/></li>
+			<li><img src="../../img/2.png"/></li>
+			<li><img src="../../img/3.jpg"/></li>
+			<li><img src="../../img/4.jpg"/></li>
+			<li><img src="../../img/5.jpg"/></li>
+			<li><img src="../../img/6.jpg"/></li>
+			<li><img src="../../img/7.jpg"/></li>
+			<li><img src="../../img/8.jpg"/></li>
+			<li><img src="../../img/9.jpg"/></li>
+
+		</ul>
+	</body>
+</html>

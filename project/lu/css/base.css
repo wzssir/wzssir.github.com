@@ -1,0 +1,28 @@
+
+/* reset css */
+html,body { font:12px "microsoft yahei"; color: #000; background: #fff; }
+
+body, div, dl, dt, dd, ul, ol, li,h1, h2, h3, h4, h5, h6, pre, code,form, fieldset, legend, input, button,textarea, p, blockquote ,td,th { margin: 0;padding: 0; } 
+h1, h2, h3, h4, h5, h6 { font-weight: normal;}
+
+body{overflow-x: hidden;}
+
+ul{ list-style:none;}
+
+img{ border:none; font-size: 0; line-height: 0;vertical-align:middle;}
+
+a{ text-decoration:none; color:#000;}
+
+textarea,input{ outline:none; border:none; }
+
+textarea{ resize:none;}
+
+iframe {background-image: none; }
+
+.fl{ float:left;}
+.fr{ float:right;} 
+
+.clearfix:after{ content:''; display:block; clear:both;}
+
+.w{ width:1200px; margin:0 auto;}
+.h{height:100%}

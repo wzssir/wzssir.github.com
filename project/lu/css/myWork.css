@@ -1,0 +1,173 @@
+
+body{background:#333;}
+.myWork-header{position:relative;background:url(../img/top.jpg) no-repeat center center;background-size:100% 100%;width:100%;height:600px;}
+.myWork-header .myWork-header-con{position: absolute;top:450px;left:528px;}
+.myWork-header .myWork-header-con h2{transition:0.4s all linear;color:#fa5b3c;font-size:26px;}
+.myWork-header .myWork-header-con h2:hover{color:green;}
+.myWork-header .myWork-header-con div{line-height:22px;margin-left:30px;color:#ccc;font-size:14px;width:800px;}
+.myWork-header .myWork-header-con div p{text-indent:2em;}
+.myWork-header .myWork-header-con div p.para1{color:#f14848;}
+.bounceInLeft{animation:1s bounceInLeft ease-in-out;}
+.bounceInRight{animation:1s bounceInRight ease-in-out;}
+			@keyframes bounceInLeft{
+				0%{
+					opacity:0;
+					transform: translateX(-2000px);
+				}
+				60%{
+					opacity:1;
+					transform: translateX(60px);
+				}
+				80%{
+					transform: translateX(-30px);
+				}
+				80%{
+					transform: translateX(0px);
+				}
+			}
+			@keyframes bounceInRight{
+				0%{
+					opacity:0;
+					transform: translateX(2000px);
+				}
+				60%{
+					opacity:1;
+					transform: translateX(-60px);
+				}
+				80%{
+					transform: translateX(30px);
+				}
+				80%{
+					transform: translateX(0px);
+				}
+			}
+
+.myWork-main{width:100%;width:1088px;border:13px solid #660000;border-top:none;border-bottom:none;margin:0 auto;background:#000;opacity:0.8;}
+/*主内容 title部分*/
+.my .item{padding-top:30px;}
+.my .my-left{display:inline-block;width:360px;height:47px;background: url(../img/myleft.png) no-repeat right center;}
+.my .my-right{display:inline-block;width:360px;height:47px;background: url(../img/myright.png) no-repeat left center;}
+.my .my-center{display:inline-block;width:360px;height:47px;line-height:47px;font-size:38px;color:#f14848;vertical-align: top;text-align: center;font-weight:bold;}
+.my .my-center span{display: block;width:0%;height:1px;background:#fff;transition:0.5s all ease-in-out ;}
+.my .my-center:hover span{width:100%;}
+
+.my .mySkills{margin-top:30px;height:600px;}
+.my .mySkills .mySkills-des{width:970px;margin:0 auto;height:540px;}
+.my .mySkills .mySkills-des li{width:300px;height:150px;overflow:hidden;border-radius:4px;border:1px solid #009966;float:left;margin:10px;}
+.my .mySkills .mySkills-des li .msd{width:300px;font-size:16px;background:#999933 ;height:80px;color:#fff;position: absolute;bottom:-80px;left:0;}
+.my .mySkills .mySkills-des li .msd div{width:300px;text-align:center;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);}
+.my .mySkills .mySkills-des li:nth-child(1){background: #00FF66;}
+.my .mySkills .mySkills-des li:nth-child(2){background: #3300CC;}
+.my .mySkills .mySkills-des li:nth-child(3){background: #333366;}
+.my .mySkills .mySkills-des li:nth-child(4){background: #336666;}
+.my .mySkills .mySkills-des li:nth-child(5){background: #FFFF66;}
+.my .mySkills .mySkills-des li:nth-child(6){background: #660066;}
+.my .mySkills .mySkills-des li:nth-child(7){background: #663333;}
+.my .mySkills .mySkills-des li:nth-child(8){background: #669966;}
+.my .mySkills .mySkills-des li:nth-child(9){background: #FF0066;}
+.my .mySkills .msbtn{text-align: center;margin-bottom:20px;}
+.my .mySkills .mySkills-btn1,.my .mySkills .mySkills-btn2{width:160px;height:40px;display:inline-block;margin-right:20px;line-height:40px;font-size:16px;margin-top:20px;text-align:center;border-radius:20px;background:#f14848;color:#fff;cursor:pointer;}
+.my .mySkills .mySkills-btn1:hover,.my .mySkills .mySkills-btn2:hover{background: #c00;}
+
+.my .myWorks{margin-top:30px;height:700px;}
+.my .myWorks-img{background: url(../img/contact.png) no-repeat center;height:300px;position: relative;}
+.my .myWorks-img .dingwei{width:640px;height:170px;position: absolute;top:43px;left:223px;overflow: hidden;}
+.my .myWorks-img ul{position: absolute;top:0px;left:0px;width:6000px;}
+.my .myWorks-img ul li{width:290px;height:150px;border:5px solid #996600;background:#228;float:left;margin:10px;border-radius:6px;}
+.my .myWorks-img ul li img{width: 100%;height: 100%;}
+.my .myWorks-img ul li:hover img{width:100%;height:100%;}
+.my .myWorks-img ul li:hover img{transform: scale(1.2);}
+.my .myWorks-img .pre,.myWorks-img .next{line-height:160px;text-align: center;font-size:80px;width:100px;border:none;position: absolute;top:40px;z-index:9;}
+.my .myWorks-img .pre{left:160px;}
+.my .myWorks-img .next{right:160px;}
+.my .myWorks-img .pre a,.myWorks-img .next a{text-decoration: none;color:green;}
+.my .raffle{margin-top:40px;position: relative;}
+.my .raffle #content{position: relative;width: 300px;height: 300px;color:#fff; float: left;margin-left:250px;}
+.my .raffle #content li,.my .raffle #content #begin{font-size:18px;position: absolute;width: 100px;height: 100px; line-height: 100px;text-align: center; border: 1px solid #f60;transition:0.5s all ease;}
+.my .raffle #content li.current{background: #090;}
+.my .raffle #content #begin{color:green;background:#303;cursor:pointer;font-size:20px;font-weight:bold;}
+.my .raffle #content li:hover,.my .raffle #content #begin:hover{background: #FFC600;box-shadow:30px 30px 10px rgba(0,0,0,.5);z-index:2;}
+.my .raffle #dashboard{ height:200px; line-height: 30px; overflow: hidden; float: left; width: 240px; margin-left: 100px;color:#fff;font-size:16px;}
+.my .raffle .rules{width:120px;height:80px;position: absolute;top:204px;left:636px;animation:1s move infinite alternate linear;}
+@keyframes move{
+	from{transform: translateX(50px);}
+	to{transform: translateX(0px);}
+}
+/*forgetpassword*/
+.myWorks-shadow .shadow{display:none;width:100%;height:100%;background-color:rgba(0,0,0,0.4);position: fixed;left:0px;top:0px;z-index:999;}
+.myWorks-shadow .shadow .prompt h3 {border-bottom:1px solid #e5e5e5; height: 45px; font-size: 16px; line-height: 45px; text-align: right;padding: 0 10px;}
+.myWorks-shadow .shadow .prompt h3 span { padding-left: 5px; float: left;}
+.myWorks-shadow .shadow .prompt h3 a { display:inline-block;width:30px;height:30px;background: #eee; text-align: center; line-height: 30px; border-radius: 2px;}
+.myWorks-shadow .shadow .prompt h3 a:hover { background: #e2e2e2;}
+.myWorks-shadow .shadow .prompt .pass { text-align: center; font-size: 26px; line-height: 42px; padding-top: 60px; padding-bottom: 15px;}
+.myWorks-shadow .shadow .prompt .pass-btn { padding-top:10px;text-align: center;}
+.myWorks-shadow .shadow .prompt .btn-s1-small{ width:160px;height:40px;line-height:40px;font-size:16px;color:#fff;border-radius:20px;background:#f14848;display: inline-block; margin: 0 5px;}
+.myWorks-shadow .shadow .prompt .btn-s1-small:hover{ background:red;}
+.myWorks-shadow .shadow .prompt {width:880px;height:500px;border:6px solid #6b6b6b; position:relative; top:50%;background: #fff; margin: 0 auto; margin-top: -250px;}
+.myWorks-shadow .shadow .prompt .pass{padding:10px 40px 0 10px;position: relative;}
+.myWorks-shadow .shadow .prompt .pass p {font-size:14px;color:#333;line-height:30px;text-align: left;text-indent: 2em;;}
+.myWorks-shadow .shadow .prompt .pass #big{width:16px;height:390px;background: #f1f1f1;position: absolute;top:0px;right:15px;border:1px solid #f6f6f6;}
+.myWorks-shadow .shadow .prompt .pass #small{width:16px;height:60px;background:#c1c1c1;position: absolute;top:0px;left:0px;}
+.myWorks-shadow .shadow .prompt .pass #protopy{width:100%;height:380px;position: relative;overflow: hidden;}
+.myWorks-shadow .shadow .prompt .pass #protopycon{width:100%;position: absolute;top:0px;left:0px;}
+
+.my .myPractice{margin-top:60px;height:650px;position: relative;}
+.my .myPractice-item{width:1088px;height:200px;position: absolute;top:80px;left:0px;z-index:9;}
+.my .myPractice-item li{color:#fff;background:green;font-size:50px;text-align:center;position:absolute;top:0px;width:200px;height:200px;overflow:hidden;border-radius:50%;border:2px solid #c9c;transition:0.8s all ease;cursor:pointer;}
+.my .myPractice-item li:nth-child(1){left:150px;}
+.my .myPractice-item li:nth-child(2){left:300px;}
+.my .myPractice-item li:nth-child(3){left:450px;}
+.my .myPractice-item li:nth-child(4){left:600px;}
+.my .myPractice-item li:nth-child(5){left:750px;}
+.my .myPractice-item li img{width:100%;height:100%;}
+.my .myPractice-item li:hover{transform: rotate(360deg) scale(1.4);box-shadow:0px 0px 20px #fff;}
+.my .myPractice .myPractice-block{width:660px;height:0px;background:#000;border:0px solid #996600;border-radius:6px;position: absolute;top:400px;left:50%;margin-left:-330px;z-index:9;}
+.my .myPractice .myPractice-block div{width:20px;height:20px;line-height:20px;text-align: center;border-radius:50%;float:left;font-size:20px;color:#fff;opacity:0;margin:2px;}
+
+.my .myPractice #myPractice-wrap{width:1088px;height:600px;border:2px solid #999;margin:0px auto;position: absolute;top:0px;left:0px;overflow: hidden;}
+.my .myPractice .myPractice-box{position: absolute;top:0px;left:0px;}
+.my .myPractice .myPractice-box li{width:1500px;height:600px;list-style: none;float:left;}
+.my .myPractice .myPractice-box li img{width:100%;height:100%;}
+
+.my .myInformation{height:300px;}
+.my .myInformation-item{width:860px; margin:100px auto;text-align: center;}
+.my .myInformation-item li{list-style: none;float:left;width:104px;padding:0 52px;position: relative;}
+.my .myInformation-item li img{width:104px;height:80px;;}
+.my .myInformation-item li p.heading{width:104px;line-height:76px;font-size:20px;color:#fff;text-align: center;}
+.my .myInformation-item li .item1{display:none;width:165px;height:180px;position:absolute;top:-30px;left:10px;text-align: center;color:#fff;border-radius:10px;}
+.my .myInformation-item li .tips1{background: -webkit-linear-gradient(top,#fd3d4f,#fd3e97);}
+.my .myInformation-item li .tips2{background: -webkit-linear-gradient(top,#17d5d7,#09e5b9);}
+.my .myInformation-item li .tips3{background: -webkit-linear-gradient(top,#609,#3f9);}
+.my .myInformation-item li .tips4{background: -webkit-linear-gradient(top,#900,#990);}
+.my .myInformation-item li div h2{font-size:20px;line-height:54px;color:#fff;}
+.my .myInformation-item li .item1 p{padding:0 18px;font-size:14px;line-height:22px;text-align: left;}
+.my .myInformation-item li .item1 div{width:100px;height:28px;font-size:14px;line-height:28px;color:#fff;background: #cf4074;border-radius: 20px;text-align: center;margin:40px auto;}
+.my .myInformation-item li .tips2 div{background: #e7fcf8;color:#17d5d7;}
+.my .myInformation-item li:hover .item1{display: block;}
+
+.aside{width:140px;height:400px;position: fixed;top:50%;right:20px;margin-top:-200px;}
+.aside img{width:100%;height:100%;}
+.aside ul{position: absolute;top:108px;left:20px;}
+.aside ul li{width:100px;height:26px;line-height:26px;color:#891e0d;font-size:14px;background:#fdfaad;text-align: center;cursor:pointer;}
+.aside ul li.active{background:#ebe786;}
+.aside ul li:hover{background:#ebe786;}
+.aside .toTop{width:100px;height:40px;position: absolute;top:244px;left:20px;cursor:pointer;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
